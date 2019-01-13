@@ -1,0 +1,27 @@
+.wrapper{
+    background-color: azure;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.logo{
+    height: 90px;
+    width: 330px;
+    background: url("./../../assets/images/takeItEasyLogo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.comercial-logo{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 12px;
+    &:hover{
+        opacity: 0.4;
+    }
+    cursor: pointer;
+}

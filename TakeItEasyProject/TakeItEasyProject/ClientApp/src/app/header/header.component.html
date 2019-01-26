@@ -1,8 +1,21 @@
 <div class="wrapper">
   <div class="logo"></div>
-  <div class="comercial-logos">
-    <img src="./../../assets/images/facebook.png" class="comercial-logo">
-    <img src="./../../assets/images/instagram.png" class="comercial-logo">
-    <img src="./../../assets/images/twitter.png" class="comercial-logo">
+  <div class="right-side">
+    <div class="comercial-logos">
+      <img src="./../../assets/images/instagram.png" class="logo">
+      <img src="./../../assets/images/facebook.png" class="logo">
+      <img src="./../../assets/images/twitter.png" class="logo">
+    </div>
+    <div class="settings" (click)="openMenu()">
+      <span class="point"></span>
+      <span class="point"></span>
+      <span class="point"></span>
+    </div>
   </div>
+</div>
+<div [ngClass]="{'settings-box-open': isMenuOpen}">
+  <div class="close-button" (click)="closeMenu()"></div>
+  <div class="profile-image"></div>
+  <span class="settings-element" [ngClass]="{'settings-box-closed': !isMenuOpen}">Sign in</span>
+  <span class="settings-element" [ngClass]="{'settings-box-closed': !isMenuOpen}">Sign up</span>
 </div>

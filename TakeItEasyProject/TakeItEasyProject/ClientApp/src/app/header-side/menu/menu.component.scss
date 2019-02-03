@@ -1,0 +1,35 @@
+.nav-wrapper{
+    width: 100%;
+    height: 57px;
+    background-color: #f8af61;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-element{
+    color:#f9f5d0;
+    margin: 30px;
+    font-size: 19px;
+    font-family: "Calibri";
+}
+
+a {
+    text-decoration: none;
+    position: relative;
+  }
+
+  a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    border-bottom: 3px solid #f9f5d0;
+    transition: 0.4s;
+  }
+
+  a:hover:after {
+    width: 100%;
+  }

@@ -1,0 +1,58 @@
+.parallax {
+    background-image: url("./../../assets/images/sas.jpg");
+    height: 610px;
+    width: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .cover-parallax{
+      width: 100%;
+      height: 100%;
+      background-color:rgba(51, 36, 21, 0.51);
+      display: flex;
+  }
+
+  .vacation-button{
+      margin: auto;
+      width: 450px;
+      height: 200px;
+      border: 4px solid #fce1b8;
+      border-radius: 7px;
+      cursor: pointer;
+      &:hover{
+          background-color:rgba(0, 0, 0, 0.19);
+      }
+  }
+
+  .take-it-easy-message{
+      background-image: -webkit-gradient( linear, left top, right top, color-stop(0.2, #ffff), color-stop(1, #fbd395));
+      background-image: gradient(linear, left top, right top, color-stop(0.2, #ffff), color-stop(1));
+      color:transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-align: center;
+      margin: auto;
+      font-family: cursive;
+      font-size: 48px;
+  }
+
+  @media only screen and (max-device-width: 1000px) {
+    .parallax {
+      background-attachment: scroll;
+    }
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 670px) {
+    .vacation-button{
+      width: 243px;
+      height: 89px;
+      border-width: 2px;
+    }
+
+    .take-it-easy-message{
+      font-size: 20px;
+    }
+  }

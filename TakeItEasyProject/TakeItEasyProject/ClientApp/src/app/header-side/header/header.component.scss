@@ -1,5 +1,5 @@
 .wrapper{
-    background-color: #f9f5d0;
+    background-color: #4c3a1d;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -8,8 +8,8 @@
 }
 
 .logo{
-    height: 90px;
-    width: 330px;
+    height: 57px;
+    width: 280px;
     background: url("./../../../assets/images/takeItEasyLogo.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -26,8 +26,8 @@
     margin: auto;
     margin-right: 25px;
     .logo{
-        width: 26px;
-        height: 26px;
+        width: 24px;
+        height: 24px;
         border-radius: 50%;
         margin-right: 12px;
         cursor: pointer;
@@ -49,16 +49,12 @@
         margin: 3px;
     }
     
-    :first-child{
+    :nth-child(2n-1){
         background-color: #acb52a;
     }
 
     :nth-child(2n){
         background-color: #fed200;
-    }
-    
-    :last-child{
-        background-color: #935628;
     }
 }
 
@@ -98,6 +94,7 @@
         line-height: 50px;
         margin: auto;
         margin-bottom: 5px;
+        border-radius: 8px;
         font-family: 'HarmoniaSans W01 Light';
         font-size: 18px;
         color: #ffffff;
@@ -111,7 +108,7 @@
         &:hover{
             opacity: 0.5;
             width: 80%;
-            background-color:#f8af61;
+            background-color:#ae7e4a;
             cursor: pointer;
         }
     }
@@ -145,15 +142,15 @@
 @keyframes settingsFrame{
     0%{
         width: 161px;
-        background-color: #935628;
+        background-color: #4c3a1d;
         right: -161px;
     }
     70%{
-        background-color: #935628;
+        background-color: #4c3a1d;
         right: -70px;
     }
     100%{
-        background-color: #f78d2d;
+        background-color: #956a2e;
         right: 0px;
     }
 }

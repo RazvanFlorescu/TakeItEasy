@@ -5,12 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule }   from '@angular/forms';
 import { HeaderSideModule } from './header-side/header-side.module';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { VacationComponent } from './vacation/vacation.component';
+import { ProposalComponent } from './proposal/proposal.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    VacationComponent,
+    ProposalComponent
   ],
   imports: [
     BrowserModule,

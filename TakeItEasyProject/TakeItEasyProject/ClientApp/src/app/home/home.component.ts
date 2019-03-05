@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { LocationService } from './../shared/services/location.service';
+import { OnInit, Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+   public constructor(private locationService: LocationService) {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+   public ngOnInit() { 
+        this.locationService.getCurrentLocation();
+   }
 }

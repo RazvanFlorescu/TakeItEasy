@@ -1,6 +1,7 @@
 import { LocationService } from './../shared/services/location.service';
 import { OnInit, Component } from '@angular/core';
 import * as $ from "jquery";
+import { AuthenticationService } from '../shared/services/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,11 @@ import * as $ from "jquery";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-   public constructor(private locationService: LocationService) {}
+   public constructor(private locationService: LocationService, private authenticationService: AuthenticationService) {}
 
    public ngOnInit() { 
+        this.authenticationService.login().subscribe(data =>
+          console.log(data));
         //this.locationService.getCurrentLocation();
         $('.carousel .carousel-item').each(function(){
           var next = $(this).next();

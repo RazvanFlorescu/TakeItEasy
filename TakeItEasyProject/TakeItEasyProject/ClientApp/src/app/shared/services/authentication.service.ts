@@ -10,6 +10,6 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   login (): Observable<any> {
-    return this.http.get("http://localhost:64067/api/Auth/facebookSignin");
+    return this.http.get('http://localhost:64067/api/Auth/facebookSignin');
   }
 }

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HomeModule } from './home/home.module';
 import { VacationModule } from './vacation/vacation.module';
 import { ProposalModule } from './proposal/proposal.module';

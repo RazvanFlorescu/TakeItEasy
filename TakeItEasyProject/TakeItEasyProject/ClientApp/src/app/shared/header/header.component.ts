@@ -9,17 +9,18 @@ export class HeaderComponent implements OnInit {
 
   private isMenuOpen: boolean;
 
-  constructor() { }
-  
+  constructor() {
+  }
+
   ngOnInit() {
     this.isMenuOpen = false;
   }
 
-  public openMenu(){
+  public openMenu() {
     this.isMenuOpen = true;
   }
 
-  public closeMenu(){
+  public closeMenu() {
     this.isMenuOpen = false;
   }
 }

@@ -1,6 +1,6 @@
 .parallax {
     background-image: url("./../../assets/images/sas.jpg");
-    height: 610px;
+    height: calc(100vh - 112px);
     width: 100%;
     background-attachment: fixed;
     background-position: center;
@@ -58,16 +58,16 @@
   }
 
 .card {
-  background-color: #b7671bad;
+  background-color: #956a2e;
 }
 
 .card-body {
-  background-color: #cb721d;
-  color: #fff396;
+  background-color: #956a2e;
+  color:  #ffff;
 }
 
 .text-muted {
-  color: #d1d089 !important;
+  color:  #c4b49d !important;
 }
 
 #carousel-example-multi {

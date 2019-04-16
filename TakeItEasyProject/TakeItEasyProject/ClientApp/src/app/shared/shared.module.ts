@@ -16,10 +16,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     RouterModule,
     HttpClientModule,
-    NgbModule
+    NgbModule.forRoot()
   ],
   exports: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent, SignUpModalComponent],
   providers: [LocationService],
-  entryComponents: [SignUpModalComponent]
+  entryComponents: [SignUpModalComponent],
 })
 export class SharedModule { }

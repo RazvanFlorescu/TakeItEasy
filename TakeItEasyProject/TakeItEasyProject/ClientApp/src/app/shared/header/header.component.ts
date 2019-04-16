@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.isMenuOpen = false;
-    // this.openVerticallyCentered(SignUpModalComponent);
   }
 
   public openMenu() {
@@ -27,8 +26,7 @@ export class HeaderComponent implements OnInit {
     this.isMenuOpen = false;
   }
 
-
-  openVerticallyCentered(content) {
-    this.modalService.open(content, { centered: true });
-  }
+  openSignUpModal() {
+    this.modalService.open(SignUpModalComponent, { centered: true });
+  } 
 }

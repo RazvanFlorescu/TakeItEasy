@@ -93,6 +93,9 @@
   display: inline-flex !important;
 }
 
+.carousel-control-prev, .carousel-control-next {
+  z-index: 0 !important;
+}
 .card-img-top {
   max-height: 350px;
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SignUpModalComponent } from '../sign-up-modal/sign-up-modal.component';
 
 @Component({
   selector: 'app-header',
@@ -9,11 +11,12 @@ export class HeaderComponent implements OnInit {
 
   private isMenuOpen: boolean;
 
-  constructor() {
+  constructor(private modalService: NgbModal) {
   }
 
   ngOnInit() {
     this.isMenuOpen = false;
+    // this.openVerticallyCentered(SignUpModalComponent);
   }
 
   public openMenu() {
@@ -22,5 +25,10 @@ export class HeaderComponent implements OnInit {
 
   public closeMenu() {
     this.isMenuOpen = false;
+  }
+
+
+  openVerticallyCentered(content) {
+    this.modalService.open(content, { centered: true });
   }
 }

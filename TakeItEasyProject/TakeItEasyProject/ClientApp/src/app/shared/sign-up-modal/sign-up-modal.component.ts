@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-sign-up-modal',
@@ -11,7 +10,6 @@ export class SignUpModalComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-       $('#exampleModalCenter').modal({'show': true});
   }
 
 }

@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignInModalComponent } from './sign-in-modal/sign-in-modal.component';
 import { SignUpModalComponent } from './sign-up-modal/sign-up-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent, SignUpModalComponent],
@@ -16,7 +18,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     RouterModule,
     HttpClientModule,
-    NgbModule.forRoot()
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule.forRoot(),
+    MDBBootstrapModule
   ],
   exports: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent, SignUpModalComponent],
   providers: [LocationService],

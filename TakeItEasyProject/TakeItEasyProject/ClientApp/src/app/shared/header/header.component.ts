@@ -27,6 +27,6 @@ export class HeaderComponent implements OnInit {
   }
 
   openSignUpModal() {
-    this.modalService.open(SignUpModalComponent, { centered: true });
-  } 
+    this.modalService.open(SignUpModalComponent, { centered: true } );
+  }
 }

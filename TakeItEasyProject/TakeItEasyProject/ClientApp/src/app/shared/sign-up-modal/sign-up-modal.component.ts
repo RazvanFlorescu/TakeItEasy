@@ -8,13 +8,18 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./sign-up-modal.component.scss']
 })
 export class SignUpModalComponent implements OnInit {
-  signupFormModalName = new FormControl('', Validators.required);
-  signupFormModalEmail = new FormControl('', Validators.email);
-  signupFormModalPassword = new FormControl('', Validators.required);
+  fullName: String;
+  email: String = '';
+  password: String;
+
+  signupFormModalName = new FormControl(this.fullName, Validators.required);
+  signupFormModalEmail = new FormControl(this.email, Validators.email);
+  signupFormModalPassword = new FormControl(this.password, Validators.required);
 
   constructor( ) { }
 
   ngOnInit() {
+    console.log(this.signupFormModalEmail.value);
   }
 
 }

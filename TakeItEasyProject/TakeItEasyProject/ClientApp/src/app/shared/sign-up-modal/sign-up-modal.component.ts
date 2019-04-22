@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalDirective } from 'angular-bootstrap-md';
+
 
 @Component({
   selector: 'app-sign-up-modal',
@@ -9,17 +9,15 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class SignUpModalComponent implements OnInit {
   fullName: String;
-  email: String = '';
+  email: String;
   password: String;
-
-  signupFormModalName = new FormControl(this.fullName, Validators.required);
-  signupFormModalEmail = new FormControl(this.email, Validators.email);
-  signupFormModalPassword = new FormControl(this.password, Validators.required);
+   @ViewChild ('frame') public formModal: ModalDirective;
 
   constructor( ) { }
 
   ngOnInit() {
-    console.log(this.signupFormModalEmail.value);
+    // tslint:disable-next-line:no-unused-expression
+    this.formModal.show();
   }
 
 }

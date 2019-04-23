@@ -7,12 +7,13 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignInModalComponent } from './sign-in-modal/sign-in-modal.component';
-// import { SignUpModalComponent } from './sign-up-modal/sign-up-modal.component';
+import { SignUpModalComponent } from './sign-up-modal/sign-up-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MDBBootstrapModule, ModalModule, ModalDirective } from 'angular-bootstrap-md';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
-  declarations: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent], // , SignUpModalComponent],
+  declarations: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent, SignUpModalComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -23,8 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MDBBootstrapModule,
     ModalModule,
   ],
-  exports: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent], // , SignUpModalComponent],
-  providers: [LocationService, ModalDirective],
- // entryComponents: [SignUpModalComponent],
+  exports: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent, SignUpModalComponent],
+  providers: [LocationService, ModalDirective]
 })
 export class SharedModule { }

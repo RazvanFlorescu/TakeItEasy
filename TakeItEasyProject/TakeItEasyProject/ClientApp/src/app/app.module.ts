@@ -9,12 +9,11 @@ import { VacationModule } from './vacation/vacation.module';
 import { ProposalModule } from './proposal/proposal.module';
 import { SharedModule } from './shared/shared.module';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { SignUpModalComponent } from './shared/sign-up-modal/sign-up-modal.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent, SignUpModalComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

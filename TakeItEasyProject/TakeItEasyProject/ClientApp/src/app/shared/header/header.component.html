@@ -17,7 +17,7 @@
 <div [ngClass]="{'settings-box': isMenuOpen}">
   <div class="close-button" (click)="closeMenu()"></div>
   <div class="profile-image"></div>
-  <span class="settings-element" [ngClass]="{'settings-box-closed': !isMenuOpen}" ng-click="signIn()">Sign in</span>
+  <span class="settings-element" [ngClass]="{'settings-box-closed': !isMenuOpen}" (click)="openSignInModal()">Sign in</span>
   <span class="settings-element" [ngClass]="{'settings-box-closed': !isMenuOpen}" (click)="openSignUpModal()">Sign up</span>
 </div>
 

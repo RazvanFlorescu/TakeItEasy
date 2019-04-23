@@ -6,12 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ClientApp';
-  public signUpClicked: boolean;
 
+  public signUpClicked: boolean;
+  public signInClicked: boolean;
+  
   public onSignUp(event) {
-    console.log(event);
-    console.log('here');
-    // this.signUpClicked = event;
+    this.signUpClicked = event;
+  }
+
+  public onSignIn(event) {
+    this.signInClicked = event;
   }
 }

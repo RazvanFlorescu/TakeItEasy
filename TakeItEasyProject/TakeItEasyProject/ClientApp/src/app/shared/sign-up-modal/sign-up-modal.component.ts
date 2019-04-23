@@ -1,6 +1,5 @@
-import { Component, ViewChild, AfterViewInit, OnInit, Input } from '@angular/core';
+import { Component, ViewChild, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ModalDirective } from 'angular-bootstrap-md';
-import { ModalService } from '../services/modal.service';
 
 
 @Component({
@@ -8,22 +7,29 @@ import { ModalService } from '../services/modal.service';
   templateUrl: './sign-up-modal.component.html',
   styleUrls: ['./sign-up-modal.component.scss']
 })
-export class SignUpModalComponent implements AfterViewInit  {
+export class SignUpModalComponent implements OnChanges  {
 
   fullName: String;
   email: String;
   password: String;
-  @Input() public signUpEvent: boolean;
+  @Input() public signUpEvent;
 
   @ViewChild ('frame') public formModal: ModalDirective;
 
-  constructor(private modalService: ModalService ) { }
+  constructor( ) { }
 
-  ngAfterViewInit(): void {
-    // this.formModal.show();
-    if (this.signUpEvent === true) {
-       this.formModal.show();
-    }
+  ngOnChanges(changes: SimpleChanges) {
+    for (let propName in changes) {  
+        let change = changes[propName];
+      
+        if ((change.currentValue || change.previousValue) && propName === "signUpEvent") {
+          this.formModal.show();
+        } 
+     }
+  }
+
+  closeSignUpModal() {
+     this.formModal.hide();  
   }
 
 }

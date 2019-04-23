@@ -1,6 +1,7 @@
-<app-header (showSignUpModal)="onSignUp($event)"></app-header>
+<app-header (showSignUpModal)="onSignUp($event)" (showSignInModal)="onSignIn($event)"></app-header>
 <app-menu></app-menu>
 <app-sign-up-modal [signUpEvent] = "signUpClicked"></app-sign-up-modal>
+<app-sign-in-modal [signInEvent] = "signInClicked"></app-sign-in-modal>
 <div class="container-fluid">
     <div class="row">
         <div class = "col-md-12 no-padding">

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { SignUpModalComponent } from '../sign-up-modal/sign-up-modal.component';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ModalService } from '../services/modal.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +10,9 @@ export class HeaderComponent implements OnInit {
 
   private isMenuOpen: boolean;
 
-  constructor(private modalService: NgbModal) {
+  @Output() public showSignUpModal = new EventEmitter();
+
+  constructor(private modalService: ModalService) {
   }
 
   ngOnInit() {
@@ -26,7 +27,7 @@ export class HeaderComponent implements OnInit {
     this.isMenuOpen = false;
   }
 
-  openSignUpModal() {
-    this.modalService.open(SignUpModalComponent, { centered: true } );
+  public openSignUpModal() {
+    this.showSignUpModal.emit({'ceva': 'tralala'});
   }
 }

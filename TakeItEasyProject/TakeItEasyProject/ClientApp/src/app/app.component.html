@@ -1,12 +1,11 @@
-<app-header></app-header>
+<app-header (showSignUpModal)="onSignUp($event)"></app-header>
 <app-menu></app-menu>
-    <div class="col-3"></div>
-    <div class="col-3"></div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class = "col-md-12 no-padding">
-                    <router-outlet></router-outlet>
-            </div>
+<app-sign-up-modal [signUpEvent] = "signUpClicked"></app-sign-up-modal>
+<div class="container-fluid">
+    <div class="row">
+        <div class = "col-md-12 no-padding">
+                <router-outlet></router-outlet>
         </div>
     </div>
+</div>
 <app-footer></app-footer>

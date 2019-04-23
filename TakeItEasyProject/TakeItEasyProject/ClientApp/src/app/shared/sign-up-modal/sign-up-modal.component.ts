@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, OnInit, Input } from '@angular/core';
 import { ModalDirective } from 'angular-bootstrap-md';
+import { ModalService } from '../services/modal.service';
 
 
 @Component({
@@ -7,17 +8,22 @@ import { ModalDirective } from 'angular-bootstrap-md';
   templateUrl: './sign-up-modal.component.html',
   styleUrls: ['./sign-up-modal.component.scss']
 })
-export class SignUpModalComponent implements OnInit {
+export class SignUpModalComponent implements AfterViewInit  {
+
   fullName: String;
   email: String;
   password: String;
-   @ViewChild ('frame') public formModal: ModalDirective;
+  @Input() public signUpEvent: boolean;
 
-  constructor( ) { }
+  @ViewChild ('frame') public formModal: ModalDirective;
 
-  ngOnInit() {
-    // tslint:disable-next-line:no-unused-expression
-    this.formModal.show();
+  constructor(private modalService: ModalService ) { }
+
+  ngAfterViewInit(): void {
+    // this.formModal.show();
+    if (this.signUpEvent === true) {
+       this.formModal.show();
+    }
   }
 
 }

@@ -10,7 +10,7 @@ import { SignInModalComponent } from './sign-in-modal/sign-in-modal.component';
 import { SignUpModalComponent } from './sign-up-modal/sign-up-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MDBBootstrapModule, ModalModule, ModalDirective } from 'angular-bootstrap-md';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent, SignUpModalComponent],

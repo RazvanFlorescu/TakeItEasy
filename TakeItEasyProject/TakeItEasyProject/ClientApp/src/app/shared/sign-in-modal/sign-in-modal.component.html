@@ -8,22 +8,19 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body mx-3">
+      <form [formGroup]="userAccount" class="modal-body mx-3">
         <div class="md-form mb-5">
           <i class="fas fa-envelope prefix grey-text"></i>
-          <input mdbInput mdbValidate name="input" type="email" id="email-login" class="form-control" [(ngModel)]="email" #input="ngModel" required pattern="[^ @]*@[^ @]*.*[+.].+">
+          <input mdbInput mdbValidate type="email" id="email-login" formControlName="email" class="form-control" >
           <label for="email-login">Your email</label>
-          <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)">Type down a valid email</mdb-error>
+          <mdb-error *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)"><small>Type down a valid email</small></mdb-error>
         </div>
-
-        <div class="md-form mb-4">
+        <div class="md-form mb-5">
           <i class="fas fa-lock prefix grey-text"></i>
-          <input type="password" id="login-pass" class="form-control validate"
-            mdbInput>
-          <label data-error="wrong" data-success="right" for="login-pass">Your password</label>
+          <input mdbInput mdbValidate type="password" id="password-login" formControlName="password" class="form-control validate">
+          <label for="password-login">Your password</label>
         </div>
-
-      </div>
+      </form>
       <div class="modal-footer d-flex justify-content-center">
         <button mdbBtn class="waves-light" mdbWavesEffect>Sign in</button>
       </div>

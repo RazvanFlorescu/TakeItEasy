@@ -7,16 +7,16 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  private isMenuOpen: boolean;
+  public isMenuOpen: boolean;
 
   @Output() public showSignUpModal = new EventEmitter();
   @Output() public showSignInModal = new EventEmitter();
 
   constructor( ) {
   }
-  
-  private triggerSignUp: boolean = true;
-  private triggerSignIn: boolean = true;
+
+  private triggerSignUp = true;
+  private triggerSignIn = true;
 
   ngOnInit() {
     this.isMenuOpen = false;

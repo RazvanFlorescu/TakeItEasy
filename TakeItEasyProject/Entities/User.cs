@@ -4,7 +4,9 @@ using System.Text;
 
 namespace Entities
 {
-    class User
+    public class User : BaseEntity
     {
+        public string FullName { get; set; }
+        public string Email { get; set; }
     }
 }

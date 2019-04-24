@@ -1,10 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
 {
-    class CoreDomain
+    public class TakeItEasyContext : DbContext
     {
+        public TakeItEasyContext(DbContextOptions<TakeItEasyContext> options)
+            : base(options)
+        { }
+
+        public DbSet<User> Users { get; set; }
     }
 }

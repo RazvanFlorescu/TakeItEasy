@@ -4,7 +4,9 @@ using System.Text;
 
 namespace Entities
 {
-    class BaseEntity
+    public class BaseEntity
     {
+        public Guid Id { get; set; }
+        public DateTime LastUpdate { get; set; }
     }
 }

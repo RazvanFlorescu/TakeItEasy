@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Entities
 {
     public class BaseEntity
     {
         public Guid Id { get; set; }
-        public DateTime LastUpdate { get; set; }
+        public Guid EntityId { get; set; }
+        public DateTime LastChangedDate { get; set; }
+        public DateTime DeletedDate { get; set; }
+
     }
 }

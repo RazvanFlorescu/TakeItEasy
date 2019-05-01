@@ -1,10 +1,10 @@
+using BusinessLogicReader.Configurations;
+using BusinessLogicWriter.Configurations;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -47,10 +47,9 @@ namespace TakeItEasyProject
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.Configure<MvcOptions>(options =>
-            {
-                options.Filters.Add(new CorsAuthorizationFilterFactory("SiteCorsPolicy"));
-            });
+            services.AddBusinessLogicWriter(Configuration["ConnectionString"]);
+            services.AddBusinessLogicReader(Configuration["ConnectionString"]);
+
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

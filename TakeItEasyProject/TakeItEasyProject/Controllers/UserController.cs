@@ -27,6 +27,15 @@ namespace TakeItEasyProject.Controllers
             return Ok();
         }
 
+        [HttpPost("remove")]
+        public IActionResult Remove([FromBody] UserDto user)
+        {
+            RemoveAccountCommand command = new RemoveAccountCommand(user);
+            _dispatcher.Dispatch(command);
+
+            return Ok();
+        }
+
         [HttpGet]
         public IActionResult GetAll()
         {

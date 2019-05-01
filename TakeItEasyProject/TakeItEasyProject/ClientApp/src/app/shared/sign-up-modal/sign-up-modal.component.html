@@ -8,11 +8,16 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form [formGroup]="UserAccount" class="modal-body mx-3">
+      <form [formGroup]="userAccount" class="modal-body mx-3">
         <div class="md-form mb-5">
-          <i class="fas fa-User prefix grey-text"></i>
-          <input mdbValidate mdbInput type="text" id="fullName-register" formControlName="fullName" class="form-control">
-          <label for="fullName-register">Your name</label>
+          <i class="fas fa-user prefix grey-text"></i>
+          <input mdbValidate mdbInput type="text" id="fullName-register" formControlName="firstName" class="form-control">
+          <label for="firstName-register">Your first name</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="fas fa-user prefix grey-text"></i>
+          <input mdbValidate mdbInput type="text" id="fullName-register" formControlName="lastName" class="form-control">
+          <label for="fullName-register">Your last name</label>
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-envelope prefix grey-text"></i>
@@ -25,9 +30,10 @@
           <input mdbInput mdbValidate type="password" id="password-register" formControlName="password" class="form-control validate">
           <label for="password-register">Your password</label>
         </div>
+        <app-upload-user-image></app-upload-user-image>
       </form>
       <div class="modal-footer d-flex justify-content-center">
-        <button mdbBtn class="waves-light" mdbWavesEffect>Sign up</button>
+        <button mdbBtn class="waves-light custom-button" mdbWavesEffect>Sign up</button>
       </div>
     </div>
   </div>

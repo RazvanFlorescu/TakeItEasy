@@ -10,7 +10,7 @@ namespace BusinessLogicWriter.Helpers
         {
             Mapper.Initialize(cfg =>
                 {
-                    cfg.CreateMap<User, UserDto>().ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.EntityId)).ReverseMap();
+                    cfg.CreateMap<UserDto, User>().ForMember(dest => dest.EntityId, opt => opt.MapFrom(src => src.EntityId));
                 });
         }
     }

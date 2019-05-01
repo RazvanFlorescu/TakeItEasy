@@ -1,5 +1,4 @@
-﻿using DataAccess.Write.Configurations.Entities;
-using Entities;
+﻿using Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,13 +8,19 @@ namespace Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+            base.Configure(builder);
+
             builder.Property(p => p.Email)
                 .IsRequired()
-                .HasMaxLength(30);
+                .HasMaxLength(50);
 
-            builder.Property(p => p.FullName)
+            builder.Property(p => p.FirstName)
                 .IsRequired()
-                .HasMaxLength(30);
+                .HasMaxLength(20);
+
+            builder.Property(p => p.LastName)
+                .IsRequired()
+                .HasMaxLength(20);
 
             builder.Property(p => p.Password)
                 .IsRequired();

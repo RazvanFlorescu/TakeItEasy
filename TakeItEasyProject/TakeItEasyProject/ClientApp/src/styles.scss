@@ -7,6 +7,10 @@ body {
     padding: 0px !important;
 }
 
+body.modal-open {
+    overflow: hidden !important;
+}
+
 button {
     padding: 0px;
     border: none;
@@ -15,3 +19,18 @@ button {
         outline: none;        
     }
 }
+
+.ngx-file-drop__drop-zone {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    display: flex !important;
+    border-style: dashed !important;
+    border-color: lightgrey !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .ngx-file-drop__content {
+    flex-direction: column;
+  }

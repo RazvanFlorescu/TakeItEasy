@@ -1,7 +1,7 @@
 ﻿using Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DataAccess.Write.Configurations.Entities
+namespace Persistence.Configurations
 {
     public abstract class BaseEntityConfiguration
     {

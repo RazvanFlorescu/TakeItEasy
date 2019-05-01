@@ -24,7 +24,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     VacationModule,
     ProposalModule,
     SharedModule,
-    MDBBootstrapModule.forRoot(),
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,9 +11,11 @@ import { SignUpModalComponent } from './sign-up-modal/sign-up-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MDBBootstrapModule, ModalModule, ModalDirective } from 'angular-bootstrap-md';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { UploadUserImageComponent } from './upload-user-image/upload-user-image.component';
+import { FileDropModule } from 'ngx-file-drop';
 
 @NgModule({
-  declarations: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent, SignUpModalComponent],
+  declarations: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent, SignUpModalComponent, UploadUserImageComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -23,6 +25,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
     NgbModule.forRoot(),
     MDBBootstrapModule,
     ModalModule,
+    FileDropModule
   ],
   exports: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent, SignUpModalComponent],
   providers: [LocationService, ModalDirective]

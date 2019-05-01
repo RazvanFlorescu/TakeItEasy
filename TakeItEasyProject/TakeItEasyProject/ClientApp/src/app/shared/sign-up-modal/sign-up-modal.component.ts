@@ -41,7 +41,8 @@ export class SignUpModalComponent implements OnChanges, OnInit  {
 
   private setUserAccountValidators() {
     this.userAccount = new FormGroup({
-      fullName: new FormControl(this.fullName, [Validators.required, Validators.maxLength(30), Validators.pattern('[a-zA-Z0-9\s]+')]),
+      firstName: new FormControl(this.fullName, [Validators.required, Validators.maxLength(20), Validators.pattern('[a-zA-Z0-9\s]+')]),
+      lastName: new FormControl(this.fullName, [Validators.required, Validators.maxLength(20), Validators.pattern('[a-zA-Z0-9\s]+')]),
       email: new FormControl(this.email, [Validators.required, Validators.maxLength(30), Validators.pattern('[^ @]*@[^ @]*.*[+.].+')]),
       password: new FormControl(this.password, [Validators.required, Validators.minLength(6)]),
     });

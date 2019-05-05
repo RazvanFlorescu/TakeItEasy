@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using BusinessLogicCommon.QueryHandlers;
-using BusinessLogicReader.CqrsCore.Queries;
+using BusinessLogicReader.CqrsCore.Queries.User;
 using BusinessLogicReader.QueryBuilders;
 using DataAccessReader.Abstractions;
 using Models;
 
-namespace BusinessLogicReader.CqrsCore.QueryHandlers
+namespace BusinessLogicReader.CqrsCore.QueryHandlers.User
 {
     public class GetAllUsersQueryHandler : IQueryHandler<GetAllUsersQuery, IList<UserDto>>
     {

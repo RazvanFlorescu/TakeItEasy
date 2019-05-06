@@ -1,7 +1,9 @@
 export class User {
-    fullName :string;
-    lastName : string;
-    imageId? : string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    imageId?: string;
     image?: string;
-    entityId : string;
+    entityId: string;
+    password: string;
 }

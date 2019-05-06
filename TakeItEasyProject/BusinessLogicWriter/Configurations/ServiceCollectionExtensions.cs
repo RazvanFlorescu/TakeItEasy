@@ -15,6 +15,7 @@ namespace BusinessLogicWriter.Configurations
             services.AddDataAccess(connectionString);
             services.AddScoped<ICommandHandler<RegisterUserCommand>, RegisterUserCommandHandler>();
             services.AddScoped<ICommandHandler<RemoveAccountCommand>, RemoveAccountCommandHandler>();
+            services.AddScoped<ICommandHandler<AddImageCommand>, AddImageCommandHandler>();
             services.AddScoped<Dispatcher>();
             AutoMapperHelper.IntializeMapper();
         }

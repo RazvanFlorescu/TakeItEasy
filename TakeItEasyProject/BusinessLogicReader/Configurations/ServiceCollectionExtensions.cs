@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using BusinessLogicCommon.QueryHandlers;
-using BusinessLogicReader.CqrsCore.Queries;
 using BusinessLogicReader.CqrsCore.Queries.User;
-using BusinessLogicReader.CqrsCore.QueryHandlers;
 using BusinessLogicReader.CqrsCore.QueryHandlers.User;
 using BusinessLogicWriter.CqrsCore;
 using DataAccessReader.Configurations;

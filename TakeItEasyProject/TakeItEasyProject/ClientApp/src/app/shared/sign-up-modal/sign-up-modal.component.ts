@@ -12,9 +12,6 @@ import { User } from '../models/User';
 })
 export class SignUpModalComponent implements OnChanges, OnInit  {
 
-  private fullName: String = '';
-  private email: String = '';
-  private password: String = '';
   userAccount: FormGroup;
 
   @Input() public signUpEvent;
@@ -25,6 +22,7 @@ export class SignUpModalComponent implements OnChanges, OnInit  {
   constructor( private userService: UserService ) { }
 
   ngOnInit() {
+    this.user = new User();
     this.setUserAccountValidators();
   }
 
@@ -44,7 +42,6 @@ export class SignUpModalComponent implements OnChanges, OnInit  {
 
   private setUserAccountValidators() {
     this.userAccount = new FormGroup({
-      // tslint:disable-next-line:max-line-length
       firstName: new FormControl(this.user.firstName, [Validators.required, Validators.maxLength(20), Validators.pattern('[a-zA-Z0-9\s]+')]),
       lastName: new FormControl(this.user.lastName, [Validators.required, Validators.maxLength(20), Validators.pattern('[a-zA-Z0-9\s]+')]),
       email: new FormControl(this.user.email, [Validators.required, Validators.maxLength(30), Validators.pattern('[^ @]*@[^ @]*.*[+.].+')]),
@@ -52,9 +49,9 @@ export class SignUpModalComponent implements OnChanges, OnInit  {
     });
   }
 
-  get firstName() { return this.userAccount.get('fullName'); }
+  get firstNameField() { return this.userAccount.get('firstName'); }
 
-  get lastName() { return this.userAccount.get('lastName'); }
+  get lastNameField() { return this.userAccount.get('lastName'); }
 
   get emailField() { return this.userAccount.get('email'); }
 

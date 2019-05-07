@@ -16,6 +16,9 @@ namespace BusinessLogicWriter.CqrsCore.CammandHandlers
 
         public RegisterUserCommandHandler(IRepository repository, Dispatcher dispatcher)
         {
+            EnsureArg.IsNotNull(repository);
+            EnsureArg.IsNotNull(dispatcher);
+
             _repository = repository;
             _dispatcher = dispatcher;
         }
@@ -23,6 +26,7 @@ namespace BusinessLogicWriter.CqrsCore.CammandHandlers
         public void Handle(RegisterUserCommand command)
         {
             EnsureArg.IsNotNull(command);
+
             User entity = Mapper.Map<UserDto, User>(command.User);
             entity.Id = Guid.NewGuid();
             entity.EntityId = Guid.NewGuid();

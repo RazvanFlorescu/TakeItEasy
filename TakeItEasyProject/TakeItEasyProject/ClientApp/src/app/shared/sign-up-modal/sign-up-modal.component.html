@@ -13,11 +13,13 @@
           <i class="fas fa-user prefix grey-text"></i>
           <input mdbValidate mdbInput type="text" id="firstName-register" formControlName="firstName" class="form-control">
           <label for="firstName-register">Your first name</label>
+          <mdb-error *ngIf="firstNameField.invalid && (firstNameField.dirty || firstNameField.touched)"><small>This field is required</small></mdb-error>
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-user prefix grey-text"></i>
           <input mdbValidate mdbInput type="text" id="lastName-register" formControlName="lastName" class="form-control">
-          <label for="fullName-register">Your last name</label>
+          <label for="lastName-register">Your last name</label>
+          <mdb-error *ngIf="lastNameField.invalid && (lastNameField.dirty || lastNameField.touched)"><small>This field is required</small></mdb-error>
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-envelope prefix grey-text"></i>
@@ -29,11 +31,12 @@
           <i class="fas fa-lock prefix grey-text"></i>
           <input mdbInput mdbValidate type="password" id="password-register" formControlName="password" class="form-control validate">
           <label for="password-register">Your password</label>
+          <mdb-error *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)"><small>Add a password of minimum six characters</small></mdb-error>
         </div>
         <app-upload-user-image></app-upload-user-image>
       </form>
       <div class="modal-footer d-flex justify-content-center">
-        <button mdbBtn class="waves-light custom-button" mdbWavesEffect>Sign up</button>
+        <button mdbBtn class="waves-light custom-button" [disabled]="userAccount.invalid" (click)="registerUser()" mdbWavesEffect>Sign up</button>
       </div>
     </div>
   </div>

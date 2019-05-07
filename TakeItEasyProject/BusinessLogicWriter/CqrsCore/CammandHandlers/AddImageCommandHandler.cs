@@ -2,6 +2,7 @@
 using BusinessLogicCommon.CqrsCore.CammandHandlers;
 using BusinessLogicWriter.CqrsCore.Commands;
 using DataAccessWriter.Abstractions;
+using EnsureThat;
 using Entities;
 
 namespace BusinessLogicWriter.CqrsCore.CammandHandlers
@@ -12,11 +13,15 @@ namespace BusinessLogicWriter.CqrsCore.CammandHandlers
 
         public AddImageCommandHandler(IRepository repository)
         {
+            EnsureArg.IsNotNull(repository);
+
             _repository = repository;
         }
 
         public void Handle(AddImageCommand command)
         {
+            EnsureArg.IsNotNull(command);
+
             var image = new Image
             {
                 Id = Guid.NewGuid(),

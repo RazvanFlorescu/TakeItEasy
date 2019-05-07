@@ -4,6 +4,6 @@ export class User {
     email: string;
     imageId?: string;
     image?: string;
-    entityId: string;
+    entityId?: string;
     password: string;
 }

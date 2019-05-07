@@ -3,6 +3,8 @@ import { ModalDirective } from 'angular-bootstrap-md';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { User } from '../models/User';
+import { map, catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -15,7 +17,7 @@ export class SignUpModalComponent implements OnChanges, OnInit  {
   userAccount: FormGroup;
 
   @Input() public signUpEvent;
-  @Input() public user: User;
+  public user: User;
 
   @ViewChild ('frame') public formModal: ModalDirective;
 
@@ -40,15 +42,6 @@ export class SignUpModalComponent implements OnChanges, OnInit  {
      this.formModal.hide();
   }
 
-  private setUserAccountValidators() {
-    this.userAccount = new FormGroup({
-      firstName: new FormControl(this.user.firstName, [Validators.required, Validators.maxLength(20), Validators.pattern('[a-zA-Z0-9\s]+')]),
-      lastName: new FormControl(this.user.lastName, [Validators.required, Validators.maxLength(20), Validators.pattern('[a-zA-Z0-9\s]+')]),
-      email: new FormControl(this.user.email, [Validators.required, Validators.maxLength(30), Validators.pattern('[^ @]*@[^ @]*.*[+.].+')]),
-      password: new FormControl(this.user.password, [Validators.required, Validators.minLength(6)]),
-    });
-  }
-
   get firstNameField() { return this.userAccount.get('firstName'); }
 
   get lastNameField() { return this.userAccount.get('lastName'); }
@@ -57,4 +50,35 @@ export class SignUpModalComponent implements OnChanges, OnInit  {
 
   get passwordField() { return this.userAccount.get('password'); }
 
+  registerUser() {
+    this.user = {
+      email:  this.emailField.value,
+      firstName: this.firstNameField.value,
+      lastName: this.lastNameField.value,
+      password: this.passwordField.value
+    };
+
+    this.userService.register(this.user) .subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  private handleError(error: Response | any) {
+    console.log(error);
+  }
+
+  private setUserAccountValidators() {
+    this.userAccount = new FormGroup({
+      firstName: new FormControl(
+        this.user.firstName, [Validators.required, Validators.maxLength(20), Validators.pattern('[a-zA-Z0-9\s]+')]),
+      lastName: new FormControl(this.user.lastName, [Validators.required, Validators.maxLength(20), Validators.pattern('[a-zA-Z0-9\s]+')]),
+      email: new FormControl(this.user.email, [Validators.required, Validators.maxLength(30), Validators.pattern('[^ @]*@[^ @]*.*[+.].+')]),
+      password: new FormControl(this.user.password, [Validators.required, Validators.minLength(6)]),
+    });
+  }
 }

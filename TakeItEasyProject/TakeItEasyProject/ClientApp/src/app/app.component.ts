@@ -9,7 +9,7 @@ export class AppComponent {
 
   public signUpClicked: boolean;
   public signInClicked: boolean;
-  
+
   public onSignUp(event) {
     this.signUpClicked = event;
   }

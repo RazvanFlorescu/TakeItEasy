@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Ensure.That" Version="8.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BusinessLogicCommon\BusinessLogicCommon.csproj" />
     <ProjectReference Include="..\DataAccess\DataAccessReader.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />

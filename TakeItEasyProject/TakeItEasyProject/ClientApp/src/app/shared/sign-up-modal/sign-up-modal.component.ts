@@ -3,8 +3,6 @@ import { ModalDirective } from 'angular-bootstrap-md';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { User } from '../models/User';
-import { map, catchError } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 
 
 @Component({

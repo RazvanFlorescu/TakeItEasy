@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { UploadEvent, FileSystemFileEntry } from 'ngx-file-drop';
 import { User } from '../models/User';
 
@@ -14,9 +14,19 @@ export class UploadUserImageComponent implements OnInit {
   public isSaveEnabled: boolean;
   public errorText = '';
   private currentImageURL = './../../../assets/images/no-profile-image.png';
-  public user: User = new User();
+  @Input() public user: User;
 
   constructor() { }
+
+  ngOnChanges(changes: SimpleChanges) {
+    // tslint:disable-next-line:forin
+    for (const propName in changes) {
+      const change = changes[propName];
+      if ((change.currentValue || change.previousValue) && propName === 'user') {
+        console.log("haha");
+      }
+    }
+  }
 
   ngOnInit(): void {
     this.canvas = <HTMLCanvasElement>document.getElementById('circle');
@@ -28,6 +38,8 @@ export class UploadUserImageComponent implements OnInit {
     image.onload = () => {
       context.drawImage(image, 0, 0, this.canvas.width, this.canvas.height);
     };
+
+    console.log(this.user);
   }
 
   onFileDropped(filesDroped: UploadEvent): void {
@@ -92,7 +104,7 @@ export class UploadUserImageComponent implements OnInit {
 
     reader.onload = function (event) {
       locUser.image = reader.result.toString();
-      console.log(locUser.image);
+      console.log(locUser);
     };
     reader.readAsDataURL(file);
   }

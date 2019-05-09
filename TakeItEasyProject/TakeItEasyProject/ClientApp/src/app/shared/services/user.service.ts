@@ -8,7 +8,7 @@ import { User } from '../models/User';
 })
 export class UserService {
 
-  private baseUrl = 'http://localhost:63902/api/users';
+  private baseUrl = 'http://localhost:64067/api/users';
   constructor(private http: HttpClient) { }
 
   register (user: User): Observable<User> {

@@ -5,7 +5,6 @@ using System.Linq;
 using Dapper;
 using DataAccessReader.Abstractions;
 using Entities;
-using Models;
 
 namespace DataAccessReader.Implementations
 {
@@ -26,7 +25,7 @@ namespace DataAccessReader.Implementations
             }
         }
 
-        public List<T> ExecuteQuery<T>(string query) where T : BaseDto
+        public List<T> ExecuteQuery<T>(string query) where T : BaseEntity
         {
             var dbConnection = DbConnection;
             dbConnection.Open();
@@ -36,7 +35,7 @@ namespace DataAccessReader.Implementations
             return result;
         }
 
-        public T ExecuteQueryFirstOrDefault<T>(string query) where T : BaseDto
+        public T ExecuteQueryFirstOrDefault<T>(string query) where T : BaseEntity
         {
             var dbConnection = DbConnection;
             dbConnection.Open();

@@ -1,11 +1,13 @@
-﻿using BusinessLogicCommon.QueryHandlers;
-using BusinessLogicReader.CqrsCore.Queries.User;
+﻿using AutoMapper;
+using BusinessLogicCommon.QueryHandlers;
+using BusinessLogicReader.CqrsCore.Queries.Users;
 using BusinessLogicReader.QueryBuilders;
 using DataAccessReader.Abstractions;
 using EnsureThat;
+using Entities;
 using Models;
 
-namespace BusinessLogicReader.CqrsCore.QueryHandlers.User
+namespace BusinessLogicReader.CqrsCore.QueryHandlers.Users
 {
     public class GetUserByEntityIdQueryHandler : IQueryHandler<GetUserByEntityIdQuery, UserDto>
     {
@@ -22,9 +24,10 @@ namespace BusinessLogicReader.CqrsCore.QueryHandlers.User
         {
             EnsureArg.IsNotNull(query);
 
-             var result = _repository.ExecuteQueryFirstOrDefault<UserDto>(UserQueryBuilder.GetByEntityId(query.EntityId));
+             var result = _repository.ExecuteQueryFirstOrDefault<User>(UserQueryBuilder.GetByEntityId(query.EntityId));
+             var user = Mapper.Map<User, UserDto>(result);
 
-             return result;
+             return user;
         }
     }
 }

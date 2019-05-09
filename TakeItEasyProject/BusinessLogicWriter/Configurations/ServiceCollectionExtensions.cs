@@ -1,8 +1,10 @@
 ﻿using BusinessLogicCommon.CqrsCore.CammandHandlers;
+using BusinessLogicCommon.Helpers;
 using BusinessLogicWriter.CqrsCore;
-using BusinessLogicWriter.CqrsCore.CammandHandlers;
-using BusinessLogicWriter.CqrsCore.Commands;
-using BusinessLogicWriter.Helpers;
+using BusinessLogicWriter.CqrsCore.CammandHandlers.Image;
+using BusinessLogicWriter.CqrsCore.CammandHandlers.Users;
+using BusinessLogicWriter.CqrsCore.Commands.Image;
+using BusinessLogicWriter.CqrsCore.Commands.Users;
 using DataAccessWriter.Configurations;
 using Microsoft.Extensions.DependencyInjection;
 

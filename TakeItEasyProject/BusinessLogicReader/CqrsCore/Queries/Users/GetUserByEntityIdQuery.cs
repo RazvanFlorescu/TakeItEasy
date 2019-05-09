@@ -2,7 +2,7 @@
 using BusinessLogicCommon.CqrsCore.Queries;
 using Models;
 
-namespace BusinessLogicReader.CqrsCore.Queries.User
+namespace BusinessLogicReader.CqrsCore.Queries.Users
 {
     public class GetUserByEntityIdQuery : IQuery<UserDto>
     {

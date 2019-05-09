@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using BusinessLogicCommon.QueryHandlers;
-using BusinessLogicReader.CqrsCore.Queries.User;
+using BusinessLogicReader.CqrsCore.Queries.Users;
 using BusinessLogicReader.QueryBuilders;
 using DataAccessReader.Abstractions;
 using EnsureThat;
+using Entities;
 using Models;
 
-namespace BusinessLogicReader.CqrsCore.QueryHandlers.User
+namespace BusinessLogicReader.CqrsCore.QueryHandlers.Users
 {
     public class GetAllUsersQueryHandler : IQueryHandler<GetAllUsersQuery, IList<UserDto>>
     {
@@ -23,9 +26,10 @@ namespace BusinessLogicReader.CqrsCore.QueryHandlers.User
         {
             EnsureArg.IsNotNull(query);
 
-            var result = _repository.ExecuteQuery<UserDto>(UserQueryBuilder.GetAll());
+            IList<User> result = _repository.ExecuteQuery<User>(UserQueryBuilder.GetAll());
+            IList<UserDto> users = Mapper.Map<IList<User>, IList<UserDto>>(result);
 
-            return result;
+            return users;
         }
     }
 }

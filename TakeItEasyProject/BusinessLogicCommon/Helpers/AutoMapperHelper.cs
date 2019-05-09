@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using Entities;
 using Models;
+using System.Collections.Generic;
 
-namespace BusinessLogicWriter.Helpers
+namespace BusinessLogicCommon.Helpers
 {
     public static class AutoMapperHelper
     {
@@ -10,7 +11,9 @@ namespace BusinessLogicWriter.Helpers
         {
             Mapper.Initialize(cfg =>
                 {
-                    cfg.CreateMap<UserDto, User>().ForMember(dest => dest.EntityId, opt => opt.MapFrom(src => src.EntityId));
+                    cfg.CreateMap<User, UserDto>();
+                    cfg.CreateMap<Image, ImageDto>();
+                    cfg.CreateMap<IList<User>, IList<UserDto>>();
                 });
         }
     }

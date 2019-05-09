@@ -1,11 +1,11 @@
 ﻿using System;
 using BusinessLogicCommon.CqrsCore.CammandHandlers;
 using BusinessLogicWriter.CqrsCore.Commands;
+using BusinessLogicWriter.CqrsCore.Commands.Image;
 using DataAccessWriter.Abstractions;
 using EnsureThat;
-using Entities;
 
-namespace BusinessLogicWriter.CqrsCore.CammandHandlers
+namespace BusinessLogicWriter.CqrsCore.CammandHandlers.Image
 {
     public class AddImageCommandHandler : ICommandHandler<AddImageCommand>
     {
@@ -22,7 +22,7 @@ namespace BusinessLogicWriter.CqrsCore.CammandHandlers
         {
             EnsureArg.IsNotNull(command);
 
-            var image = new Image
+            var image = new Entities.Image
             {
                 Id = Guid.NewGuid(),
                 EntityId = command.EntityId,

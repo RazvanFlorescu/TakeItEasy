@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Text;
 using AutoMapper;
 using BusinessLogicCommon.CqrsCore.CammandHandlers;
-using BusinessLogicWriter.CqrsCore.Commands;
+using BusinessLogicWriter.CqrsCore.Commands.Image;
+using BusinessLogicWriter.CqrsCore.Commands.Users;
 using DataAccessWriter.Abstractions;
 using EnsureThat;
 using Entities;
-using Models;
 
-namespace BusinessLogicWriter.CqrsCore.CammandHandlers
+namespace BusinessLogicWriter.CqrsCore.CammandHandlers.Users
 {
     public class RegisterUserCommandHandler : ICommandHandler<RegisterUserCommand>
     {
@@ -27,14 +28,23 @@ namespace BusinessLogicWriter.CqrsCore.CammandHandlers
         {
             EnsureArg.IsNotNull(command);
 
-            User entity = Mapper.Map<UserDto, User>(command.User);
+            User entity = new User()
+            {
+                FirstName = command.FirstName,
+                LastName = command.LastName,
+                Email = command.Email,
+                Password = command.Password,
+                EntityId = command.EntityId,
+                LastChangedDate = DateTime.Now,
+                Id = Guid.NewGuid()
+            };
+
             entity.Id = Guid.NewGuid();
-            entity.EntityId = Guid.NewGuid();
             entity.LastChangedDate = DateTime.Now;
 
-            if (!string.IsNullOrEmpty(command.User.Image))
+            if (!string.IsNullOrEmpty(command.Image))
             {
-                var addImageCommand = new AddImageCommand(command.User.EntityId, Convert.FromBase64String(command.User.Image));
+                var addImageCommand = new AddImageCommand(entity.EntityId, Encoding.UTF8.GetBytes(command.Image));
                 _dispatcher.Dispatch(addImageCommand);
             }
 

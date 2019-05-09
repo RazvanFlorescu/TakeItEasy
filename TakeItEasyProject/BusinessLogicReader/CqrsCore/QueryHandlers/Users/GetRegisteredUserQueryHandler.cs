@@ -1,11 +1,14 @@
-﻿using BusinessLogicCommon.QueryHandlers;
-using BusinessLogicReader.CqrsCore.Queries.User;
+﻿using System.Text;
+using AutoMapper;
+using BusinessLogicCommon.QueryHandlers;
+using BusinessLogicReader.CqrsCore.Queries.Users;
 using BusinessLogicReader.QueryBuilders;
 using DataAccessReader.Abstractions;
 using EnsureThat;
+using Entities;
 using Models;
 
-namespace BusinessLogicReader.CqrsCore.QueryHandlers.User
+namespace BusinessLogicReader.CqrsCore.QueryHandlers.Users
 {
     public class GetRegisteredUserQueryHandler : IQueryHandler<GetRegisteredUserQuery, UserDto>
     {
@@ -22,11 +25,18 @@ namespace BusinessLogicReader.CqrsCore.QueryHandlers.User
         {
             EnsureArg.IsNotNull(query);
 
-            var result =
-                _repository.ExecuteQueryFirstOrDefault<UserDto>(
+            User result =
+                _repository.ExecuteQueryFirstOrDefault<User>(
                     UserQueryBuilder.GetRegisteredUser(query.Email, query.Password));
 
-            return result;
+            UserDto user = Mapper.Map<User, UserDto>(result);
+
+            Image imageResult = _repository.ExecuteQueryFirstOrDefault<Image>(
+                ImageQueryBuilder.GetByEntityId(result.EntityId));
+
+            user.Image = Encoding.UTF8.GetString(imageResult.Content);
+
+            return user;
         }
     }
 }

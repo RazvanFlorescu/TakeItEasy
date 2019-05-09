@@ -1,11 +1,11 @@
 ﻿using System;
 using BusinessLogicCommon.CqrsCore.CammandHandlers;
-using BusinessLogicWriter.CqrsCore.Commands;
+using BusinessLogicWriter.CqrsCore.Commands.Users;
 using DataAccessWriter.Abstractions;
 using EnsureThat;
 using Entities;
 
-namespace BusinessLogicWriter.CqrsCore.CammandHandlers
+namespace BusinessLogicWriter.CqrsCore.CammandHandlers.Users
 {
     public class RemoveAccountCommandHandler : ICommandHandler<RemoveAccountCommand>
     {
@@ -22,7 +22,7 @@ namespace BusinessLogicWriter.CqrsCore.CammandHandlers
         {
             EnsureArg.IsNotNull(command);
 
-            User user = _repository.GetByFilter<User>(opt => opt.EntityId == command.User.EntityId);
+            User user = _repository.GetByFilter<User>(opt => opt.EntityId == command.EntityId);
 
             user.DeletedDate = DateTime.Now;
             user.LastChangedDate = DateTime.Now;

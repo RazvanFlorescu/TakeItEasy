@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Models;
 using System.Collections.Generic;
 using BusinessLogicCommon.Resources;
-using BusinessLogicReader.CqrsCore.Queries.User;
+using BusinessLogicReader.CqrsCore.Queries.Users;
+using BusinessLogicWriter.CqrsCore.Commands.Users;
 
 namespace TakeItEasyProject.Controllers
 {
@@ -31,7 +32,8 @@ namespace TakeItEasyProject.Controllers
                 return BadRequest(ResponseMessage.RegisterCommandEmailAlreadyInUse);
             }
 
-            RegisterUserCommand command = new RegisterUserCommand(user);
+            RegisterUserCommand command = new RegisterUserCommand(user.FirstName, user.LastName,
+            user.Email, user.Password, user.Image, Guid.NewGuid());
             _dispatcher.Dispatch(command);
 
             return Ok();
@@ -40,7 +42,14 @@ namespace TakeItEasyProject.Controllers
         [HttpPost("remove")]
         public IActionResult Remove([FromBody] UserDto user)
         {
-            RemoveAccountCommand command = new RemoveAccountCommand(user);
+            Guid entityIdParsed;
+            if (!Guid.TryParse(user.EntityId, out entityIdParsed))
+            {
+                return BadRequest();
+            }
+
+            RemoveAccountCommand command = new RemoveAccountCommand(user.FirstName, user.LastName, 
+                user.Email, user.Password, user.Image, entityIdParsed);
             _dispatcher.Dispatch(command);
 
             return Ok();
@@ -88,7 +97,7 @@ namespace TakeItEasyProject.Controllers
 
             if (result == null)
             {
-                return BadRequest();
+                return BadRequest(ResponseMessage.UserNotFound);
             }
 
             return Ok(result);

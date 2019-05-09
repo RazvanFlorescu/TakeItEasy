@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using BusinessLogicCommon.QueryHandlers;
-using BusinessLogicReader.CqrsCore.Queries.User;
-using BusinessLogicReader.CqrsCore.QueryHandlers.User;
+using BusinessLogicReader.CqrsCore.Queries.Users;
+using BusinessLogicReader.CqrsCore.QueryHandlers.Users;
 using BusinessLogicWriter.CqrsCore;
 using DataAccessReader.Configurations;
 using Microsoft.Extensions.DependencyInjection;

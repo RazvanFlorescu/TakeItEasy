@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using BusinessLogicCommon.CqrsCore.Commands;
 
-namespace BusinessLogicWriter.CqrsCore.Commands
+namespace BusinessLogicWriter.CqrsCore.Commands.Image
 {
     public class AddImageCommand : ICommand
     {

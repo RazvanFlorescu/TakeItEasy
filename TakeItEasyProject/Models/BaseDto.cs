@@ -4,6 +4,6 @@ namespace Models
 {
     public class BaseDto
     {
-        public Guid EntityId { get; set; }
+        public string EntityId { get; set; }
     }
 }

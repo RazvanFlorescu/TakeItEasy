@@ -4,6 +4,7 @@ using BusinessLogicWriter.CqrsCore.Commands;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using System.Collections.Generic;
+using BusinessLogicCommon.Resources;
 using BusinessLogicReader.CqrsCore.Queries.User;
 
 namespace TakeItEasyProject.Controllers
@@ -22,6 +23,14 @@ namespace TakeItEasyProject.Controllers
         [HttpPost("register")]
         public IActionResult Register([FromBody] UserDto user)
         {
+            GetUserByEmailQuery query = new GetUserByEmailQuery();
+            UserDto userByEmail = _dispatcher.Dispatch(query);
+
+            if (userByEmail != null)
+            {
+                return BadRequest(ResponseMessage.RegisterCommandEmailAlreadyInUse);
+            }
+
             RegisterUserCommand command = new RegisterUserCommand(user);
             _dispatcher.Dispatch(command);
 
@@ -45,7 +54,7 @@ namespace TakeItEasyProject.Controllers
 
             if (result == null)
             {
-                return NoContent();
+                return BadRequest(ResponseMessage.NoUsers);
             }
 
             return Ok(result);
@@ -65,7 +74,7 @@ namespace TakeItEasyProject.Controllers
 
             if (result == null)
             {
-                return BadRequest();
+                return BadRequest(ResponseMessage.UserNotFound);
             }
 
             return Ok(result);

@@ -21,6 +21,14 @@ export class SignUpModalComponent implements OnChanges, OnInit  {
 
   constructor( private userService: UserService ) { }
 
+  get firstNameField() { return this.userAccount.get('firstName'); }
+
+  get lastNameField() { return this.userAccount.get('lastName'); }
+
+  get emailField() { return this.userAccount.get('email'); }
+
+  get passwordField() { return this.userAccount.get('password'); }
+
   ngOnInit() {
     this.user = new User();
     this.setUserAccountValidators();
@@ -36,27 +44,14 @@ export class SignUpModalComponent implements OnChanges, OnInit  {
     }
   }
 
-  closeSignUpModal() {
-     this.formModal.hide();
+  public onPictureUploaded(event: string) {
+    this.user.image = event;
   }
 
-  get firstNameField() { return this.userAccount.get('firstName'); }
+  public registerUser(): void {
+    this.mapUserInputs();
 
-  get lastNameField() { return this.userAccount.get('lastName'); }
-
-  get emailField() { return this.userAccount.get('email'); }
-
-  get passwordField() { return this.userAccount.get('password'); }
-
-  registerUser() {
-    this.user = {
-      email:  this.emailField.value,
-      firstName: this.firstNameField.value,
-      lastName: this.lastNameField.value,
-      password: this.passwordField.value
-    };
-
-    this.userService.register(this.user) .subscribe(
+    this.userService.register(this.user).subscribe(
       res => {
         console.log(res);
       },
@@ -66,11 +61,11 @@ export class SignUpModalComponent implements OnChanges, OnInit  {
     );
   }
 
-  private handleError(error: Response | any) {
-    console.log(error);
-  }
+  public closeSignUpModal(): void {
+    this.formModal.hide();
+ }
 
-  private setUserAccountValidators() {
+  private setUserAccountValidators(): void {
     this.userAccount = new FormGroup({
       firstName: new FormControl(
         this.user.firstName, [Validators.required, Validators.maxLength(20), Validators.pattern('[a-zA-Z0-9\s]+')]),
@@ -78,5 +73,12 @@ export class SignUpModalComponent implements OnChanges, OnInit  {
       email: new FormControl(this.user.email, [Validators.required, Validators.maxLength(30), Validators.pattern('[^ @]*@[^ @]*.*[+.].+')]),
       password: new FormControl(this.user.password, [Validators.required, Validators.minLength(6)]),
     });
+  }
+
+  private mapUserInputs(): void {
+      this.user.email = this.emailField.value;
+      this.user.firstName = this.firstNameField.value;
+      this.user.lastName = this.lastNameField.value;
+      this.user.password = this.passwordField.value;
   }
 }

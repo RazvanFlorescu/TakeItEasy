@@ -19,6 +19,11 @@ namespace BusinessLogicReader.QueryBuilders
             return GetAllQuery + $" and u.EntityId = '{id}'";
         }
 
+        public static string GetByEmail(string email)
+        {
+            return GetAllQuery + $" and u.Email = '{email}'";
+        }
+
         public static string GetRegisteredUser(string email, string password)
         {
             return GetAllQuery + $" and u.Email = '{email}' and u.Password = '{password}'";

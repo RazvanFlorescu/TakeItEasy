@@ -17,6 +17,7 @@ namespace BusinessLogicReader.Configurations
             services.AddScoped<IQueryHandler<GetAllUsersQuery, IList<UserDto>>, GetAllUsersQueryHandler>();
             services.AddScoped<IQueryHandler<GetUserByEntityIdQuery, UserDto>, GetUserByEntityIdQueryHandler>();
             services.AddScoped<IQueryHandler<GetRegisteredUserQuery, UserDto>, GetRegisteredUserQueryHandler>();
+            services.AddScoped<IQueryHandler<GetUserByEmailQuery, UserDto>, GetUserByEmailQueryHandler>();
             services.AddScoped<Dispatcher>();
         }
     }

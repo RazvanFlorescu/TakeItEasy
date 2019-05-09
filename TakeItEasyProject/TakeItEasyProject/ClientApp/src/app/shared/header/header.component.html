@@ -16,7 +16,8 @@
 <div [ngClass]="{'black-wrapper': isMenuOpen}" (click)="closeMenu()"></div>
 <div [ngClass]="{'settings-box': isMenuOpen}">
   <div class="close-button" (click)="closeMenu()"></div>
-  <a class="profile-image" (click)="closeMenu()" routerLink="my-profile"></a>
+  <a *ngIf="!userLoggedInEvent" class="no-profile-image" (click)="closeMenu()" routerLink="my-profile"></a>
+  <img *ngIf="userLoggedInEvent" class="profile-image" src="{{userLoggedInEvent.image}}" (click)="closeMenu()" routerLink="my-profile">
   <span class="settings-element" [ngClass]="{'settings-box-closed': !isMenuOpen}" (click)="openSignInModal()">Sign in</span>
   <span class="settings-element" [ngClass]="{'settings-box-closed': !isMenuOpen}" (click)="openSignUpModal()">Sign up</span>
 </div>

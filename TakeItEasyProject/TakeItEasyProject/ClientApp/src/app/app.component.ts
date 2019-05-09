@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './shared/models/User';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ export class AppComponent {
 
   public signUpClicked: boolean;
   public signInClicked: boolean;
+  public userLoggedIn: User;
 
   public onSignUp(event) {
     this.signUpClicked = event;
@@ -16,5 +18,9 @@ export class AppComponent {
 
   public onSignIn(event) {
     this.signInClicked = event;
+  }
+
+  public onUserLoggedIn(event) {
+    this.userLoggedIn = event;
   }
 }

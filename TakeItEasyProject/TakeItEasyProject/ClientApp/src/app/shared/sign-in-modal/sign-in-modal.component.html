@@ -19,10 +19,11 @@
           <i class="fas fa-lock prefix grey-text"></i>
           <input mdbInput mdbValidate type="password" id="password-login" formControlName="password" class="form-control validate">
           <label for="password-login">Your password</label>
+          <mdb-error *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)"><small>Add a password of minimum six characters</small></mdb-error>
         </div>
       </form>
       <div class="modal-footer d-flex justify-content-center">
-        <button mdbBtn class="waves-light custom-button" mdbWavesEffect>Sign in</button>
+        <button mdbBtn class="waves-light custom-button" [disabled]="userAccount.invalid" (click)="loginUser()" mdbWavesEffect>Sign in</button>
       </div>
     </div>
 </div>

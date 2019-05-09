@@ -31,10 +31,13 @@ namespace BusinessLogicReader.CqrsCore.QueryHandlers.Users
 
             UserDto user = Mapper.Map<User, UserDto>(result);
 
-            Image imageResult = _repository.ExecuteQueryFirstOrDefault<Image>(
-                ImageQueryBuilder.GetByEntityId(result.EntityId));
+            if (user != null)
+            {
+                Image imageResult = _repository.ExecuteQueryFirstOrDefault<Image>(
+                    ImageQueryBuilder.GetByEntityId(result.EntityId));
 
-            user.Image = Encoding.UTF8.GetString(imageResult.Content);
+                user.Image = Encoding.UTF8.GetString(imageResult.Content);
+            }
 
             return user;
         }

@@ -88,6 +88,15 @@ namespace BusinessLogicCommon.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The user with this ID doesn&apos;t exist in our database..
+        /// </summary>
+        public static string UserIncorectId {
+            get {
+                return ResourceManager.GetString("UserIncorectId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This user doesn&apos;t exist in our database..
         /// </summary>
         public static string UserNotFound {

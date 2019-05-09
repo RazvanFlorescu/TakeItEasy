@@ -45,7 +45,7 @@ namespace TakeItEasyProject.Controllers
             Guid entityIdParsed;
             if (!Guid.TryParse(user.EntityId, out entityIdParsed))
             {
-                return BadRequest();
+                return BadRequest(ResponseMessage.UserIncorectId);
             }
 
             RemoveAccountCommand command = new RemoveAccountCommand(user.FirstName, user.LastName, 

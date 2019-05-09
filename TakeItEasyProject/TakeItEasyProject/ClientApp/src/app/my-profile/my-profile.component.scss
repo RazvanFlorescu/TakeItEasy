@@ -1,17 +1,13 @@
-.triangle {
-    position:relative;
-    background:url("./../../assets/images/no-profile-image.png");
-    background-size:cover;
-    min-height:100px;
-    padding-bottom:100px;
-    overflow:hidden;
-  }
 
-  .triangle::after {
-    content:'';
-    position:absolute;
-    bottom:0; left:0;
-    border-left:50vw solid #fff;
-    border-right:50vw solid #fff;
-    border-top:100px solid transparent;
-  }
+
+  .triangle {
+    width: 200px;
+    height: 200px;
+    background: url("./../../assets/images/no-profile-image.png");
+    margin: auto;
+    background-size: cover;
+    /* The points are: centered top, left bottom, right bottom */
+    clip-path: circle(50%)
+}
+
+

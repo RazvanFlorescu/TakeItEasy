@@ -16,7 +16,7 @@
 <div [ngClass]="{'black-wrapper': isMenuOpen}" (click)="closeMenu()"></div>
 <div [ngClass]="{'settings-box': isMenuOpen}">
   <div class="close-button" (click)="closeMenu()"></div>
-  <div class="profile-image"></div>
+  <a class="profile-image" (click)="closeMenu()" routerLink="my-profile"></a>
   <span class="settings-element" [ngClass]="{'settings-box-closed': !isMenuOpen}" (click)="openSignInModal()">Sign in</span>
   <span class="settings-element" [ngClass]="{'settings-box-closed': !isMenuOpen}" (click)="openSignUpModal()">Sign up</span>
 </div>

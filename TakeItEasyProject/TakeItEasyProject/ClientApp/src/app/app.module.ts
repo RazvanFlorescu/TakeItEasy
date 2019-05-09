@@ -9,6 +9,7 @@ import { VacationModule } from './vacation/vacation.module';
 import { ProposalModule } from './proposal/proposal.module';
 import { SharedModule } from './shared/shared.module';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MyProfileModule } from './my-profile/my-profile.module';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     VacationModule,
     ProposalModule,
     SharedModule,
+    MyProfileModule,
     MDBBootstrapModule.forRoot()
   ],
   providers: [],

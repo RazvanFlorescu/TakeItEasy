@@ -1,6 +1,5 @@
-
-
-  .triangle {
+.my-profile-container {
+  .circle {
     width: 200px;
     height: 200px;
     background: url("./../../assets/images/no-profile-image.png");
@@ -8,6 +7,18 @@
     background-size: cover;
     /* The points are: centered top, left bottom, right bottom */
     clip-path: circle(50%)
+  }
+
+  a {
+    color: #4c3a1d;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .nav-pills .nav-link.active {
+    color: #fde9c8 !important;
+    background-color: #4c3a1d;
+  }
 }
 
 

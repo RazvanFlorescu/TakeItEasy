@@ -13,9 +13,10 @@ import { MDBBootstrapModule, ModalModule, ModalDirective } from 'angular-bootstr
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UploadUserImageComponent } from './upload-user-image/upload-user-image.component';
 import { FileDropModule } from 'ngx-file-drop';
+import { TripCardComponent } from './trip-card/trip-card.component';
 
 @NgModule({
-  declarations: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent, SignUpModalComponent, UploadUserImageComponent],
+  declarations: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent, SignUpModalComponent, UploadUserImageComponent, TripCardComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -27,7 +28,7 @@ import { FileDropModule } from 'ngx-file-drop';
     ModalModule,
     FileDropModule
   ],
-  exports: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent, SignUpModalComponent],
+  exports: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent, SignUpModalComponent, TripCardComponent],
   providers: [LocationService, ModalDirective]
 })
 export class SharedModule { }

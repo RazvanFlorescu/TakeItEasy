@@ -5,6 +5,11 @@ namespace BusinessLogicReader.CqrsCore.Queries.Users
 {
     public class GetUserByEmailQuery : IQuery<UserDto>
     {
-        public string Email { set; get; }
+        public string Email { private set; get; }
+
+        public GetUserByEmailQuery(string email)
+        {
+            Email = email;
+        }
     }
 }

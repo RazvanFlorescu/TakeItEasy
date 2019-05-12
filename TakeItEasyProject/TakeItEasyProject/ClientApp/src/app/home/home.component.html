@@ -2,7 +2,7 @@
   <div class="row">
     <div class="parallax">
       <div class="cover-parallax">
-        <button class="vacation-button">
+        <button (click)="addUser()" class="vacation-button">
           <div class="take-it-easy-message">
                 Take it easy boy
                 <br>
@@ -13,42 +13,21 @@
     </div>
   </div>
 
-  <div id="carousel-example-multi" class="carousel slide carousel-multi-item" data-ride="carousel" data-interval="2000">
+  <div id="carousel-example-multi" class="carousel slide carousel-multi-item padding-30" data-ride="carousel" data-interval="2000">
       <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
           <div class="col-12 col-md-4 padding-30 max-width">
-            <div class="card mb-2">
-                <img src="../../assets/images/red-car-min.jpg" class="card-img-top" >
-                <div class="card-body">
-                  <h5 class="card-title">Card title1</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
+              <app-trip-card></app-trip-card>
           </div>
         </div>
         <div class="carousel-item">
           <div class="col-12 col-md-4 padding-30 max-width">
-            <div class="card mb-2">
-                <img src="../../assets/images/red-car-min.jpg" class="card-img-top" >
-                <div class="card-body">
-                  <h5 class="card-title">Card title2</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
+              <app-trip-card></app-trip-card>
           </div>
         </div>
         <div class="carousel-item">
           <div class="col-12 col-md-4 padding-30 max-width">
-            <div class="card mb-2">
-                <img src="../../assets/images/red-car-min.jpg" class="card-img-top" >
-                <div class="card-body">
-                  <h5 class="card-title">Card title3</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
+              <app-trip-card></app-trip-card>
           </div>
         </div>
       </div>

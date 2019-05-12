@@ -1,12 +1,19 @@
 .my-profile-container {
+  padding-right: 200px;
+  padding-left: 200px;
+
   .circle {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     background: url("./../../assets/images/no-profile-image.png");
     margin: auto;
     background-size: cover;
-    /* The points are: centered top, left bottom, right bottom */
-    clip-path: circle(50%)
+    border: 2px solid white;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    margin-left: 40px;
+    margin-right: 17px;
+    position: relative;
   }
 
   a {
@@ -18,6 +25,70 @@
   .nav-pills .nav-link.active {
     color: #fde9c8 !important;
     background-color: #4c3a1d;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 38px;
+  }
+
+  .cover-photo {
+    height: 170px;
+    background-color: #241a09;
+    width: calc(100% - 400px);
+    position: absolute;
+    display: flex;
+    flex-direction: column-reverse;
+    border-bottom: 5px solid #4c3a1d;
+  }
+
+  .user-name {
+    font-family: "Calibri";
+    font-size: 33px;
+    color: #fde9c8;
+    margin-bottom: 30px;
+    margin-left: 221px;
+  }
+}
+
+@media screen and (min-width: 670px) and (max-width: 1200px)  {
+  .my-profile-container {
+    padding: 0;
+
+    .cover-photo {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 670px)  {
+  .my-profile-container {
+    padding: 0;
+
+    .user-name {
+      font-size: 20px;
+      margin-left: 200px;
+    }
+
+    .circle {
+      margin-left: 22px;
+      margin-right: 13px;
+      width: 132px;
+      height: 132px;
+    }
+
+    .cover-photo {
+      width: 100%;
+    }
+
+    a {
+      font-size: 10px;
+    }
+
+    .nav-item {
+      margin-top: 46px;
+    }
   }
 }
 

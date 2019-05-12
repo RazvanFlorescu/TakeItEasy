@@ -9,6 +9,7 @@ import { User } from '../models/User';
 export class UserService {
 
   private baseUrl = 'http://localhost:64067/api/users';
+  private user: User;
   constructor(private http: HttpClient) { }
 
   register (user: User): Observable<User> {
@@ -17,5 +18,13 @@ export class UserService {
 
   login (user: User): Observable<User> {
     return this.http.post<User>(this.baseUrl + '/login', user);
+  }
+
+  setLoggedUser(user:User) {
+    this.user = user;
+  }
+
+  getLoggedUser (): User {
+    return this.user;
   }
 }

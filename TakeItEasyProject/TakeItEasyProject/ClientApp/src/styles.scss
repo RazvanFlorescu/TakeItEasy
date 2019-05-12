@@ -20,6 +20,13 @@ button {
     }
 }
 
+img {
+    outline: none;
+    &:focus {
+        outline: none;        
+    }
+}
+
 .ngx-file-drop__drop-zone {
     flex-direction: column !important;
     align-items: center !important;

@@ -51,6 +51,7 @@ export class SignInModalComponent implements OnChanges, OnInit {
     this.userService.login(this.user).subscribe(
       res => {
         this.userLoggedIn.emit(res);
+        this.userService.setLoggedUser(res);
       },
       err => {
         console.log(err);

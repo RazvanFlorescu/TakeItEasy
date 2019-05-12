@@ -138,8 +138,7 @@
             opacity: 0.5;
         }
     }
-
-    
+  
     .profile-image {
         width: 100px;
         height: 100px;
@@ -148,6 +147,7 @@
         background-size: cover;
         &:hover {
             opacity: 0.5;
+            cursor: pointer;
         }
     }
 }

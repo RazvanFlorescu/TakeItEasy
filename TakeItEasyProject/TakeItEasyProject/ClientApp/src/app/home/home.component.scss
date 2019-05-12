@@ -58,27 +58,11 @@
     }
   }
 
-.card {
-  background-color: #956a2e;
-}
-
-.card-body {
-  background-color: #956a2e;
-  color:  #ffff;
-}
-
-.text-muted {
-  color:  #c4b49d !important;
-}
-
-.card-text {
-  color: white !important;
-}
-
 #carousel-example-multi {
   padding-top: 40px;
   padding-bottom: 35px;
 }
+
 @media screen and (max-width: 767px)  {
   .carousel-inner .carousel-item-right.active,
   .carousel-inner .carousel-item-next {
@@ -120,9 +104,6 @@
 
 .carousel-control-prev, .carousel-control-next {
   z-index: 0 !important;
-}
-.card-img-top {
-  max-height: 350px;
 }
 
 .padding-30 { 

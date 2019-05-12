@@ -11,11 +11,17 @@ import { AuthenticationService } from '../shared/services/authentication.service
 export class HomeComponent implements OnInit {
    public constructor(private locationService: LocationService, private authenticationService: AuthenticationService) {}
 
-  ngOnInit() {
+   ngOnInit() {
      this.startCarousel();
        // this.authenticationService.login().subscribe(data =>
          // console.log(data));
         // this.locationService.getCurrentLocation();
+   }
+
+   addUser(){
+     localStorage.setItem('user', JSON.stringify({
+       asd: 'asd'
+     }));
    }
 
    private startCarousel() {

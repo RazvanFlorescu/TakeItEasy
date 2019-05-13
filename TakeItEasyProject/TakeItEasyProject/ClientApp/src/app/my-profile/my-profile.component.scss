@@ -21,6 +21,10 @@
     font-size: 16px;
     font-weight: 500;
   }
+
+  [_nghost-c10]  { 
+    width: 100%;
+  } 
   
   .nav-pills .nav-link.active {
     color: #fde9c8 !important;
@@ -59,9 +63,13 @@
   margin-top: 60px;
 }
 
-.vacation-card{
+.vacation-card {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.width-100-per-cent {
+  width: 100% !important;
 }
 
 @media screen and (min-width: 670px) and (max-width: 1200px)  {

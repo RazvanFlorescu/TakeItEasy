@@ -37,6 +37,7 @@ namespace BusinessLogicReader.CqrsCore.QueryHandlers.Users
                     ImageQueryBuilder.GetByEntityId(result.EntityId));
 
                 user.Image = Encoding.UTF8.GetString(imageResult.Content);
+                user.ImageId = result.ImageId.ToString();
             }
 
             return user;

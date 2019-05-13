@@ -14,9 +14,11 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UploadUserImageComponent } from './upload-user-image/upload-user-image.component';
 import { FileDropModule } from 'ngx-file-drop';
 import { TripCardComponent } from './trip-card/trip-card.component';
+import { AddTripCardComponent } from './add-trip-card/add-trip-card.component';
 
 @NgModule({
-  declarations: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent, SignUpModalComponent, UploadUserImageComponent, TripCardComponent],
+  declarations: [MenuComponent, HeaderComponent, FooterComponent,
+     SignInModalComponent, SignUpModalComponent, UploadUserImageComponent, TripCardComponent, AddTripCardComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -28,7 +30,8 @@ import { TripCardComponent } from './trip-card/trip-card.component';
     ModalModule,
     FileDropModule
   ],
-  exports: [MenuComponent, HeaderComponent, FooterComponent, SignInModalComponent, SignUpModalComponent, TripCardComponent],
+  exports: [MenuComponent, HeaderComponent, FooterComponent,
+     SignInModalComponent, SignUpModalComponent, TripCardComponent, AddTripCardComponent],
   providers: [LocationService, ModalDirective]
 })
 export class SharedModule { }

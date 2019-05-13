@@ -1,0 +1,34 @@
+.card {
+    background-color: #956a2e;
+    min-height: 400px;
+}
+  
+.card-body {
+    background-color: #956a2e;
+    color:  #fff4e3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fa-plus-circle {
+    color: antiquewhite !important;
+} 
+
+.card-title {
+    margin-bottom: 50px;
+}
+
+.card {
+    height: 100%;
+    display: flex;
+}
+
+.card-block {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+

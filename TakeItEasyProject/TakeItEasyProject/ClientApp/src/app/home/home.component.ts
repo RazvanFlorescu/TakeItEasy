@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
         // this.locationService.getCurrentLocation();
    }
 
-   addUser(){
+   addUser() {
      localStorage.setItem('user', JSON.stringify({
        asd: 'asd'
      }));

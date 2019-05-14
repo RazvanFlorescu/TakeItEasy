@@ -1,23 +1,79 @@
 .card {
     background-color: #956a2e;
     height: 100%;
+    &:hover {
+        cursor: pointer;
+        .fa-plus-circle {
+            animation: spinny 1s;
+            animation-timing-function: ease-in-out;
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+            animation-fill-mode: forwards;
+            animation-play-state: running;
+        }
+        .card-title {
+            animation: change-color 1s;
+            animation-timing-function: ease-in-out;
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+            animation-fill-mode: forwards;
+            animation-play-state: running;
+        }
+    }
+}
+
+@keyframes spinny {
+    50% {
+        transform: rotate(0deg);
+        color: white;
+    }
+    100% {
+        transform: rotate(360deg);
+        color: white;
+    }
+}
+
+@keyframes change-color {
+    50% {
+        color: white;
+    }
+    100% {
+        color: white;
+    }
+}
+
+@keyframes spinny2 {
+    50% {
+        transform: rotate(360deg);
+        color: #fff4e3;
+    }
+    100% {
+        transform: rotate(0deg);
+        color: #fff4e3;
+    }
 }
   
 .card-body {
     background-color: #956a2e;
-    color:  #fff4e3;
+    color:  #dac7a8 ;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: "Calibri";
 }
 
 .fa-plus-circle {
-    color: antiquewhite !important;
+    color: #dac7a8  !important;
 } 
 
 .card-title {
     margin-bottom: 50px;
+    font-size: 35px;
 }
 
 .card {

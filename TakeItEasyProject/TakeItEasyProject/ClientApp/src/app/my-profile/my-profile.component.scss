@@ -1,6 +1,6 @@
 .my-profile-container {
-  padding-right: 180px;
-  padding-left: 180px;
+  padding-left: 250px;
+  padding-right: 250px;
 
   .circle {
     width: 150px;
@@ -40,7 +40,7 @@
   .cover-photo {
     height: 170px;
     background-color: #4c3a1d;
-    width: calc(100% - 360px);
+    width: calc(100vw - 520px);
     position: absolute;
     display: flex;
     flex-direction: column-reverse;
@@ -57,8 +57,6 @@
 }
 
 .card-container {
-  padding-left: 30px;
-  padding-right: 30px;
   margin: 0;
   margin-top: 60px;
 }
@@ -70,6 +68,15 @@
 
 .width-100-per-cent {
   width: 100% !important;
+}
+
+[_nghost-c11] {
+  width: 100%;
+}
+
+.no-padding {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 @media screen and (min-width: 670px) and (max-width: 1200px)  {

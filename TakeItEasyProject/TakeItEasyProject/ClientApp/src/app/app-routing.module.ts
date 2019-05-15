@@ -14,11 +14,12 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'vacation', component: VacationComponent },
   { path: 'proposal', component: ProposalComponent },
-  { path: 'my-profile', component: MyProfileComponent}
+  { path: 'my-profile', component: MyProfileComponent },
+  { path: 'my-profile/propose', component: ProposalComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

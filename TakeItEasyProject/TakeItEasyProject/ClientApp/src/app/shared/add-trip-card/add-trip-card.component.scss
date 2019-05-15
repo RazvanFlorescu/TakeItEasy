@@ -3,6 +3,22 @@
     height: 100%;
     &:hover {
         cursor: pointer;
+        animation: change-color 1s;
+        animation-timing-function: ease-in-out;
+        animation-delay: 0s;
+        animation-iteration-count: 1;
+        animation-direction: normal;
+        animation-fill-mode: forwards;
+        animation-play-state: running;
+        .card-body {
+            animation: change-color 1s;
+            animation-timing-function: ease-in-out;
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+            animation-fill-mode: forwards;
+            animation-play-state: running;
+        }
         .fa-plus-circle {
             animation: spinny 1s;
             animation-timing-function: ease-in-out;
@@ -24,6 +40,16 @@
     }
 }
 
+.card-corner {
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+    .fa-times {
+        margin: 5px;
+        color: #dac7a8 !important;
+    }
+}
+
 @keyframes spinny {
     50% {
         transform: rotate(0deg);
@@ -38,9 +64,11 @@
 @keyframes change-color {
     50% {
         color: white;
+        background-color: #a67939;
     }
     100% {
         color: white;
+        background-color: #a67939
     }
 }
 

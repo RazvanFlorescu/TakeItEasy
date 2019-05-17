@@ -1,10 +1,35 @@
-<form [formGroup]="vacationForm" class="modal-body mx-3">
-  <div class="md-form mb-5">
-    <i class="fas fa-envelope prefix grey-text"></i>
-    <input mdbInput mdbValidate type="text" id="description" formControlName="description" class="form-control">
-    <label for="description">Description</label>
+<div class="proposal-container">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="stepper stepper-horizontal">
+        <li class="completed">
+          <a (click)="openAddDateIntervalPage()">
+            <span class="circle">1</span>
+            <span class="label">Time</span>
+          </a>
+        </li>
+        <li class="active">
+          <a (click)="openAddLocationPage()">
+            <span class="circle">2</span>
+            <span class="label">Location</span>
+          </a>
+        </li>
+        <li class="warning">
+          <a (click)="openAddDetailsPage()">
+            <span class="circle"><i class="fas fa-exclamation"></i></span>
+            <span class="label">Description</span>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
-</form>
-<div class="modal-footer d-flex justify-content-center">
-  <button mdbBtn class="waves-light custom-button" mdbWavesEffect>Sign in</button>
+  <div *ngIf="timeActive" class="step-container">
+    <app-add-time></app-add-time>
+  </div>
+  <div *ngIf="locationActive" class="step-container">
+    <app-add-location></app-add-location>
+  </div>
+  <div *ngIf="descriptionActive" class="step-container">
+    <app-add-description></app-add-description>
+  </div>
 </div>

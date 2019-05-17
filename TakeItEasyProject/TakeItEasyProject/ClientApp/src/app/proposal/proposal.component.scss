@@ -1,0 +1,21 @@
+.proposal-container {
+    padding-left: 200px;
+    padding-right: 200px;
+    
+    .stepper .active .circle, .stepper .completed .circle{
+        background-color: #9ea525 !important;
+    }
+    
+    .stepper-horizontal li:not(:last-child):after {
+        background-color: rgba(255, 255, 255, 0.42);
+    }
+    
+    .stepper-horizontal li:not(:first-child):before {
+        background-color: rgba(255, 255, 255, 0.42);
+    }
+    
+    ul.stepper li.active a .label, ul.stepper li.completed a .label {
+        color: #fde9c8;
+    }
+    
+}

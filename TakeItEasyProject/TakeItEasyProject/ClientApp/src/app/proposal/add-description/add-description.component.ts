@@ -21,7 +21,7 @@ export class AddDescriptionComponent implements OnInit {
   }
 
   get description() {
-    return this.vacationForm.get('description').value;
+    return this.vacationForm.get('description');
   }
   private setVacationFormValidators(): void {
     this.vacationForm = new FormGroup({

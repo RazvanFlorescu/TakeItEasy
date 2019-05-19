@@ -18,12 +18,6 @@ export class HomeComponent implements OnInit {
         // this.locationService.getCurrentLocation();
    }
 
-   addUser() {
-     localStorage.setItem('user', JSON.stringify({
-       asd: 'asd'
-     }));
-   }
-
    private startCarousel() {
       $('.carousel .carousel-item').each(function() {
         let next = $(this).next();

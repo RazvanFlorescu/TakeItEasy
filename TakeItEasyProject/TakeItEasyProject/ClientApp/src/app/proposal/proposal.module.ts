@@ -2,15 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProposalComponent } from './proposal.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AddTimeComponent } from './add-time/add-time.component';
 import { AddLocationComponent } from './add-location/add-location.component';
 import { AddDescriptionComponent } from './add-description/add-description.component';
+import { SharedModule } from '../shared/shared.module';
+import { AddImageComponent } from './add-image/add-image.component';
 
 @NgModule({
-  declarations: [ ProposalComponent, AddTimeComponent, AddLocationComponent, AddDescriptionComponent ],
+  declarations: [ ProposalComponent, AddLocationComponent, AddDescriptionComponent, AddImageComponent ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   exports: [ ProposalComponent ]
 })

@@ -16,10 +16,12 @@
 <div [ngClass]="{'black-wrapper': isMenuOpen}" (click)="closeMenu()"></div>
 <div [ngClass]="{'settings-box': isMenuOpen}">
   <div class="close-button" (click)="closeMenu()"></div>
-  <a *ngIf="!userLoggedInEvent" class="no-profile-image" (click)="closeMenu()" routerLink="my-profile"></a>
-  <img *ngIf="userLoggedInEvent && isMenuOpen" class="profile-image" src="{{userLoggedInEvent.image}}" (click)="closeMenu()" routerLink="my-profile">
-  <span class="settings-element" [ngClass]="{'settings-box-closed': !isMenuOpen}" (click)="openSignInModal()">Sign in</span>
+  <a *ngIf="!user" class="no-profile-image" (click)="closeMenu()" routerLink="my-profile"></a>
+  <img *ngIf="isMenuOpen && user" class="profile-image" src="{{user.image}}" (click)="closeMenu()" routerLink="my-profile">
+  <span *ngIf="user && isMenuOpen" class="user-name">{{user.firstName|titlecase}}</span>  
   <span class="settings-element" [ngClass]="{'settings-box-closed': !isMenuOpen}" (click)="openSignUpModal()">Sign up</span>
+  <span *ngIf="!user" class="settings-element" [ngClass]="{'settings-box-closed': !isMenuOpen}" (click)="openSignInModal()">Sign in</span>
+  <span *ngIf="user" class="settings-element" [ngClass]="{'settings-box-closed': !isMenuOpen}" (click)="logOut()">Log out</span>
 </div>
 
 

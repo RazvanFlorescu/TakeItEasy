@@ -7,7 +7,7 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [MyProfileComponent],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class MyProfileModule { }

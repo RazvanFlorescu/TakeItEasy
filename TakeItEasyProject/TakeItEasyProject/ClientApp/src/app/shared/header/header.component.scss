@@ -8,6 +8,18 @@
     width: 100%;
 }
 
+.user-name {
+    text-align: center;
+    font-size: 22px;
+    padding: 4px;
+    color:#ecbf1e;
+    font-weight: 600;
+    border-block-start: 1px solid #fde9c8;
+    border-block-end: 1px solid #fde9c8;
+    margin-top: 5px;
+    margin-bottom: 5px
+}
+
 .logo {
     height: 57px;
     width: 280px;
@@ -96,7 +108,7 @@
         margin: auto;
         margin-bottom: 5px;
         border-radius: 8px;
-        font-family: 'HarmoniaSans W01 Light';
+        font-family: "Calibri";
         font-size: 18px;
         color: #ffffff;
         text-align: center;
@@ -161,10 +173,6 @@
         width: 161px;
         background-color: #4c3a1d;
         right: -161px;
-    }
-    70% {
-        background-color: #4c3a1d;
-        right: -70px;
     }
     100% {
         background-color: #956a2e;

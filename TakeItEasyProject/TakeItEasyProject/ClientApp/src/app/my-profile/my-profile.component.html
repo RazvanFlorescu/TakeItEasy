@@ -1,13 +1,15 @@
-<div class="container-fluid my-profile-container">
+<div *ngIf="user" class="container-fluid my-profile-container">
     <div class="">
     <div class="cover-photo">
       <div class="user-name">
-          Florescu Razvan
+          {{user.lastName|titlecase}} {{user.firstName|titlecase}}
       </div>
     </div>
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist"> 
         <li class="nav-item">
-            <div class="circle"></div>
+            <div *ngIf="!user" class="circle"></div>
+            <img *ngIf="user" class="profile-image" src="{{user.image}}">
+
         </li> 
         <li class="nav-item">
           <a class="nav-link active" id="pills-vacations-tab" data-toggle="pill" href="#pills-vacations" role="tab"
@@ -57,3 +59,4 @@
       </div>
     </div>
 </div>
+<app-info *ngIf="!user"></app-info>

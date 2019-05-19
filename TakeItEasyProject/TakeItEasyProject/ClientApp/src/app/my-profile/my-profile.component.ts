@@ -11,11 +11,12 @@ export class MyProfileComponent implements OnInit {
 
   constructor(private userService: UserService) { }
 
-  public user: User;
+  public signInClicked: boolean;
 
-  ngOnInit() {
-    this.user = this.userService.getLoggedUser();
-    console.log(JSON.parse(localStorage.getItem('user')));
+  get user() {
+    return this.userService.getLoggedUser();
   }
-
+  
+  ngOnInit() {
+  }
 }

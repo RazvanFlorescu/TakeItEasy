@@ -13,6 +13,7 @@ import { User } from '../models/User';
 export class SignUpModalComponent implements OnChanges, OnInit  {
 
   userAccount: FormGroup;
+  errorMessage: string;
 
   @Input() public signUpEvent;
   public user: User;
@@ -53,10 +54,11 @@ export class SignUpModalComponent implements OnChanges, OnInit  {
 
     this.userService.register(this.user).subscribe(
       res => {
-        console.log(res);
+        this.closeSignUpModal()
       },
       err => {
         console.log(err);
+        this.errorMessage = err.error;
       }
     );
   }

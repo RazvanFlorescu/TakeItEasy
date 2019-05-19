@@ -21,6 +21,9 @@
           <label for="password-login">Your password</label>
           <mdb-error *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)"><small>Add a password of minimum six characters</small></mdb-error>
         </div>
+        <div class="danger-message">
+          {{errorMessage}}
+        </div>
       </form>
       <div class="modal-footer d-flex justify-content-center">
         <button mdbBtn class="waves-light custom-button" [disabled]="userAccount.invalid" (click)="loginUser()" mdbWavesEffect>Sign in</button>

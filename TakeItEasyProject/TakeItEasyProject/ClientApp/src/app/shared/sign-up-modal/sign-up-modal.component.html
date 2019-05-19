@@ -34,6 +34,9 @@
           <mdb-error *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)"><small>Add a password of minimum six characters</small></mdb-error>
         </div>
         <app-upload-user-image (uploadImage)="onPictureUploaded($event)"></app-upload-user-image>
+        <div class="danger-message">
+          {{errorMessage}}
+        </div>
       </form>
       <div class="modal-footer d-flex justify-content-center">
         <button mdbBtn class="waves-light custom-button" [disabled]="userAccount.invalid" (click)="registerUser()" mdbWavesEffect>Sign up</button>

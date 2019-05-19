@@ -1,5 +1,5 @@
 export enum Step {
-    Time,
+    Image,
     Location,
     Description
 }

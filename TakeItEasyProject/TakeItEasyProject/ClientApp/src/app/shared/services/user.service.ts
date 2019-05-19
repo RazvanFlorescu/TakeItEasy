@@ -9,7 +9,6 @@ import { User } from '../models/User';
 export class UserService {
 
   private baseUrl = 'http://localhost:64067/api/users';
-  private user: User;
   constructor(private http: HttpClient) { }
 
   register (user: User): Observable<User> {
@@ -21,10 +20,15 @@ export class UserService {
   }
 
   setLoggedUser(user:User) {
-    this.user = user;
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   getLoggedUser (): User {
-    return this.user;
+    var user = localStorage.getItem('user');
+    return JSON.parse(user);
+  }
+
+  logOut () {
+    localStorage.removeItem('user');
   }
 }

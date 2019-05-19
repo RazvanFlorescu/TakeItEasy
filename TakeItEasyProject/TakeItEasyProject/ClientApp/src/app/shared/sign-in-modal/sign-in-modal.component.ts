@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, SimpleChanges, OnChanges, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ViewChild, SimpleChanges, OnChanges, OnInit } from '@angular/core';
 import { ModalDirective } from 'angular-bootstrap-md';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from '../models/User';
@@ -13,9 +13,9 @@ export class SignInModalComponent implements OnChanges, OnInit {
 
   public user: User;
   userAccount: FormGroup;
+  errorMessage: string;
 
   @Input() public signInEvent;
-  @Output() public userLoggedIn = new EventEmitter();
 
   @ViewChild ('frame') public formModal: ModalDirective;
 
@@ -36,6 +36,7 @@ export class SignInModalComponent implements OnChanges, OnInit {
         const change = changes[propName];
 
         if ((change.currentValue || change.previousValue) && propName === 'signInEvent') {
+          console.log("am intrat")
           this.formModal.show();
         }
      }
@@ -50,11 +51,12 @@ export class SignInModalComponent implements OnChanges, OnInit {
 
     this.userService.login(this.user).subscribe(
       res => {
-        this.userLoggedIn.emit(res);
         this.userService.setLoggedUser(res);
+        this.closeSignInModal();
       },
       err => {
         console.log(err);
+        this.errorMessage = err.error;
       }
     );
   }

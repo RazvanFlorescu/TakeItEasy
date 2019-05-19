@@ -15,10 +15,11 @@ import { UploadUserImageComponent } from './upload-user-image/upload-user-image.
 import { FileDropModule } from 'ngx-file-drop';
 import { TripCardComponent } from './trip-card/trip-card.component';
 import { AddTripCardComponent } from './add-trip-card/add-trip-card.component';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [MenuComponent, HeaderComponent, FooterComponent,
-     SignInModalComponent, SignUpModalComponent, UploadUserImageComponent, TripCardComponent, AddTripCardComponent],
+     SignInModalComponent, SignUpModalComponent, UploadUserImageComponent, TripCardComponent, AddTripCardComponent, InfoComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -31,7 +32,7 @@ import { AddTripCardComponent } from './add-trip-card/add-trip-card.component';
     FileDropModule
   ],
   exports: [MenuComponent, HeaderComponent, FooterComponent,
-     SignInModalComponent, SignUpModalComponent, TripCardComponent, AddTripCardComponent],
+     SignInModalComponent, SignUpModalComponent, TripCardComponent, AddTripCardComponent, InfoComponent],
   providers: [LocationService, ModalDirective]
 })
 export class SharedModule { }

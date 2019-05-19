@@ -1,3 +1,16 @@
-<p>
-  add-description works!
-</p>
+
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Login</h4>
+      </div>
+      <form [formGroup]="vacationForm" class="mx-3">
+        <div class="md-form mb-5">
+          <i class="fas fa-envelope prefix grey-text"></i>
+          <input mdbValidate mdbInput type="text" id="description" formControlName="description" class="form-control" >
+          <label for="description" [ngClass]="{'active': description}">Details</label>
+        </div>
+      </form>
+      <div class="modal-footer d-flex justify-content-center">
+        <button mdbBtn class="waves-light custom-button" mdbWavesEffect>Sign in</button>
+      </div>
+    </div>

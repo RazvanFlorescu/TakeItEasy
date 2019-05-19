@@ -1,0 +1,27 @@
+.info-container {
+    height: calc(100vh - 191px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+        color: #fde9c8;
+        font-size: 44px;
+        font-family: "Calibri";
+        width: 60%;
+    }
+}
+
+.fas {
+    color: #fde9c8 !important;
+    margin-bottom: 23px !important;
+}
+
+@media screen and (min-width: 320px) and (max-width: 670px)  {
+    .info-container {
+        p {
+            font-size: 30px;
+        }
+    }
+}

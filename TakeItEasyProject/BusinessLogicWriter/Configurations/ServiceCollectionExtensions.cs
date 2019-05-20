@@ -3,8 +3,10 @@ using BusinessLogicCommon.Helpers;
 using BusinessLogicWriter.CqrsCore;
 using BusinessLogicWriter.CqrsCore.CammandHandlers.Image;
 using BusinessLogicWriter.CqrsCore.CammandHandlers.Users;
+using BusinessLogicWriter.CqrsCore.CammandHandlers.Vacations;
 using BusinessLogicWriter.CqrsCore.Commands.Image;
 using BusinessLogicWriter.CqrsCore.Commands.Users;
+using BusinessLogicWriter.CqrsCore.Commands.Vacations;
 using DataAccessWriter.Configurations;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,6 +20,7 @@ namespace BusinessLogicWriter.Configurations
             services.AddScoped<ICommandHandler<RegisterUserCommand>, RegisterUserCommandHandler>();
             services.AddScoped<ICommandHandler<RemoveAccountCommand>, RemoveAccountCommandHandler>();
             services.AddScoped<ICommandHandler<AddImageCommand>, AddImageCommandHandler>();
+            services.AddScoped<ICommandHandler<ProposeVacationCommand>, ProposeVacationCommandHandler>();
             services.AddScoped<Dispatcher>();
             AutoMapperHelper.IntializeMapper();
         }

@@ -39,9 +39,6 @@ namespace BusinessLogicWriter.CqrsCore.CammandHandlers.Users
                 Id = Guid.NewGuid()
             };
 
-            entity.Id = Guid.NewGuid();
-            entity.LastChangedDate = DateTime.Now;
-
             if (!string.IsNullOrEmpty(command.Image))
             {
                 var addImageCommand = new AddImageCommand(entity.EntityId, Encoding.UTF8.GetBytes(command.Image));

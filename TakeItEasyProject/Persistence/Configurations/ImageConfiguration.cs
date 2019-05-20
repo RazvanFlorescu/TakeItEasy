@@ -17,6 +17,11 @@ namespace Persistence.Configurations
                 .HasForeignKey<User>(p => p.ImageId)
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.ClientSetNull);
+
+            builder.HasOne<Vacation>().WithOne()
+                .HasForeignKey<Vacation>(p => p.ImageId)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.ClientSetNull);
         }
     }
 }

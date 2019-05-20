@@ -12,11 +12,13 @@ namespace Persistence
 
         public DbSet<User> Users { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<Vacation> Vacations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new ImageConfiguration());
+            modelBuilder.ApplyConfiguration(new VacationConfiguration());
         }
     }
 }

@@ -12,12 +12,19 @@ export class AddDescriptionComponent implements OnInit {
 
   public vacationForm: FormGroup;
   public vacation: Vacation;
-  
+
   constructor() { }
 
   ngOnInit() {
     this.vacation = new Vacation();
     this.setVacationFormValidators();
+
+
+    $(function () {
+     ( <any>$('#datetimepicker11')).datetimepicker({
+          daysOfWeekDisabled: [0, 6]
+      });
+    });
   }
 
   get description() {

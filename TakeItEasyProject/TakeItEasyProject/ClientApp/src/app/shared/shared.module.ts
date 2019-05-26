@@ -32,7 +32,8 @@ import { InfoComponent } from './info/info.component';
     FileDropModule
   ],
   exports: [MenuComponent, HeaderComponent, FooterComponent,
-     SignInModalComponent, SignUpModalComponent, TripCardComponent, AddTripCardComponent, InfoComponent],
+     SignInModalComponent, SignUpModalComponent, TripCardComponent, 
+     AddTripCardComponent, InfoComponent, UploadUserImageComponent],
   providers: [LocationService, ModalDirective]
 })
 export class SharedModule { }

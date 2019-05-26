@@ -5,6 +5,7 @@
     border-bottom: 1px solid #ffa000;
     box-shadow: 0 1px 0 0 #ffa000;
 }
+
 .amber-textarea.md-form .prefix.active {
     color: #ffa000;
 }
@@ -19,6 +20,138 @@
 .active-amber-textarea-2.md-form label {
     color: #ffa000;
 }
+
 .active-amber-textarea-2.md-form .prefix {
     color: #ffa000;
 }
+
+.md-form textarea.md-textarea {
+  padding-top: 8px;
+}
+
+.amber-textarea.md-form[_ngcontent-c11] .prefix.active[_ngcontent-c11] {
+  color: black;
+}
+
+.active-amber-textarea.md-form[_ngcontent-c11] label.active[_ngcontent-c11] {
+  background-color: white;
+}
+
+.date-sections {
+  display: flex;
+  flex-direction: row;
+  margin-left: 57px;
+  width: calc(100% - 57px);
+  margin-top: 20px;
+}
+
+.date-section {
+    height: 77px;
+    width: calc(50% - 25px);
+
+    &:first-of-type {
+      margin-right: 50px;
+    }
+    
+    [type="date"] {
+      background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+    }
+    [type="date"]::-webkit-inner-spin-button {
+      display: none;
+    }
+    [type="date"]::-webkit-calendar-picker-indicator {
+      opacity: 0;
+      cursor: pointer;
+      color: #757575;
+    }
+
+    .label-date {
+      display: block;
+      background-color: white;
+      position: absolute !important;
+      width: 100px;
+      height: 28px;
+      color: #757575;
+      transition: 0.2s ease-out;
+    }
+  
+    .label-active {
+      position: relative;
+      font-size: 14px;
+      height: 16px;
+      transition: 0.2s ease-out;
+      color: #ffa000;
+      font-weight: 400;
+      font-family: "Calibri";
+      bottom: 151px;
+    }
+  
+    input {
+      border: none;
+      border-bottom: 1px solid #c4c4c4;
+      background-color: #fff;
+      padding: 3px 5px;
+      position: inherit;
+      margin-top: 0px;
+      width: 100%;
+      &:focus {
+        outline: none;
+        border-bottom: 1.7px solid #ffa000;
+      }
+    }
+  }
+
+  .top-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .md-form {
+    width: calc(100%-60px);
+    margin-left: 20px;
+    &:last-of-type {
+      margin-top: 10px;
+    }
+  }
+
+  .md-form input[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #ffa000;
+    box-shadow: 0 1px 0 0 #ffa000;
+  }
+
+  .form-side {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-right: 57px;
+  }
+
+  .modal-content {
+    width: 60%;
+    margin: auto;
+    max-width: 470px;
+  }
+
+  .fa-pencil-alt {
+    color:#54514c;
+    margin-left: 93%;
+  }
+
+  .custom-button {
+    background-color: #9ea525 !important;
+    color: white;
+    margin-right: 30px;
+}
+
+.md-form textarea.md-textarea:focus:not([readonly]) + label {
+  color: #ffa000;
+}
+
+.md-form input[type=text]:focus:not([readonly]) + label {
+  color: #ffa000;
+}
+
+.fa-angle-right {
+  margin-left: 5px;
+}
+  

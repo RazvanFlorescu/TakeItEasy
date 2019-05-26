@@ -1,3 +1,27 @@
-<p>
-  add-image works!
-</p>
+<div class="modal-content">
+    <div class="modal-header text-center">
+      <h4 class="modal-title w-100 font-weight-bold">Image</h4>
+    </div>
+    <div class="drop-uploader-wrapper" [ngClass]="{'error': isInvalid }">
+        <div class="cover">
+          <file-drop customstyle="drop-uploader" (onFileDrop)="onFileDropped($event)">
+              <canvas id="circle" class="circle"></canvas>
+              <span class="text">Drag and drop a profile picture</span>
+              <span class="text">Only JPG, PNG and JPEG. Maximum 1 MB</span>
+          </file-drop>
+        </div>
+        <span class="errorText">{{errorText}}</span>
+        <div class="browse-button">
+          <label for="fileUpload" class="btn">
+            <div class="browse-text">
+              <i class="fas fa-arrow-circle-down"></i>
+              Browse
+            </div>
+          </label>
+          <input type="file" id="fileUpload" hidden (change)="takeFileFromBrowse($event)">
+        </div>
+    </div>
+    <div class="modal-footer d-flex">
+      <button type="button" class="btn btn-brown custom-button">Propose</button>
+    </div>
+  </div>

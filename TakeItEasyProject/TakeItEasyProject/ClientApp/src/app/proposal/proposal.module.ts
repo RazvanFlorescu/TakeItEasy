@@ -6,13 +6,15 @@ import { AddLocationComponent } from './add-location/add-location.component';
 import { AddDescriptionComponent } from './add-description/add-description.component';
 import { SharedModule } from '../shared/shared.module';
 import { AddImageComponent } from './add-image/add-image.component';
+import { FileDropModule } from 'ngx-file-drop';
 
 @NgModule({
   declarations: [ ProposalComponent, AddLocationComponent, AddDescriptionComponent, AddImageComponent ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    FileDropModule
   ],
   exports: [ ProposalComponent ]
 })

@@ -20,8 +20,7 @@ export class AddImageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('ceao');
-    this.canvas = <HTMLCanvasElement>document.getElementById('circle2');
+    this.canvas = <HTMLCanvasElement>document.getElementById('lala');
     const context = this.canvas.getContext('2d');
     const picture = new Image();
 
@@ -71,7 +70,7 @@ export class AddImageComponent implements OnInit {
     const fileReader = new FileReader();
     fileReader.onload = () => {
       this.currentImageURL = fileReader.result.toString();
-      this.canvas = <HTMLCanvasElement>document.getElementById('circle2');
+      this.canvas = <HTMLCanvasElement>document.getElementById('lala');
       const context = this.canvas.getContext('2d');
       context.clearRect(0, 0, this.canvas.width, this.canvas.height);
       const image = new Image();

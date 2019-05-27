@@ -13,14 +13,15 @@ export class AddImageComponent implements OnInit {
   public isInvalid: boolean;
   public isSaveEnabled: boolean;
   public errorText = '';
-  private currentImageURL = './../../../assets/images/no-profile-image.png';
+  private currentImageURL = './../../assets/images/no-profile-image.png';
   public image: string;
   @Output() public uploadImage = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
-    this.canvas = <HTMLCanvasElement>document.getElementById('circle');
+    console.log('ceao');
+    this.canvas = <HTMLCanvasElement>document.getElementById('circle2');
     const context = this.canvas.getContext('2d');
     const picture = new Image();
 
@@ -70,7 +71,7 @@ export class AddImageComponent implements OnInit {
     const fileReader = new FileReader();
     fileReader.onload = () => {
       this.currentImageURL = fileReader.result.toString();
-      this.canvas = <HTMLCanvasElement>document.getElementById('circle');
+      this.canvas = <HTMLCanvasElement>document.getElementById('circle2');
       const context = this.canvas.getContext('2d');
       context.clearRect(0, 0, this.canvas.width, this.canvas.height);
       const image = new Image();

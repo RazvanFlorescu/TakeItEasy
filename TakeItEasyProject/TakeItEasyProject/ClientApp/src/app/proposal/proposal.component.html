@@ -1,37 +1,39 @@
 <!-- <div *ngIf="user" class="proposal-container">-->
-    <div class="proposal-container">
-  <div class="row">
-    <div class="col-md-12">
-      <ul class="stepper stepper-horizontal">
-        <li class="warning">
-            <a (click)="openAddDetailsPage()">
-              <span class="circle"><i class="fas fa-exclamation"></i></span>
-              <span class="label">Details</span>
-            </a>
-        </li>
-        <li class="active">
-          <a (click)="openAddLocationPage()">
-            <span class="circle">2</span>
-            <span class="label">Location</span>
-          </a>
-        </li>
-        <li class="completed">
-            <a (click)="openAddImagePage()">
-              <span class="circle">1</span>
-              <span class="label">Image</span>
-            </a>
-          </li>
-      </ul>
-    </div>
-  </div>
-  <div *ngIf="imageActive" class="step-container">
-    <app-add-image></app-add-image>
-  </div>
-  <div *ngIf="locationActive" class="step-container">
-    <app-add-location></app-add-location>
-  </div>
-  <div *ngIf="descriptionActive" class="step-container">
-    <app-add-description></app-add-description>
+  <div class="proposal-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="stepper stepper-horizontal">
+            <li class="warning">
+                <a (click)="openAddDetailsPage()">
+                  <span class="circle"><i class="fas fa-exclamation"></i></span>
+                  <span class="label">Details</span>
+                </a>
+            </li>
+            <li class="active">
+              <a (click)="openAddLocationPage()">
+                <span class="circle">2</span>
+                <span class="label">Location</span>
+              </a>
+            </li>
+            <li class="completed">
+                <a (click)="openAddImagePage()">
+                  <span class="circle">1</span>
+                  <span class="label">Image</span>
+                </a>
+              </li>
+          </ul>
+        </div>
+      </div>
+      <div *ngIf="imageActive" class="step-container">
+        <app-add-image></app-add-image>
+      </div>
+      <div *ngIf="locationActive" class="step-container">
+        <app-add-location></app-add-location>
+      </div>
+      <div *ngIf="descriptionActive" class="step-container">
+        <app-add-description></app-add-description>
+      </div>
   </div>
 </div>
 <!--<app-info *ngIf="!user"></app-info>-->

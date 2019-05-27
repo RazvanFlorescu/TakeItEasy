@@ -39,7 +39,7 @@ export class AddDescriptionComponent implements OnInit {
   isValidDateInterval() {
     return this.startDate.value > this.endDate.value;
   }
-  
+
   private setVacationFormValidators(): void {
     this.vacationForm = new FormGroup({
       startDate: new FormControl(this.vacation.startDate, [Validators.required]),

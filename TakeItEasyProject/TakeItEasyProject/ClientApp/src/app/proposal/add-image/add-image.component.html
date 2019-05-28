@@ -4,11 +4,13 @@
     </div>
     <div class="drop-uploader-wrapper" [ngClass]="{'error': isInvalid }">
         <div class="cover">
-          <file-drop customstyle="drop-uploader" (onFileDrop)="onFileDropped($event)">
-              <canvas id="lala" class="lala"></canvas>
-              <span class="text">Drag and drop a vacation picture</span>
-              <span class="text">Only JPG, PNG and JPEG. Maximum 1 MB</span>
-          </file-drop>
+          <div class="image-cover" [ngStyle]="{'background-image':  image ? 'url('+image+')' : 'none'}">
+            <file-drop customstyle="drop-uploader" (onFileDrop)="onFileDropped($event)">
+                <canvas class="lala" [ngClass]="{'opacity': image }"></canvas>
+                <span class="text" [ngClass]="{'opacity': image }" >Drag and drop a cover picture</span>
+                <span class="text" [ngClass]="{'opacity': image }" >Only JPG, PNG and JPEG. Maximum 1 MB</span>
+            </file-drop>
+          </div>
         </div>
         <span class="errorText">{{errorText}}</span>
         <div class="browse-button">

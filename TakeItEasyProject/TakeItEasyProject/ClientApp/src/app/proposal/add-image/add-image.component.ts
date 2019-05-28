@@ -13,22 +13,13 @@ export class AddImageComponent implements OnInit {
   public isInvalid: boolean;
   public isSaveEnabled: boolean;
   public errorText = '';
-  private currentImageURL = './../../assets/images/no-profile-image.png';
+  public currentImageURL;
   public image: string;
   @Output() public uploadImage = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
-    this.canvas = <HTMLCanvasElement>document.getElementById('lala');
-    const context = this.canvas.getContext('2d');
-    const picture = new Image();
-
-    this.isSaveEnabled = true;
-    picture.src = !this.image ? this.currentImageURL : this.image;
-    picture.onload = () => {
-      context.drawImage(picture, 0, 0, this.canvas.width, this.canvas.height);
-    };
   }
 
   onFileDropped(filesDroped: UploadEvent): void {
@@ -70,14 +61,7 @@ export class AddImageComponent implements OnInit {
     const fileReader = new FileReader();
     fileReader.onload = () => {
       this.currentImageURL = fileReader.result.toString();
-      this.canvas = <HTMLCanvasElement>document.getElementById('lala');
-      const context = this.canvas.getContext('2d');
-      context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      const image = new Image();
-      image.src = this.currentImageURL;
-      image.onload = () => {
-        context.drawImage(image, 0, 0, this.canvas.width, this.canvas.height);
-      };
+      this.image = this.currentImageURL;
     };
     fileReader.readAsDataURL(file);
   }

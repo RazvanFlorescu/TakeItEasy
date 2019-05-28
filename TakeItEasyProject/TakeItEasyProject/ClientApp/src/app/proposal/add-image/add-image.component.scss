@@ -12,7 +12,7 @@
 
 .drop-uploader-wrapper {
     width: 100%;
-    height: 400px;
+    height: 410px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,7 +22,7 @@
     }
 
     .browse-button {
-        margin-top: 28px;
+        margin-top: 22px;
        .browse-text {
            font-size: 13px;
        }
@@ -30,9 +30,14 @@
 }
 
 .lala {
-    border-radius: 50%;
     width: 140px;
     height: 140px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-image: url("./../../../assets/images/no-image.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .cover {
@@ -40,6 +45,7 @@
     height: 310px;
     flex-direction: column;
     align-items: center;
+    padding: 15px;
 }
 
 .text {
@@ -53,4 +59,17 @@
       margin-bottom: 0px;
       font-weight: 600;
     }
+  }
+
+  .image-cover {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .opacity {
+    opacity: 0.4;
   }

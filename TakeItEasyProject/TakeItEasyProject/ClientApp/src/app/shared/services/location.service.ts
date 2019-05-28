@@ -9,32 +9,30 @@ export class LocationService {
 
    public constructor() {
        this.platform = new H.service.Platform({
-           "app_id": "wi4qcYPPHSbF10M1H8OB",
-           "app_code": "hCXV_73fjQKbQQa5jxy-Bg"
+           'app_id': 'wi4qcYPPHSbF10M1H8OB',
+           'app_code': 'hCXV_73fjQKbQQa5jxy-Bg'
        });
    }
 
-   public ngOnInit() { }
-
    public getCurrentLocation() {
-       var geocoder = this.platform.getGeocodingService();
-            if(navigator.geolocation) {
+       const geocoder = this.platform.getGeocodingService();
+            if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(position => {
                     geocoder.reverseGeocode(
                         {
-                            mode: "retrieveAddresses",
+                            mode: 'retrieveAddresses',
                             maxresults: 1,
-                            prox: position.coords.latitude + "," + position.coords.longitude
+                            prox: position.coords.latitude + ',' + position.coords.longitude
                         }, data => {
                             console.log(data);
-                            alert("The nearest address to your location is:\n" + data.Response.View[0].Result[0].Location.Address.Label);
+                            alert('The nearest address to your location is:\n' + data.Response.View[0].Result[0].Location.Address.Label);
                         }, error => {
                             console.error(error);
                         }
                     );
                 });
             } else {
-                console.error("Geolocation is not supported by this browser!");
+                console.error('Geolocation is not supported by this browser!');
             }
     }
 }

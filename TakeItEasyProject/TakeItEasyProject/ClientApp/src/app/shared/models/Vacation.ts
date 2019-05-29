@@ -1,6 +1,6 @@
 export class TripLocation {
-    longitude: string;
-    latitude: string;
+    longitude: number;
+    latitude: number;
 }
 
 export class Vacation {

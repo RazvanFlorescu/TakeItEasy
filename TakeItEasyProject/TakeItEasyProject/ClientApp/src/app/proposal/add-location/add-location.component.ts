@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { MapsAPILoader, MouseEvent } from '@agm/core';
 import {} from '@agm/core/services/google-maps-types';
+import { Vacation, TripLocation } from 'src/app/shared/models/Vacation';
 
 @Component({
   selector: 'app-add-location',
@@ -9,12 +10,23 @@ import {} from '@agm/core/services/google-maps-types';
 })
 export class AddLocationComponent implements OnInit {
 
-  title = 'AGM project';
-  latitude: number;
-  longitude: number;
   zoom: number;
   address: string;
   private geoCoder;
+
+  defaultNumber = Number.MIN_SAFE_INTEGER;
+
+  locations: TripLocation[] = [
+    {
+      latitude: this.defaultNumber,
+      longitude: this.defaultNumber
+    },
+    {
+      latitude: this.defaultNumber,
+      longitude: this.defaultNumber
+    }
+  ];
+  currentLocation: TripLocation;
 
 
   @ViewChild('search')
@@ -26,6 +38,7 @@ export class AddLocationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     // load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
@@ -42,8 +55,8 @@ export class AddLocationComponent implements OnInit {
             return;
           }
           // set latitude, longitude and zoom
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
+          this.currentLocation.latitude = place.geometry.location.lat();
+          this.currentLocation.longitude = place.geometry.location.lng();
           this.zoom = 12;
         });
       });
@@ -54,19 +67,19 @@ export class AddLocationComponent implements OnInit {
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
+        this.locations.filter(item => item === this.currentLocation)[0].latitude = position.coords.latitude;
+        this.locations.filter(item => item === this.currentLocation)[0].longitude = position.coords.longitude;
         this.zoom = 8;
-        this.getAddress(this.latitude, this.longitude);
+        this.getAddress(this.currentLocation.latitude, this.currentLocation.longitude);
       });
     }
   }
 
   markerDragEnd($event: MouseEvent) {
     console.log($event);
-    this.latitude = $event.coords.lat;
-    this.longitude = $event.coords.lng;
-    this.getAddress(this.latitude, this.longitude);
+    this.currentLocation.latitude = $event.coords.lat;
+    this.currentLocation.longitude = $event.coords.lng;
+    this.getAddress(this.currentLocation.latitude, this.currentLocation.longitude);
   }
 
   getAddress(latitude, longitude) {
@@ -85,6 +98,10 @@ export class AddLocationComponent implements OnInit {
       }
 
     });
+  }
+
+  setCurrentSearch(location: TripLocation) {
+    this.currentLocation = location;
   }
 
 }

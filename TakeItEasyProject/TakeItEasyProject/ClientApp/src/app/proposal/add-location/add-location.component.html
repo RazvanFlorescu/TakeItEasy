@@ -5,15 +5,16 @@
    
     <div class="form-group">
       <label>Enter address</label>
-      <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+      <div class="inputs" *ngFor="let location of locations">
+        <input type="text" class="form-control" (focus)="setCurrentSearch(location)" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+      </div>
     </div>
    
-    <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
-      <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
-        (dragEnd)="markerDragEnd($event)"></agm-marker>
+    <agm-map [latitude]="currentLocation.latitude" [longitude]="currentLocation.longitude" [zoom]="zoom">
+        <div class="markers" *ngFor="let location of locations">
+            <agm-marker *ngIf="location.latitude !== defaultNumber" [latitude]="location.latitude" [longitude]="location.longitude" [markerDraggable]="true"
+            (dragEnd)="markerDragEnd($event)"></agm-marker>
+        </div>
     </agm-map> 
-   
-    <h5>Address: {{address}}</h5>
-    <div>Latitude: {{latitude}}</div>
-    <div>Longitude: {{longitude}}</div>
+  
   </div>

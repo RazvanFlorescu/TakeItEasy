@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { AgmCoreModule } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -26,10 +25,7 @@ import { MyProfileModule } from './my-profile/my-profile.module';
     ProposalModule,
     SharedModule,
     MyProfileModule,
-    MDBBootstrapModule.forRoot(),
-    AgmCoreModule.forRoot({
-      apiKey:'AIzaSyA9bGZv1g2dvSGhbs4sc045YfT4RbaVwkI'
-    })
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

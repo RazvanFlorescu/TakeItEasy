@@ -17,7 +17,7 @@ import { AgmCoreModule } from '@agm/core';
     SharedModule,
     FileDropModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyA9bGZv1g2dvSGhbs4sc045YfT4RbaVwkI'
+     // apiKey: 'AIzaSyA9bGZv1g2dvSGhbs4sc045YfT4RbaVwkI'
     })
   ],
   exports: [ ProposalComponent ]

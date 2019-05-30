@@ -4,9 +4,9 @@
     <h1>Angular Google Maps with Places Search Example</h1>
    
     <div class="form-group">
-      <label>Enter address</label>
+      <label>Enter address {{event | json}}</label>
       <div class="inputs" *ngFor="let location of locations">
-        <input type="text" class="form-control" (focus)="setCurrentSearch(location)" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+        <app-autocomplete-location (focus)="setCurrentLocation(location)" (setAddress)="getTypedAddress($event)" [adressType]="address" ></app-autocomplete-location>
       </div>
     </div>
    

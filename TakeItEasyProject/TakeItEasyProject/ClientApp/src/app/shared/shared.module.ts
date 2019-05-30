@@ -16,10 +16,13 @@ import { FileDropModule } from 'ngx-file-drop';
 import { TripCardComponent } from './trip-card/trip-card.component';
 import { AddTripCardComponent } from './add-trip-card/add-trip-card.component';
 import { InfoComponent } from './info/info.component';
+import { AutocompleteLocationComponent } from './autocomplete-location/autocomplete-location.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [MenuComponent, HeaderComponent, FooterComponent,
-     SignInModalComponent, SignUpModalComponent, UploadUserImageComponent, TripCardComponent, AddTripCardComponent, InfoComponent],
+     SignInModalComponent, SignUpModalComponent, UploadUserImageComponent, TripCardComponent,
+     AddTripCardComponent, InfoComponent, AutocompleteLocationComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -29,11 +32,15 @@ import { InfoComponent } from './info/info.component';
     NgbModule.forRoot(),
     MDBBootstrapModule,
     ModalModule,
-    FileDropModule
+    FileDropModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA9bGZv1g2dvSGhbs4sc045YfT4RbaVwkI'
+    })
   ],
   exports: [MenuComponent, HeaderComponent, FooterComponent,
-     SignInModalComponent, SignUpModalComponent, TripCardComponent, 
-     AddTripCardComponent, InfoComponent, UploadUserImageComponent],
+     SignInModalComponent, SignUpModalComponent, TripCardComponent,
+     AddTripCardComponent, InfoComponent, UploadUserImageComponent,
+     AutocompleteLocationComponent],
   providers: [LocationService, ModalDirective]
 })
 export class SharedModule { }

@@ -13,6 +13,7 @@ export class AddLocationComponent implements OnInit {
   zoom: number;
   address: string;
   private geoCoder;
+  event: any;
 
   defaultNumber = Number.MIN_SAFE_INTEGER;
 
@@ -40,37 +41,21 @@ export class AddLocationComponent implements OnInit {
   ngOnInit() {
 
     // load Places Autocomplete
-    this.mapsAPILoader.load().then(() => {
-      this.setCurrentLocation();
-      this.geoCoder = new google.maps.Geocoder;
-      const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ['address']
-      });
-      autocomplete.addListener('place_changed', () => {
-        this.ngZone.run(() => {
-          // get the place result
-          const place: google.maps.places.PlaceResult = autocomplete.getPlace();
-          // verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
-          // set latitude, longitude and zoom
-          this.currentLocation.latitude = place.geometry.location.lat();
-          this.currentLocation.longitude = place.geometry.location.lng();
-          this.zoom = 12;
-        });
-      });
-    });
+     this.setCurrentLocation(this.locations[0]);
+     this.geoCoder = new google.maps.Geocoder;
   }
 
   // Get Current Location Coordinates
-  private setCurrentLocation() {
+  private setCurrentLocation(location: TripLocation) {
     if ('geolocation' in navigator) {
+      this.currentLocation = location;
       navigator.geolocation.getCurrentPosition((position) => {
-        this.locations.filter(item => item === this.currentLocation)[0].latitude = position.coords.latitude;
-        this.locations.filter(item => item === this.currentLocation)[0].longitude = position.coords.longitude;
+        this.locations.filter(item => item.latitude === this.currentLocation.latitude &&
+                              item.longitude === this.currentLocation.longitude)[0].latitude = position.coords.latitude;
+        this.locations.filter(item => item.latitude === this.currentLocation.latitude &&
+                              item.longitude === this.currentLocation.longitude)[0].longitude = position.coords.longitude;
         this.zoom = 8;
-        this.getAddress(this.currentLocation.latitude, this.currentLocation.longitude);
+       // this.getAddress(this.currentLocation.latitude, this.currentLocation.longitude);
       });
     }
   }
@@ -100,8 +85,14 @@ export class AddLocationComponent implements OnInit {
     });
   }
 
-  setCurrentSearch(location: TripLocation) {
-    this.currentLocation = location;
+  getTypedAddress(event) {
+    if (event.geometry === undefined || event.geometry === null) {
+      return;
+    }
+      console.log(event);
+      this.currentLocation.latitude = event.geometry.location.lat();
+      this.currentLocation.longitude = event.geometry.location.lng();
   }
+
 
 }

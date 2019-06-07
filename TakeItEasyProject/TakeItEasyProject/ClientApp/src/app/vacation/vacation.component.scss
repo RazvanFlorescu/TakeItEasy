@@ -1,0 +1,31 @@
+.parallax {
+    background-image: url("./../../assets/images/sas.jpg");
+    height: calc(100vh - 112px);
+    width: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+.cover-parallax {
+      width: 100%;
+      height: 100%;
+      background-color:rgba(51, 36, 21, 0.51);
+      display: flex;
+  }
+
+.search-vacation {
+    margin: auto;
+    width: 40%;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.48);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input {
+    width: 90%;
+}

@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { UploadEvent, FileSystemFileEntry } from 'ngx-file-drop';
+import { Vacation } from 'src/app/shared/models/Vacation';
 
 
 @Component({
@@ -9,17 +10,21 @@ import { UploadEvent, FileSystemFileEntry } from 'ngx-file-drop';
 })
 export class AddImageComponent implements OnInit {
 
-  private canvas: HTMLCanvasElement;
   public isInvalid: boolean;
   public isSaveEnabled: boolean;
   public errorText = '';
   public currentImageURL;
   public image: string;
+  @Input() vacation: Vacation;
+  @Input() isStateCompleted: boolean
+  @Output() vacationChange = new EventEmitter();
   @Output() public uploadImage = new EventEmitter();
+  @Output() saveState = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+    this.image = this.vacation.image;
   }
 
   onFileDropped(filesDroped: UploadEvent): void {
@@ -70,6 +75,16 @@ export class AddImageComponent implements OnInit {
     return ['image/png', 'image/jpeg', 'image/jpg'].includes(
       file.type.toString().trim()
     );
+  }
+
+  isValidImage() {
+    return this.errorText === '';
+  }
+
+  save() {
+    this.vacation.image = this.image;
+    this.vacationChange.emit(this.vacation);
+    this.saveState.emit('imagestep')
   }
 
   getAndSetTheFileInBase64(file, event, picture: string): void {

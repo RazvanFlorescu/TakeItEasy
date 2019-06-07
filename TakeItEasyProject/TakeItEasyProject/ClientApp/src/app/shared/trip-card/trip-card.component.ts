@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Vacation } from '../models/Vacation';
+import { ImageService } from '../services/image.service';
+import { UserService } from '../services/user.service';
+import { User } from '../models/User';
 
 
 @Component({
@@ -8,9 +12,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TripCardComponent implements OnInit {
 
-  constructor() { }
+  @Input() vacation: Vacation;
+  public currentUser: User;
+
+  constructor(private imageService: ImageService, private userService: UserService) { }
 
   ngOnInit() {
+    if(this.vacation) {
+      this.setCoverImage();
+      this.setCurrentUser();
+    }
+  }
+
+  isBiggerThan130(string: string) {
+    return string.length > 130;
+  }
+
+  private setCoverImage() {
+    this.imageService.getImageByEntityId(this.vacation.entityId).subscribe(
+      res => {
+        this.vacation.image = res.content
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
+  private setCurrentUser() {
+    const user = this.userService.getLoggedUser()
+    if(user.entityId === this.vacation.authorId) {
+      console.log("hei")
+      this.currentUser = user
+      console.log(user);
+    }
   }
 
 }

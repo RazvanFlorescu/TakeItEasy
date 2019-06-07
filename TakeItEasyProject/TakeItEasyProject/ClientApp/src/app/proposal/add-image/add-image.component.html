@@ -13,6 +13,10 @@
           </div>
         </div>
         <span class="errorText">{{errorText}}</span>
+        <div *ngIf="!isStateCompleted" class="warning">
+            <i class="fas fa-exclamation-circle fa-sm"></i>
+            You have to complete the first 2 steps before to propose.
+        </div>
         <div class="browse-button">
           <label for="fileUpload2" class="btn">
             <div class="browse-text">
@@ -22,8 +26,9 @@
           </label>
           <input type="file" id="fileUpload2" hidden (change)="takeFileFromBrowse($event)">
         </div>
+        
     </div>
     <div class="modal-footer d-flex">
-      <button type="button" class="btn btn-brown custom-button">Propose</button>
+      <button type="button" [disabled]="!isValidImage() || !isStateCompleted" (click)="save()" class="btn btn-brown custom-button">Propose</button>
     </div>
   </div>

@@ -1,0 +1,27 @@
+input {
+    border: none;
+    border-bottom: 2px solid #ccc; 
+    width: 100%;
+    padding: 12px 20px;
+    height: 52px;
+}
+
+.md-textarea.validate-success.ng-valid {
+    border-bottom: 1px solid #ffa000 !important;
+    box-shadow: 0 1px 0 0 #ffa000 !important;
+}
+
+input.form-control.validate-success.ng-valid.ng-touched {
+    border-bottom: 1px solid #ffa000 !important;
+    box-shadow: 0 1px 0 0 #ffa000 !important;
+}
+
+.md-textarea.validate-success.ng-valid + label {
+    color: #ffa000 !important;
+}
+
+input.form-control.validate-success.ng-valid.ng-dirty, input.form-control.validate-success.ng-valid.ng-touched {
+    border-bottom: 1px solid #ffa000 !important;
+    box-shadow: 0 1px 0 0 #ffa000 !important;
+}
+

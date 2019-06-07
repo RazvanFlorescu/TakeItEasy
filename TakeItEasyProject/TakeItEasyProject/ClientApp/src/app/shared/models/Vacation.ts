@@ -1,16 +1,33 @@
 export class TripLocation {
     longitude: number;
     latitude: number;
+    placeId?: string;
+    locationType?: LocationType;
+    address: string;
+}
+
+export enum AvailableMode {
+    Public = 0,
+    Private = 1 ,
+    OnlyFriends = 2
 }
 
 export class Vacation {
     entityId?: string;
-    imageId?: string;
-    image?: string;
+    authorId?: string;
     description: string;
-    startPoint: TripLocation;
-    endPoint: TripLocation;
     startDate: Date;
     endDate: Date;
     title: string;
+    availableMode: AvailableMode;
+    vacationPoints: TripLocation[];
+    imageId?: string;
+    image?: string;
+    lastChangedDate?: Date
 }
+
+export enum LocationType {
+    origin = 0,
+    destination = 1,
+    wayPoint = 2
+  }

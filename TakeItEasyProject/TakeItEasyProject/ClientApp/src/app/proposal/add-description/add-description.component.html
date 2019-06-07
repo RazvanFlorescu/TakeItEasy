@@ -17,6 +17,13 @@
                     <label for="description" [ngClass]="{'active': description.value}">Description</label>
                   </div>
               </div>
+              <div class="mid-side">
+                <div class="md-form amber-textarea active-amber-textarea">
+                    <select formControlName="availableMode">
+                        <option *ngFor="let symbol of keys()" [ngValue]="symbols[symbol]">{{symbol}}</option>
+                    </select>
+                </div>
+              </div>
               <div class="date-sections">
                 <div class="date-section">
                     <label for="startDate" class="label-date" [ngClass]="{'label-active': startDate.value}">Start date</label>
@@ -28,8 +35,13 @@
                 </div>
               </div>
           </div>
+          <div class="error">
+              {{getErrorMessage()}}
+          </div>
         </form>
       <div class="modal-footer d-flex">
-        <button type="button" class="btn btn-brown custom-button">Continue <i class="fas fa-angle-right fa-sm"></i></button>
+        <button type="button" class="btn btn-brown custom-button" [disabled]="!isValidForm()" (click)="save()">
+          Continue <i class="fas fa-angle-right fa-sm"></i>
+        </button>
       </div>
     </div>

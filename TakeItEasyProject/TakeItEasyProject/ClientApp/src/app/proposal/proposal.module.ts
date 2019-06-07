@@ -8,17 +8,21 @@ import { SharedModule } from '../shared/shared.module';
 import { AddImageComponent } from './add-image/add-image.component';
 import { FileDropModule } from 'ngx-file-drop';
 import { AgmCoreModule } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction' 
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ ProposalComponent, AddLocationComponent, AddDescriptionComponent, AddImageComponent ],
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     SharedModule,
     FileDropModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyA9bGZv1g2dvSGhbs4sc045YfT4RbaVwkI'
-    })
+     // apiKey: 'AIzaSyA9bGZv1g2dvSGhbs4sc045YfT4RbaVwkI'
+    }),
+    AgmDirectionModule
   ],
   exports: [ ProposalComponent ]
 })

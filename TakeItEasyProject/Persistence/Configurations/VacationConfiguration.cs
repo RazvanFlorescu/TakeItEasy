@@ -12,9 +12,9 @@ namespace Persistence.Configurations
                 .IsRequired()
                 .HasMaxLength(20);
 
-            builder.OwnsOne(p => p.StartPoint);
-
-            builder.OwnsOne(p => p.Destination);
+            builder.Property(p => p.Description)
+                .IsRequired()
+                .HasMaxLength(250);
 
             builder.Property(p => p.StartDate)
                 .IsRequired()

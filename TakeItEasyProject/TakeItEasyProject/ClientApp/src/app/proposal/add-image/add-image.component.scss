@@ -19,10 +19,12 @@
 
     &.error {
       color: red;
+      font-family: "Calibri";
+      font-size: 16px;
     }
 
     .browse-button {
-        margin-top: 22px;
+        margin-top: 8px;
        .browse-text {
            font-size: 13px;
        }
@@ -72,4 +74,12 @@
 
   .opacity {
     opacity: 0.4;
+  }
+
+  .warning {
+    color: #de942d;
+    width: 100%;
+    font-family: "Calibri";
+    font-size: 16px;
+    text-align: center;
   }

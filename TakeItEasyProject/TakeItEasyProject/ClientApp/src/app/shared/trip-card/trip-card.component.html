@@ -1,8 +1,13 @@
-<div class="card mb-2">
-    <img src="../../assets/images/red-car-min.jpg" class="card-img-top" >
+<div class="card mb-2" *ngIf="vacation">
+    <img *ngIf="vacation.image" src={{vacation.image}} class="card-img-top" >
+    <img *ngIf="!vacation.image" src="./../../../assets/images/noCoverImage.jpg" class="card-img-top" >
     <div class="card-body">
-      <h5 class="card-title">Card title2</h5>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <h5 class="card-title">{{vacation.title}}
+        <img *ngIf="!currentUser" src="./../../../assets/images/no-profile-image.png" class="user-circle">
+        <img *ngIf="currentUser" src={{currentUser.image}} class="user-circle" data-toggle="tooltip" data-placement="top" title="Added by {{currentUser.firstName}}" >
+      </h5> 
+      <p class="card-text" *ngIf="isBiggerThan130(vacation.description)">{{vacation.description | slice:0:130 }}...</p>
+      <p class="card-text" *ngIf="!isBiggerThan130(vacation.description)">{{vacation.description}}</p>
+      <p class="card-text"><small class="text-muted">Last updated {{vacation.lastChangedDate | timeAgo}}</small></p>
     </div>
 </div>

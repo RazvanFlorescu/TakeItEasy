@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using BusinessLogicCommon.CqrsCore.Commands;
+using CommonTypes;
 using Models;
 
 namespace BusinessLogicWriter.CqrsCore.Commands.Vacations
@@ -10,29 +10,35 @@ namespace BusinessLogicWriter.CqrsCore.Commands.Vacations
     {
         public string Image { get; }
         public Guid EntityId { get; }
+        public Guid AuthorId { get; }
         public string Title { get; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public LocationDto StartPoint { get; set; }
-        public LocationDto Destination { get; set; }
+        public string Description { get; }
+        public DateTime StartDate { get; }
+        public DateTime EndDate { get; }
+        public IList<LocationDto> VacationPoints { get; }
+        public AvailableMode AvailableMode { get; }
 
         public ProposeVacationCommand(
             Guid entityId, 
+            Guid authorId,
             string title,
+            string description,
             string image,
             DateTime startDate,
             DateTime endDate,
-            LocationDto startPoint,
-            LocationDto destination
+            IList<LocationDto> vacationPoints,
+            AvailableMode availableMode
             )
         {
             Image = image;
             StartDate = startDate;
             EndDate = endDate;
-            StartPoint = startPoint;
+            VacationPoints = vacationPoints;
+            AvailableMode = availableMode;
             EntityId = entityId;
+            AuthorId = authorId;
             Title = title;
-            Destination = destination;
+            Description = description;
         }
     }
 }

@@ -104,5 +104,14 @@ namespace BusinessLogicCommon.Resources {
                 return ResourceManager.GetString("UserNotFound", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This vacation doesn&apos;t exist in our database..
+        /// </summary>
+        public static string VacationNotFound {
+            get {
+                return ResourceManager.GetString("VacationNotFound", resourceCulture);
+            }
+        }
     }
 }

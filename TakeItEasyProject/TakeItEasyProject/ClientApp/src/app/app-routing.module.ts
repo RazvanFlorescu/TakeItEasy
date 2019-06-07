@@ -13,6 +13,7 @@ const routes: Routes = [
   },
   { path: 'home', component: HomeComponent },
   { path: 'vacation', component: VacationComponent },
+  { path: 'home/vacation', component: VacationComponent },
   { path: 'proposal', component: ProposalComponent },
   { path: 'my-profile', component: MyProfileComponent },
   { path: 'my-profile/propose', component: ProposalComponent },

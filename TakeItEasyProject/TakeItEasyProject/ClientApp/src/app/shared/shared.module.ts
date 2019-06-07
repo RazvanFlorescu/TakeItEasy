@@ -18,11 +18,12 @@ import { AddTripCardComponent } from './add-trip-card/add-trip-card.component';
 import { InfoComponent } from './info/info.component';
 import { AutocompleteLocationComponent } from './autocomplete-location/autocomplete-location.component';
 import { AgmCoreModule } from '@agm/core';
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 @NgModule({
   declarations: [MenuComponent, HeaderComponent, FooterComponent,
      SignInModalComponent, SignUpModalComponent, UploadUserImageComponent, TripCardComponent,
-     AddTripCardComponent, InfoComponent, AutocompleteLocationComponent],
+     AddTripCardComponent, InfoComponent, AutocompleteLocationComponent, TimeAgoPipe],
   imports: [
     CommonModule,
     RouterModule,

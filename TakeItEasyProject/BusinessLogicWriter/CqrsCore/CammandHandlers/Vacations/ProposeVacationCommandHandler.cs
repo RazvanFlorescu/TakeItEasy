@@ -2,6 +2,7 @@
 using System.Text;
 using BusinessLogicCommon.CqrsCore.CammandHandlers;
 using BusinessLogicWriter.CqrsCore.Commands.Image;
+using BusinessLogicWriter.CqrsCore.Commands.Locations;
 using BusinessLogicWriter.CqrsCore.Commands.Vacations;
 using DataAccessWriter.Abstractions;
 using EnsureThat;
@@ -29,23 +30,24 @@ namespace BusinessLogicWriter.CqrsCore.CammandHandlers.Vacations
 
             var vacation = new Vacation
             {
+                AuthorId = command.AuthorId,
                 Title = command.Title,
-                StartPoint = new Location
-                {
-                    Latitude = command.StartPoint.Latitude,
-                    Longitude = command.StartPoint.Longitude
-                },
-                Destination = new Location
-                {
-                    Latitude = command.Destination.Latitude,
-                    Longitude = command.Destination.Longitude
-                },
+                Description = command.Description,
                 StartDate = command.StartDate,
                 EndDate = command.EndDate,
                 EntityId = command.EntityId,
                 LastChangedDate = DateTime.Now,
+                AvailableMode = command.AvailableMode,
                 Id = Guid.NewGuid(),
             };
+
+            foreach (var vacationPoint in command.VacationPoints)
+            {
+                var addLocationCommand = new AddLocationCommand(Guid.NewGuid(), vacation.EntityId,
+                    vacationPoint.Latitude, vacationPoint.Longitude, vacationPoint.LocationType, vacationPoint.Address);
+
+                _dispatcher.Dispatch(addLocationCommand);
+            }
 
             if (!string.IsNullOrEmpty(command.Image))
             {

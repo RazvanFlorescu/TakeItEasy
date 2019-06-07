@@ -1,20 +1,52 @@
-<!-- app.component.html -->
-<div class="container">
- 
-    <h1>Angular Google Maps with Places Search Example</h1>
-   
-    <div class="form-group">
-      <label>Enter address {{event | json}}</label>
-      <div class="inputs" *ngFor="let location of locations">
-        <app-autocomplete-location (focus)="setCurrentLocation(location)" (setAddress)="getTypedAddress($event)" [adressType]="address" ></app-autocomplete-location>
-      </div>
-    </div>
-   
-    <agm-map [latitude]="currentLocation.latitude" [longitude]="currentLocation.longitude" [zoom]="zoom">
-        <div class="markers" *ngFor="let location of locations">
-            <agm-marker *ngIf="location.latitude !== defaultNumber" [latitude]="location.latitude" [longitude]="location.longitude" [markerDraggable]="true"
-            (dragEnd)="markerDragEnd($event)"></agm-marker>
-        </div>
-    </agm-map> 
-  
+
+<div class="modal-content">
+  <div class="modal-header text-center">
+    <h4 class="modal-title w-100 font-weight-bold">Location</h4>
   </div>
+  <div class="content">
+      <div class="show-search-side" *ngIf="isClosedSearchSide" (click)="showSearchSide()">
+          <i class="fas fa-caret-right"></i>
+      </div>
+      <div class="search-side" *ngIf="!isClosedSearchSide">
+          <div class="close-search-side">
+              <i class="fas fa-times fa-sm" (click)="closeSearchSide()"></i>
+          </div>
+          <div class="input" *ngFor="let location of locations">
+              <div class="dot-circle">
+                  <i class="fas fa-globe fa-sm"></i>
+              </div>
+              <app-autocomplete-location 
+                  (setAddress)="getTypedAddress($event)"
+                  [latitude]="locations[locations.indexOf(location)].latitude"
+                  [longitude]="locations[locations.indexOf(location)].longitude"
+                  [placeId]="locations[locations.indexOf(location)].placeId"
+                  [addressType]="address"
+                  [title]="getTitle(locations.indexOf(location))"
+                  [inputIndex]="locations.indexOf(location)" 
+                >
+              </app-autocomplete-location>
+              <div class="remove-search-button">
+                <i class="fas fa-xs" *ngIf ="areMoreThanTwoLocations()" (click)="removeLocation(location)" [ngClass]="{'fa-times-circle': areMoreThanTwoLocations()}"></i>
+                <div class="mock" *ngIf ="!areMoreThanTwoLocations()"></div>                    
+              </div>
+          </div>
+          <button class="add-destination" (click)="addDestination()"><i class="fas fa-plus fa-xs"></i>New destination</button>
+          <div *ngIf="!isAvailableRoad" [ngClass]="{'error': !isAvailableRoad}">This road is not available.</div>
+        </div>
+      <agm-map>
+            <agm-direction
+              [origin]="origin" 
+              [destination]="destination" 
+              [markerOptions]="markerOptions" 
+              [renderOptions]="renderOptions"
+              (onChange)="onChange($event)"
+              [waypoints]="wayPoints"
+              (status)="getStatus($event)"
+              >
+            </agm-direction>
+      </agm-map>
+    </div> 
+  <div class="modal-footer d-flex">
+    <button type="button" [disabled]="!areValidLocations()" (click)="save()" class="btn btn-brown custom-button">Continue <i class="fas fa-angle-right fa-sm"></i></button>
+  </div>
+</div>

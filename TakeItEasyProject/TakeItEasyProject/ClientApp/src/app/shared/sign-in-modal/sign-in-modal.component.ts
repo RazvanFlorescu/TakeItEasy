@@ -36,7 +36,6 @@ export class SignInModalComponent implements OnChanges, OnInit {
         const change = changes[propName];
 
         if ((change.currentValue || change.previousValue) && propName === 'signInEvent') {
-          console.log("am intrat")
           this.formModal.show();
         }
      }

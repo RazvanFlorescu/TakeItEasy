@@ -132,4 +132,7 @@
   <data name="UserNotFound" xml:space="preserve">
     <value>This user doesn't exist in our database.</value>
   </data>
+  <data name="VacationNotFound" xml:space="preserve">
+    <value>This vacation doesn't exist in our database.</value>
+  </data>
 </root>

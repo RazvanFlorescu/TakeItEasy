@@ -14,9 +14,24 @@
 
 .card-text {
     color: #fde9c8 !important;
+    margin-top: 20px;
+    display: flex;
 }
 
 .card-img-top {
     max-height: 350px;
 }
-  
+
+.card-title {
+    text-decoration: underline;
+}
+
+.user-circle {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    float: right;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

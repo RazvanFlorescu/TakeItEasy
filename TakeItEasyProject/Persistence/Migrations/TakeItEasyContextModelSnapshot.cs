@@ -39,6 +39,35 @@ namespace Persistence.Migrations
                     b.ToTable("Images");
                 });
 
+            modelBuilder.Entity("Entities.Location", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address")
+                        .IsRequired();
+
+                    b.Property<DateTime?>("DeletedDate");
+
+                    b.Property<Guid>("EntityId");
+
+                    b.Property<DateTime>("LastChangedDate");
+
+                    b.Property<string>("Latitude")
+                        .IsRequired();
+
+                    b.Property<int>("LocationType");
+
+                    b.Property<string>("Longitude")
+                        .IsRequired();
+
+                    b.Property<Guid>("VacationId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Locations");
+                });
+
             modelBuilder.Entity("Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -78,11 +107,58 @@ namespace Persistence.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("Entities.Vacation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid>("AuthorId");
+
+                    b.Property<int>("AvailableMode");
+
+                    b.Property<DateTime?>("DeletedDate");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(250);
+
+                    b.Property<DateTime>("EndDate")
+                        .HasMaxLength(20);
+
+                    b.Property<Guid>("EntityId");
+
+                    b.Property<Guid?>("ImageId");
+
+                    b.Property<DateTime>("LastChangedDate");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(20);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ImageId")
+                        .IsUnique()
+                        .HasFilter("[ImageId] IS NOT NULL");
+
+                    b.ToTable("Vacations");
+                });
+
             modelBuilder.Entity("Entities.User", b =>
                 {
                     b.HasOne("Entities.Image")
                         .WithOne()
                         .HasForeignKey("Entities.User", "ImageId");
+                });
+
+            modelBuilder.Entity("Entities.Vacation", b =>
+                {
+                    b.HasOne("Entities.Image")
+                        .WithOne()
+                        .HasForeignKey("Entities.Vacation", "ImageId");
                 });
 #pragma warning restore 612, 618
         }

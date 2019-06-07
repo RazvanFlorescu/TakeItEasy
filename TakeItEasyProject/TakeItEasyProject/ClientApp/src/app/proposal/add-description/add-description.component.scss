@@ -30,13 +30,16 @@
 }
 
 .amber-textarea.md-form[_ngcontent-c11] .prefix.active[_ngcontent-c11] {
-  color: black;
+  color: #54514c;
 }
 
 .active-amber-textarea.md-form[_ngcontent-c11] label.active[_ngcontent-c11] {
   background-color: white;
 }
 
+.amber-textarea.md-form[_ngcontent-c13] .prefix.active[_ngcontent-c13] {
+  color: #54514c;
+}
 .date-sections {
   display: flex;
   flex-direction: row;
@@ -83,7 +86,7 @@
       color: #ffa000;
       font-weight: 400;
       font-family: "Calibri";
-      bottom: 151px;
+      bottom: 180px;
     }
   
     input {
@@ -104,6 +107,7 @@
   .top-form {
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
   }
 
   .md-form {
@@ -133,8 +137,9 @@
   }
 
   .fa-pencil-alt {
-    color:#54514c;
-    margin-left: 93%;
+    color:#54514c !important;
+    margin-left: 92%;
+    background-color: white;
   }
 
   .custom-button {
@@ -153,5 +158,36 @@
 
 .fa-angle-right {
   margin-left: 5px;
+}
+
+.mid-side {
+  margin-left: 39px;
+  margin-bottom: 10px;
+  select {
+    border: none;
+    border-bottom: 1px solid #c4c4c4;
+    background-color: #fff;
+    padding: 3px 5px;
+    position: inherit;
+    width: 100%;
+    color: #757575;
+    &:focus {
+      outline: none;
+      border-bottom: 1.7px solid #ffa000;
+      color: #ffa000;
+    }
+  }
+}
+
+.error {
+  text-align: center;
+  color: red;
+  height: 23px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.active-amber-textarea.md-form[_ngcontent-c15] label.active[_ngcontent-c15] {
+  background-color: white;
 }
   

@@ -1,4 +1,4 @@
-<div class="card mb-2" *ngIf="vacation">
+<div class="card mb-2" *ngIf="vacation" (click)="onTap()">
     <img *ngIf="vacation.image" src={{vacation.image}} class="card-img-top" >
     <img *ngIf="!vacation.image" src="./../../../assets/images/noCoverImage.jpg" class="card-img-top" >
     <div class="card-body">

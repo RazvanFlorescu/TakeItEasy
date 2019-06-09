@@ -3,7 +3,7 @@ import { Vacation } from '../models/Vacation';
 import { ImageService } from '../services/image.service';
 import { UserService } from '../services/user.service';
 import { User } from '../models/User';
-
+import {Router, NavigationExtras} from "@angular/router";
 
 @Component({
   selector: 'app-trip-card',
@@ -15,7 +15,7 @@ export class TripCardComponent implements OnInit {
   @Input() vacation: Vacation;
   public currentUser: User;
 
-  constructor(private imageService: ImageService, private userService: UserService) { }
+  constructor(private imageService: ImageService, private userService: UserService, private router:Router) { }
 
   ngOnInit() {
     if(this.vacation) {
@@ -38,6 +38,16 @@ export class TripCardComponent implements OnInit {
       }
     )
   }
+
+  public onTap() {
+    let navigationExtras: NavigationExtras = {
+        queryParams: {
+          vacation: JSON.stringify(this.vacation),
+          user: JSON.stringify(this.currentUser)
+        }
+    };
+    this.router.navigate(['vacation/details'], navigationExtras);
+}
 
   private setCurrentUser() {
     const user = this.userService.getLoggedUser()

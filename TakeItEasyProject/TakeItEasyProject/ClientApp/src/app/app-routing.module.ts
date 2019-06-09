@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { VacationComponent } from './vacation/vacation.component';
 import { ProposalComponent } from './proposal/proposal.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { VacationDetailsComponent } from './vacation/vacation-details/vacation-details.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
   },
   { path: 'home', component: HomeComponent },
   { path: 'vacation', component: VacationComponent },
+  { path: 'vacation/details', component: VacationDetailsComponent},
   { path: 'home/vacation', component: VacationComponent },
   { path: 'proposal', component: ProposalComponent },
   { path: 'my-profile', component: MyProfileComponent },

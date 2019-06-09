@@ -13,9 +13,6 @@ export class HomeComponent implements OnInit {
 
    ngOnInit() {
      this.startCarousel();
-       // this.authenticationService.login().subscribe(data =>
-         // console.log(data));
-        // this.locationService.getCurrentLocation();
    }
 
    private startCarousel() {

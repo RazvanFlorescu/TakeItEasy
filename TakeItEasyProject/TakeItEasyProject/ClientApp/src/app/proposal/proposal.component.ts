@@ -57,7 +57,6 @@ export class ProposalComponent implements OnInit {
       this.vacation.authorId = this.user.entityId;
       this.vacationService.propose(this.vacation).subscribe(
         res => {
-         console.log(res);
          this.showToastr = true;
         },
         err => {

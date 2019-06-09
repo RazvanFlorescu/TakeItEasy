@@ -3,9 +3,33 @@
     <div class="parallax">
       <div class="cover-parallax">
         <div class="search-vacation">
-              <input class="form-control search-input" type="text" placeholder="Search..." aria-label="Search">
+              <div class="title">
+                <strong>Let's</strong> find a vacation
+              </div>
+              <div class="search-side">
+                <div class="input-side"(click)="toggleDropDown()" >
+                    <input class="form-control search-input" type="text" placeholder="Type here..." [(ngModel)]="searchString" aria-label="Search">
+                    <button><i class="fa fa-search"></i></button>
+                </div>
+                <div *ngIf="showDropDown && vacations && searchString !== ''" class="dorpdown-state-container" (clickOutside)="toggleDropDown()">
+                  <div (click)="selectVacation(getDestinationAddress(vacation))" class="state" *ngFor="let vacation of vacations | vacationFilterPipe: searchString"> {{getDestinationAddress(vacation)}}</div>
+                </div>
+              </div>
+        </div>
+        <div class="chevron-side" (click)="goToVacations()">
+          <div class="chevron-container">
+              <div class="chevron"></div>
+              <div class="chevron"></div>
+              <div class="chevron"></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="row equal card-container" id="scrollHere">
+      <div class="col-sm-4 d-flex pb-3 vacation-card" *ngFor="let vacation of vacations | vacationFilterPipe: searchString">
+          <app-trip-card [vacation]="vacation"></app-trip-card>
+      </div>
+ </div>
   </div>

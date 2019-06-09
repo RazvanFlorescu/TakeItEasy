@@ -27,6 +27,10 @@ namespace BusinessLogicReader.CqrsCore.QueryHandlers.Images
             Image imageResult = _repository.ExecuteQueryFirstOrDefault<Image>(
                 ImageQueryBuilder.GetByEntityId(query.EntityId));
 
+            if (imageResult == null)
+            {
+                return null;
+            }
 
             ImageDto imageDto = new ImageDto
             {

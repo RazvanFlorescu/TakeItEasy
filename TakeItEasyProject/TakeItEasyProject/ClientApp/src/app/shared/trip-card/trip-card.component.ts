@@ -31,7 +31,7 @@ export class TripCardComponent implements OnInit {
   private setCoverImage() {
     this.imageService.getImageByEntityId(this.vacation.entityId).subscribe(
       res => {
-        this.vacation.image = res.content
+        this.vacation.image = res!==null? res.content : undefined;
       },
       err => {
         console.log(err);

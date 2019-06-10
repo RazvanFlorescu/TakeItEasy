@@ -1,5 +1,26 @@
-<p>
-  vacation-details works!
-</p>
-{{user | json}}
-{{vacation | json}}
+<div class="content">
+  <div class="card" *ngIf="vacation">
+    <img *ngIf="vacation.image" src={{vacation.image}} class="card-img-top" >
+    <img *ngIf="!vacation.image" src="./../../../assets/images/noCoverImage.jpg" class="card-img-top" >
+    <div class="card-body">
+        <img *ngIf="!currentUser" src="./../../../assets/images/no-profile-image.png" class="user-circle">
+        <img *ngIf="currentUser" src={{currentUser.image}} class="user-circle" data-toggle="tooltip" data-placement="top" title="Added by {{currentUser.firstName}}" >
+      <h5 class="card-title">{{vacation.title}}
+      </h5> 
+      <p class="card-text" >{{vacation.description}}</p>
+      <p class="card-text" ><strong>{{vacation.startDate | date}}</strong> / <strong>{{vacation.endDate|date}}</strong></p>
+      <p class="card-text"><small class="text-muted">Last updated {{vacation.lastChangedDate | timeAgo}}</small></p>
+    </div>
+  </div>
+
+  <agm-map>
+      <agm-direction
+        [origin]="origin" 
+        [destination]="destination" 
+        [markerOptions]="markerOptions" 
+        [renderOptions]="renderOptions"
+        [waypoints]="wayPoints"
+        >
+      </agm-direction>
+  </agm-map>
+</div>

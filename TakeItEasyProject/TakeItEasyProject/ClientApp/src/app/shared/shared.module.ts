@@ -41,7 +41,7 @@ import { TimeAgoPipe } from 'time-ago-pipe';
   exports: [MenuComponent, HeaderComponent, FooterComponent,
      SignInModalComponent, SignUpModalComponent, TripCardComponent,
      AddTripCardComponent, InfoComponent, UploadUserImageComponent,
-     AutocompleteLocationComponent],
+     AutocompleteLocationComponent, TimeAgoPipe],
   providers: [LocationService, ModalDirective]
 })
 export class SharedModule { }

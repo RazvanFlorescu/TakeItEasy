@@ -20,7 +20,7 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     FileDropModule,
     AgmCoreModule.forRoot({
-     // apiKey: 'AIzaSyA9bGZv1g2dvSGhbs4sc045YfT4RbaVwkI'
+      apiKey: 'AIzaSyA9bGZv1g2dvSGhbs4sc045YfT4RbaVwkI'
     }),
     AgmDirectionModule
   ],

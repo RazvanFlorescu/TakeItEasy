@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, EventEmitter, Output } from '@angular/core';
-import { InfoWindow } from '@agm/core/services/google-maps-types';
 import { TripLocation, Vacation, LocationType } from 'src/app/shared/models/Vacation';
 
 declare const google: any;

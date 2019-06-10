@@ -40,7 +40,10 @@ export class TripCardComponent implements OnInit {
   }
 
   public onTap() {
+    this.vacation.image = null;
+    this.currentUser.image = null;
     let navigationExtras: NavigationExtras = {
+        
         queryParams: {
           vacation: JSON.stringify(this.vacation),
           user: JSON.stringify(this.currentUser)

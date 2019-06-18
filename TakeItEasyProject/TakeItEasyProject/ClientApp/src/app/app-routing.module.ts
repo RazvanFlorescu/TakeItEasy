@@ -5,6 +5,7 @@ import { VacationComponent } from './vacation/vacation.component';
 import { ProposalComponent } from './proposal/proposal.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { VacationDetailsComponent } from './vacation/vacation-details/vacation-details.component';
+import { NotificationPageComponent } from './shared/notification-page/notification-page.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'proposal', component: ProposalComponent },
   { path: 'my-profile', component: MyProfileComponent },
   { path: 'my-profile/propose', component: ProposalComponent },
+  { path: 'notification', component: NotificationPageComponent }
 ];
 
 @NgModule({

@@ -45,12 +45,12 @@ namespace DataAccessWriter.Implementations
         public virtual void Update<T>(T entity)
             where T : BaseEntity
         {
-            _context.Set<T>().Update(entity);
+            _context.Set<T>().Add(entity);
         }
 
         public void Save()
         {
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
         }
     }
 }

@@ -14,6 +14,8 @@ namespace Persistence
         public DbSet<Image> Images { get; set; }
         public DbSet<Vacation> Vacations { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<VacationJoining> VacationJoinings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,6 +23,8 @@ namespace Persistence
             modelBuilder.ApplyConfiguration(new ImageConfiguration());
             modelBuilder.ApplyConfiguration(new VacationConfiguration());
             modelBuilder.ApplyConfiguration(new LocationConfiguration());
+            modelBuilder.ApplyConfiguration(new NotificationConfiguration());
+            modelBuilder.ApplyConfiguration(new VacationJoiningsConfiguration());
         }
     }
 }

@@ -1,0 +1,61 @@
+<div class="content">
+    <div class="card" *ngIf="vacation">
+      <img *ngIf="vacation.image && vacation.image!==null" src={{vacation.image}} class="card-img-top" >
+      <img *ngIf="!vacation.image || vacation.image === null" src="./../../../assets/images/noCoverImage.jpg" class="card-img-top" >
+      <div class="card-body">
+          <img *ngIf="!currentUser" src="./../../../assets/images/no-profile-image.png" class="user-circle">
+          <img *ngIf="currentUser" src={{currentUser.image}} class="user-circle" data-toggle="tooltip" data-placement="top" title="Added by {{currentUser.firstName}}" >
+        <h5 class="card-title">{{vacation.title}}
+        </h5> 
+        <p class="card-text" >{{vacation.description}}</p>
+        <div class="dates-cover" >
+          <div class="date-text">
+              <p><i class="far fa-calendar-alt fa-sm"></i>Starts on</p>
+              <div class="date">
+                  {{vacation.startDate | date}}
+              </div>
+          </div>
+          <div class="slash">/</div>
+          <div class="date-text">
+              <p><i class="far fa-calendar-alt fa-sm"></i>Ends on</p>
+              <div class="date">
+                  {{vacation.endDate | date}}
+              </div>
+            </div>
+        </div>
+        <p class="card-text"><small class="text-muted">Last updated {{vacation.lastChangedDate | timeAgo}}</small></p>
+      </div>
+    </div>
+    <div class="mesage-part" *ngIf="isRequestVacationNotification() && vacationJoining && isRequested()">
+          <img *ngIf="!author || author.image===null" src="./../../../assets/images/no-profile-image.png" class="author-circle">
+          <img *ngIf="author && author.image!==null" src={{author.image}} class="author-circle">
+          <div *ngIf="author" class="text-notification"><strong>{{author.firstName}} {{author.lastName}}</strong> wants to join the holiday you've been proposing</div>
+          <button type="button" class="btn btn-light-green" (click)="accept()">Accept</button>
+          <button type="button" class="btn btn-light-green reject" (click)="reject()">Reject</button>        
+    </div>
+    <div class="mesage-part" *ngIf="isRequestVacationNotification() && vacationJoining && isAccepted()">
+        <img *ngIf="!author || author.image===null" src="./../../../assets/images/no-profile-image.png" class="author-circle">
+        <img *ngIf="author && author.image!==null" src={{author.image}} class="author-circle">
+        <div *ngIf="author" class="text-notification"><strong>{{author.firstName}} {{author.lastName}}</strong> was accepted as a participant for this trip</div>
+        <i class="far fa-check-circle fa-6x"></i>
+    </div>
+    <div class="mesage-part" *ngIf="isRequestVacationNotification() && vacationJoining && isRejected()">
+        <img *ngIf="!author || author.image===null" src="./../../../assets/images/no-profile-image.png" class="author-circle">
+        <img *ngIf="author && author.image!==null" src={{author.image}} class="author-circle">
+        <div *ngIf="author" class="text-notification">The request sent by <strong>{{author.firstName}} {{author.lastName}}</strong> was rejected</div>
+        <i class="far fa-times-circle fa-6x"></i>
+    </div>
+
+    <div class="mesage-part" *ngIf="isAcceptedVacationNotification()">
+        <img *ngIf="!author || author.image===null" src="./../../../assets/images/no-profile-image.png" class="author-circle">
+        <img *ngIf="author && author.image!==null" src={{author.image}} class="author-circle">
+        <div *ngIf="author" class="text-notification"><strong>{{author.firstName}} {{author.lastName}}</strong> accepted you as a participant for this trip</div>
+        <i class="far fa-check-circle fa-6x"></i>
+    </div>
+    <div class="mesage-part" *ngIf="isRejectedVacationNotification()">
+        <img *ngIf="!author || author.image===null" src="./../../../assets/images/no-profile-image.png" class="author-circle">
+        <img *ngIf="author && author.image!==null" src={{author.image}} class="author-circle">
+        <div *ngIf="author" class="text-notification"><strong>{{author.firstName}} {{author.lastName}}</strong> rejected you as a participant for this trip</div>
+        <i class="far fa-times-circle fa-6x"></i>
+    </div>
+</div>

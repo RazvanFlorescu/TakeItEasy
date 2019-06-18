@@ -17,22 +17,15 @@ export class VacationComponent implements OnInit {
   showDropDown = false;
   searchString = '';
 
-  get user() {
-    return this.userService.getLoggedUser();
-  }
-  
-
   ngOnInit() {
-    if(this.user && this.user.entityId) {
-      this.vacationService.getVacationsByUserId(this.user.entityId).subscribe(
-       res => {
-         this.vacations = res;
-       },
-       err => {
-         console.log(err);
-       }
-      );
-   }
+    this.vacationService.getAllVacations().subscribe(
+      res => {
+        this.vacations = res;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   toggleDropDown() {

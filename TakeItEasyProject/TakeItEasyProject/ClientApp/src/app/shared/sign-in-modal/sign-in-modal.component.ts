@@ -50,6 +50,7 @@ export class SignInModalComponent implements OnChanges, OnInit {
 
     this.userService.login(this.user).subscribe(
       res => {
+        location.reload();
         this.userService.setLoggedUser(res);
         this.closeSignInModal();
       },

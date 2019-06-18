@@ -54,7 +54,8 @@ export class SignUpModalComponent implements OnChanges, OnInit  {
 
     this.userService.register(this.user).subscribe(
       res => {
-        this.closeSignUpModal()
+        this.closeSignUpModal();
+        location.reload();
       },
       err => {
         console.log(err);

@@ -1,17 +1,26 @@
+.content {
+    display: flex !important;
+}
+
 .card {
     background-color: #956a2e;
     height: 74vh;
     max-width: 382px;
+    min-width: 360px;
     margin: 0 !important;
+    overflow-y: auto;
 }
   
 .card-body {
     background-color: #956a2e;
     color:  #fff4e3;
+    padding-bottom: 0px;
 }
 
 .text-muted {
     color:  #c4b49d !important;
+    position: absolute;
+    bottom: 20px;
 }
 
 .card-text {
@@ -23,11 +32,12 @@
 
 .card-img-top {
     max-height: 350px;
+    border-radius: 0;
 }
 
 .card-title {
     text-decoration: underline;
-    font-weight: 600;
+    font-weight: 600 !important;
 }
 
 .user-circle {
@@ -36,7 +46,7 @@
     border-radius: 50%;
     float: right;
     margin-top: -45px;
-    margin-right: 43px;
+    margin-right: 9px;
     border: 6px solid #956a2e;
     background-position: center;
     background-repeat: no-repeat;
@@ -45,9 +55,210 @@
 
 agm-map {
     width: 100%;
-    height: 300px;
+    height: 74vh;
+    margin-top: 1px;
 }
 
-content {
-    display: flex !important;
+.map{
+    width: 100%;
+    height: 74vh;
+    position: relative; 
 }
+
+.dates-cover {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .date-text {
+        p {
+            font-family: "Calibri";
+            font-size: 18px;
+            font-weight: 550;
+            margin-bottom: 3px;
+        }
+        display: flex;
+        flex-direction: column;
+        .date {
+            font-family: "Calibri";
+            font-size: 15px;
+            font-weight: 400;
+        }
+    }
+    .slash {
+        font-family: "Calibri";
+        font-size: 44px;
+        font-weight: 500;
+        margin-bottom: 0px;
+    }
+}
+
+.join-button {
+    position: absolute;
+    z-index: 1;
+    margin-top:250px;
+    height: 60px;
+    width: 23px;
+    background-color: #4c3a1d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 4px 1px 11px rgba(0, 0, 0, 0.1);
+    .fa-hand-point-left {
+        color: white;
+        margin-right: 2px;
+    }
+
+    .text-join{
+        color: white;
+        font-family: "Calibri";
+        font-weight: 600;
+        display: none;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+    }
+
+    &:hover {
+        animation-name: joinButtonFrame;
+        animation-duration: 0.8s;
+        animation-timing-function: ease-in-out;
+        animation-delay: 0s;
+        animation-iteration-count: 1;
+        animation-direction: alternate;
+        animation-fill-mode: forwards;
+        animation-play-state: running;
+        .text-join {
+            display: block;
+        }
+        .fa-hand-point-left {
+            display: none;
+        }
+    }
+
+    @keyframes joinButtonFrame {
+        0% {
+            
+        }
+        100% {
+            background-color: #acb52a;
+        }
+    }
+}
+
+.request-button {
+    position: absolute;
+    z-index: 1;
+    margin-top:250px;
+    height: 60px;
+    width: 23px;
+    background-color: #4c3a1d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 4px 1px 11px rgba(0, 0, 0, 0.1);
+    .fa-pray {
+        color: white;
+        margin-right: 2px;
+    }
+}
+
+.accepted-button {
+    position: absolute;
+    z-index: 1;
+    margin-top:250px;
+    height: 60px;
+    width: 23px;
+    background-color: #acb52a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 4px 1px 11px rgba(0, 0, 0, 0.1);
+    .fa-check {
+        color: white;
+        margin-right: 2px;
+    }
+}
+
+.rejected-button {
+    position: absolute;
+    z-index: 1;
+    margin-top:250px;
+    height: 60px;
+    width: 23px;
+    background-color: #312513 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 4px 1px 11px rgba(0, 0, 0, 0.1);
+    .fa-times {
+        color: white;
+        margin-right: 2px;
+    }
+}
+
+.alert {
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 17px;
+    padding-bottom: 10px;
+    color: white;
+    font-family: "Calibri";
+    font-size: 19px;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+    position: absolute;
+    top:100;
+  }
+
+  .alert.success {background-color: #66764c;}
+  
+  .btn-light-green {
+    color: white;
+    font-family: "Calibri" !important;
+    font-size: 15px !important;
+    float: right;
+    margin-top: 23px !important;
+    min-width: 67px !important;
+    background-color: #9ea525 !important;
+  }
+
+  .cancel {
+        background-color: #788463 !important;
+  }
+
+  .flex {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+  .black-cover {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.78);
+  }
+
+  .pop-up-button {
+      min-width: 67px;
+      margin-top: 8px;
+      background-color: #9ea525;
+      color: white;
+      font-family: "Calibri";
+      font-size: 15px;
+  }
+
+  .fa-calendar-alt {
+      margin-right: 9px;
+  }

@@ -68,6 +68,38 @@ namespace Persistence.Migrations
                     b.ToTable("Locations");
                 });
 
+            modelBuilder.Entity("Entities.Notification", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid>("AuthorId");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasMaxLength(7);
+
+                    b.Property<Guid>("EntityId");
+
+                    b.Property<bool?>("IsViewed");
+
+                    b.Property<DateTime>("LastChangedDate")
+                        .HasMaxLength(7);
+
+                    b.Property<int?>("NotificationType");
+
+                    b.Property<Guid>("ReceiverId");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(150);
+
+                    b.Property<Guid>("VacationId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -145,6 +177,30 @@ namespace Persistence.Migrations
                         .HasFilter("[ImageId] IS NOT NULL");
 
                     b.ToTable("Vacations");
+                });
+
+            modelBuilder.Entity("Entities.VacationJoining", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasMaxLength(7);
+
+                    b.Property<Guid>("EntityId");
+
+                    b.Property<DateTime>("LastChangedDate")
+                        .HasMaxLength(7);
+
+                    b.Property<int>("StatusJoining");
+
+                    b.Property<Guid>("UserId");
+
+                    b.Property<Guid>("VacationId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("VacationJoinings");
                 });
 
             modelBuilder.Entity("Entities.User", b =>

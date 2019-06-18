@@ -8,7 +8,7 @@
               </div>
               <div class="search-side">
                 <div class="input-side"(click)="toggleDropDown()" >
-                    <input class="form-control search-input" type="text" placeholder="Type here..." [(ngModel)]="searchString" aria-label="Search">
+                    <input class="form-control search-input" type="text" placeholder="Type here a destination..." [(ngModel)]="searchString" aria-label="Search">
                     <button><i class="fa fa-search"></i></button>
                 </div>
                 <div *ngIf="showDropDown && vacations && searchString !== ''" class="dorpdown-state-container" (clickOutside)="toggleDropDown()">

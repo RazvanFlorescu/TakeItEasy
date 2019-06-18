@@ -31,3 +31,15 @@ export enum LocationType {
     destination = 1,
     wayPoint = 2
   }
+
+export class VacationJoining {
+    vacationId: string;
+    userId: string;
+    statusJoining?: StatusJoining;
+}
+
+export enum StatusJoining {
+    requested = 0,
+    accepted = 1,
+    rejected = 2
+}

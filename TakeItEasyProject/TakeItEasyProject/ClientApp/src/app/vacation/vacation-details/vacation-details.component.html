@@ -1,26 +1,63 @@
 <div class="content">
   <div class="card" *ngIf="vacation">
-    <img *ngIf="vacation.image" src={{vacation.image}} class="card-img-top" >
-    <img *ngIf="!vacation.image" src="./../../../assets/images/noCoverImage.jpg" class="card-img-top" >
+    <img *ngIf="vacation.image && vacation.image!==null" src={{vacation.image}} class="card-img-top" >
+    <img *ngIf="!vacation.image || vacation.image===null" src="./../../../assets/images/noCoverImage.jpg" class="card-img-top" >
     <div class="card-body">
         <img *ngIf="!currentUser" src="./../../../assets/images/no-profile-image.png" class="user-circle">
         <img *ngIf="currentUser" src={{currentUser.image}} class="user-circle" data-toggle="tooltip" data-placement="top" title="Added by {{currentUser.firstName}}" >
       <h5 class="card-title">{{vacation.title}}
       </h5> 
       <p class="card-text" >{{vacation.description}}</p>
-      <p class="card-text" ><strong>{{vacation.startDate | date}}</strong> / <strong>{{vacation.endDate|date}}</strong></p>
+      <div class="dates-cover" >
+        <div class="date-text">
+            <p><i class="far fa-calendar-alt fa-sm"></i>Starts on</p>
+            <div class="date">
+                {{vacation.startDate | date}}
+            </div>
+        </div>
+        <div class="slash">/</div>
+        <div class="date-text">
+            <p><i class="far fa-calendar-alt fa-sm"></i>Ends on</p>
+            <div class="date">
+                {{vacation.endDate | date}}
+            </div>
+          </div>
+      </div>
       <p class="card-text"><small class="text-muted">Last updated {{vacation.lastChangedDate | timeAgo}}</small></p>
     </div>
   </div>
-
-  <agm-map>
-      <agm-direction
-        [origin]="origin" 
-        [destination]="destination" 
-        [markerOptions]="markerOptions" 
-        [renderOptions]="renderOptions"
-        [waypoints]="wayPoints"
-        >
-      </agm-direction>
-  </agm-map>
+  <div class="map">
+      <button *ngIf="user && vacation.authorId !== user.entityId && !vacationJoining" class="join-button" (click)="showToaster()">
+          <div class="text-join">Join</div>
+          <i class="fas fa-hand-point-left fa-sm"></i>
+      </button>
+      <div *ngIf="user && vacation.authorId !== user.entityId && vacationJoining && isRequested()" class="request-button" (click)="showToaster()" data-toggle="tooltip" data-placement="top" title="The request was sent">
+        <i class="fas fa-pray fa-sm"></i>
+      </div>
+      <div *ngIf="user && vacation.authorId !== user.entityId && vacationJoining && isAccepted()" class="accepted-button"  data-toggle="tooltip" data-placement="top" title="You are a participant of this trip">
+        <i class="fas fa-check fa-sm"></i>
+      </div>
+      <div *ngIf="user && vacation.authorId !== user.entityId && vacationJoining && isRejected()" class="rejected-button"  data-toggle="tooltip" data-placement="top" title="Your request was rejected">
+        <i class="fas fa-times fa-sm"></i>
+      </div>
+      <agm-map>
+          <agm-direction
+            [origin]="origin" 
+            [destination]="destination" 
+            [markerOptions]="markerOptions" 
+            [renderOptions]="renderOptions"
+            [waypoints]="wayPoints"
+            >
+          </agm-direction>
+      </agm-map>
+  </div>
 </div>
+<div class="black-cover" *ngIf="showToastr">
+    <div class="alert success">
+      We'll send a request to the proposant.
+      <div class="flex">
+        <button type="button" class="btn btn-light-green cancel" (click)="cancel()">Cancel</button>        
+        <button type="button" class="btn btn-light-green" (click)="sendRequest()">Ok</button>
+      </div>
+    </div>
+  </div>

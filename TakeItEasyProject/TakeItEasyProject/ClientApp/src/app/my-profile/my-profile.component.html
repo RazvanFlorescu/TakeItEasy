@@ -20,12 +20,18 @@
         </li>
       </ul>
       <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-vacations" role="tabpanel" aria-labelledby="pills-vacations-tab">
-          <div class="row equal card-container">
-            <div class="col-sm-4 d-flex pb-3 vacation-card" *ngFor="let vacation of vacations">
-              <app-trip-card [vacation]="vacation"></app-trip-card>
-            </div>
-          </div>        
+        <div  class="tab-pane fade show active" id="pills-vacations" role="tabpanel" aria-labelledby="pills-vacations-tab">
+          <div *ngIf="joiningVacations && joiningVacations.length > 0" class="row equal card-container">
+              <div class="col-sm-4 d-flex pb-3 vacation-card" *ngFor="let vacation of joiningVacations">
+                <app-trip-card [vacation]="vacation"></app-trip-card>
+              </div>
+          </div>
+          <div class="info-container" *ngIf="joiningVacations && joiningVacations.length === 0">
+              <i class="fas fa-sad-cry fa-10x"></i>
+              <p>
+                 Sorry, no vacations to show yet.
+              </p>
+            </div>        
         </div>
         <div class="tab-pane fade" id="pills-proposals" role="tabpanel" aria-labelledby="pills-proposals-tab">
             <div class="row equal card-container">

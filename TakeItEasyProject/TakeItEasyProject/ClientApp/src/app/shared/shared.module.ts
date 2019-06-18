@@ -19,11 +19,13 @@ import { InfoComponent } from './info/info.component';
 import { AutocompleteLocationComponent } from './autocomplete-location/autocomplete-location.component';
 import { AgmCoreModule } from '@agm/core';
 import { TimeAgoPipe } from 'time-ago-pipe';
+import { ClickOutsideModule } from 'ng-click-outside';
+import { NotificationPageComponent } from './notification-page/notification-page.component';
 
 @NgModule({
   declarations: [MenuComponent, HeaderComponent, FooterComponent,
      SignInModalComponent, SignUpModalComponent, UploadUserImageComponent, TripCardComponent,
-     AddTripCardComponent, InfoComponent, AutocompleteLocationComponent, TimeAgoPipe],
+     AddTripCardComponent, InfoComponent, AutocompleteLocationComponent, TimeAgoPipe, NotificationPageComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -36,7 +38,8 @@ import { TimeAgoPipe } from 'time-ago-pipe';
     FileDropModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA9bGZv1g2dvSGhbs4sc045YfT4RbaVwkI'
-    })
+    }),
+    ClickOutsideModule,
   ],
   exports: [MenuComponent, HeaderComponent, FooterComponent,
      SignInModalComponent, SignUpModalComponent, TripCardComponent,

@@ -12,22 +12,12 @@
       </div>
     </div>
   </div>
-
+ <div class="title"> Most Wanted</div>
     <div id="carousel-example-multi" class="carousel slide carousel-multi-item padding-30" data-ride="carousel" data-interval="2000">
         <div class="carousel-inner" role="listbox">
           <div class="carousel-item active">
-            <div class="col-12 col-md-4 padding-30 max-width">
-                <app-trip-card></app-trip-card>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="col-12 col-md-4 padding-30 max-width">
-                <app-trip-card></app-trip-card>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="col-12 col-md-4 padding-30 max-width">
-                <app-trip-card></app-trip-card>
+            <div class="col-12 col-md-4 padding-30 max-width" *ngFor="let vacation of vacations">
+                <app-trip-card [vacation]="vacation"></app-trip-card>
             </div>
           </div>
         </div>

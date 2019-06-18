@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using BusinessLogicCommon.QueryHandlers;
 using BusinessLogicReader.CqrsCore.Queries.Images;
+using BusinessLogicReader.CqrsCore.Queries.Notifications;
 using BusinessLogicReader.CqrsCore.Queries.Users;
 using BusinessLogicReader.CqrsCore.Queries.Vacations;
 using BusinessLogicReader.CqrsCore.QueryHandlers.Images;
+using BusinessLogicReader.CqrsCore.QueryHandlers.Notifications;
 using BusinessLogicReader.CqrsCore.QueryHandlers.Users;
 using BusinessLogicReader.CqrsCore.QueryHandlers.Vacations;
 using BusinessLogicWriter.CqrsCore;
@@ -27,6 +29,21 @@ namespace BusinessLogicReader.Configurations
                 .AddScoped<IQueryHandler<GetLocationsByVacationIdQuery, IList<LocationDto>>,
                     GetLocationsByVacationIdQueryHandler>();
             services.AddScoped<IQueryHandler<GetImageByEntityIdQuery, ImageDto>, GetImageByEntityIdQueryHandler>();
+            services
+                .AddScoped<IQueryHandler<GetNotificationsByReceiverIdQuery, IList<NotificationDto>>,
+                    GetNotificationsByReceiverIdQueryHandler>();
+            services
+                .AddScoped<IQueryHandler<GetAllVacationsQuery, IList<VacationDto>>,
+                    GetAllVacationsQueryHandler>();
+            services.AddScoped<IQueryHandler<GetAllJoiningsByUserIdQuery, IList<VacationJoiningDto>>, GetAllJoiningsByUserIdQueryHandler>();
+            services.AddScoped<IQueryHandler<GetAllJoiningsByVacationIdQuery, IList<VacationJoiningDto>>, GetAllJoiningsByVacationIdQueryHandler>();
+            services.AddScoped<IQueryHandler<GetJoiningByVacationIdAndUserIdQuery, VacationJoiningDto>, GetJoiningByVacationIdAndUserIdQueryHandler>();
+            services
+                .AddScoped<IQueryHandler<GetVacationByEntityIdQuery, VacationDto>, GetVacationByEntityIdQueryHandler>();
+            services.AddScoped<IQueryHandler<GetMostWantedQuery, IList<VacationDto>>, GetMostWantedQueryHandler>();
+            services
+                .AddScoped<IQueryHandler<GetVacationsByUserIdWhereThatUserIsJoinedThereQuery, IList<VacationDto>>,
+                    GetVacationsByUserIdWhereThatUserIsJoinedThereQueryHandler>();
 
             services.AddScoped<Dispatcher>();
         }

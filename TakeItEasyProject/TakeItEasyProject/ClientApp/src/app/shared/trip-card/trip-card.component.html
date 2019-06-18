@@ -3,8 +3,8 @@
     <img *ngIf="!vacation.image" src="./../../../assets/images/noCoverImage.jpg" class="card-img-top" >
     <div class="card-body">
       <h5 class="card-title">{{vacation.title}}
-        <img *ngIf="!currentUser" src="./../../../assets/images/no-profile-image.png" class="user-circle">
-        <img *ngIf="currentUser" src={{currentUser.image}} class="user-circle" data-toggle="tooltip" data-placement="top" title="Added by {{currentUser.firstName}}" >
+        <img *ngIf="!currentUser || currentUser.image === null" src="./../../../assets/images/no-profile-image.png" class="user-circle">
+        <img *ngIf="currentUser && currentUser.image !== null" src={{currentUser.image}} class="user-circle" data-toggle="tooltip" data-placement="top" title="Added by {{currentUser.firstName}}" >
       </h5> 
       <p class="card-text" *ngIf="isBiggerThan130(vacation.description)">{{vacation.description | slice:0:130 }}...</p>
       <p class="card-text" *ngIf="!isBiggerThan130(vacation.description)">{{vacation.description}}</p>

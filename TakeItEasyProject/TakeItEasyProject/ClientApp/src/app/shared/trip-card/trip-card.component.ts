@@ -3,7 +3,7 @@ import { Vacation } from '../models/Vacation';
 import { ImageService } from '../services/image.service';
 import { UserService } from '../services/user.service';
 import { User } from '../models/User';
-import {Router, NavigationExtras} from "@angular/router";
+import { Router, NavigationExtras } from "@angular/router";
 
 @Component({
   selector: 'app-trip-card',
@@ -20,7 +20,7 @@ export class TripCardComponent implements OnInit {
   ngOnInit() {
     if(this.vacation) {
       this.setCoverImage();
-      this.setCurrentUser();
+      this.setCurrentUser(this.vacation.authorId);
     }
   }
 
@@ -32,6 +32,18 @@ export class TripCardComponent implements OnInit {
     this.imageService.getImageByEntityId(this.vacation.entityId).subscribe(
       res => {
         this.vacation.image = res!==null? res.content : undefined;
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
+  private setImageUser(entityId: string) {
+    this.imageService.getImageByEntityId(entityId).subscribe(
+      res => {
+        console.log(res);
+        this.currentUser.image = res!==null? res.content : undefined;
       },
       err => {
         console.log(err);
@@ -52,13 +64,16 @@ export class TripCardComponent implements OnInit {
     this.router.navigate(['vacation/details'], navigationExtras);
 }
 
-  private setCurrentUser() {
-    const user = this.userService.getLoggedUser()
-    if(user.entityId === this.vacation.authorId) {
-      console.log("hei")
-      this.currentUser = user
-      console.log(user);
-    }
+  private setCurrentUser(authorId: string) {
+    this.userService.getUserByEntityId(authorId).subscribe(
+      res => {
+        this.currentUser = res;
+        console.log(res);
+        this.setImageUser(this.currentUser.entityId);
+      },
+      err => {
+        console.log(err);
+      }
+     );
   }
-
 }

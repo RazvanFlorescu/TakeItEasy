@@ -99,27 +99,32 @@
     padding-bottom: 10px;
     color: white;
     font-family: "Calibri";
-    font-size: 19px;
+    font-size: 18px;
     opacity: 1;
     transition: opacity 0.6s;
     margin-bottom: 15px;
     position: absolute;
     top:100;
+    strong {
+        font-size: 20px;
+    }
   }
 
-  .alert.success {background-color: #4CAF50;}
+  .alert.success {background-color: #66764c;}
   
   .btn-light-green {
     color: white;
     font-family: "Calibri";
     font-size: 13px;
-    float: right;
+    margin: auto;
     margin-top: 16px;
-    margin-right: 0px;
+    margin-bottom: 5px;
+    background-color: #9ea525 !important;
   }
 
   .width-100 {
       width: 100%;
+      display: flex;
   }
 
   .black-cover {

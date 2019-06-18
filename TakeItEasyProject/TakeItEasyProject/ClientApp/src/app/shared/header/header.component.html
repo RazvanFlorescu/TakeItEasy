@@ -2,9 +2,12 @@
   <div class="logo"></div>
   <div class="right-side">
     <div class="comercial-logos">
-      <img src="./../../assets/images/instagram.png" class="logo">
-      <img src="./../../assets/images/facebook.png" class="logo">
-      <img src="./../../assets/images/twitter.png" class="logo">
+      <img *ngIf="!user || !user.image" src="../../../assets/images/no-profile-image.png" class="logo" routerLink="my-profile">
+      <img *ngIf="user" src="{{user.image}}" class="logo" routerLink="my-profile">      
+      <div class="notification" (click)="displayNotifications()" (clickOutside)="hideNotifications()">
+          <span class="notification-point" *ngIf="showRedPiontNotification()"></span>
+          <i class="fas fa-bell fa-lg"></i>
+      </div>
     </div>
     <div class="settings" (click)="openMenu()">
       <span class="point"></span>
@@ -22,6 +25,30 @@
   <span class="settings-element" [ngClass]="{'settings-box-closed': !isMenuOpen}" (click)="openSignUpModal()">Sign up</span>
   <span *ngIf="!user" class="settings-element" [ngClass]="{'settings-box-closed': !isMenuOpen}" (click)="openSignInModal()">Sign in</span>
   <span *ngIf="user" class="settings-element" [ngClass]="{'settings-box-closed': !isMenuOpen}" (click)="logOut()">Log out</span>
+</div>
+
+<div class="triangle" *ngIf="showNotification"></div>
+<div class="notification-content" *ngIf="showNotification">
+  <div class="notification-header">
+    Notifications
+  </div>
+  <div *ngIf="notifications && notifications.length > 0" class="notification-body">
+      <div class="card-notification" (click)="openNotification(notification)" *ngFor="let notification of notifications" [ngClass]="{'opacity-notification': notification.isViewed}">
+        <img *ngIf="notification.userPicture" class="notification-image" src="{{notification.userPicture}}">
+        <img *ngIf="!notification.userPicture" class="notification-image" src="./../../../assets/images/no-profile-image.png">
+        <div class="right-side">
+            <div class="notification-text">{{notification.text}}</div>
+            <div class="notification-info">
+                <i class="fas fa-info-circle fa-xs"></i> {{notification.lastChangedDate | timeAgo}}
+            </div>
+        </div>
+      </div>
+  </div>
+  <div *ngIf="!notifications || notifications.length === 0" class="notification-body">
+    <div class="text-not-find">
+      No notifications yet.
+    </div>  
+  </div>
 </div>
 
 

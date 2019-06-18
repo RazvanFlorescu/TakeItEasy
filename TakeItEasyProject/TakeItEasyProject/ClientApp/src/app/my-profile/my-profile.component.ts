@@ -15,6 +15,7 @@ export class MyProfileComponent implements OnInit {
 
   public signInClicked: boolean;
   public vacations: Vacation[];
+  public joiningVacations: Vacation[];
 
   get user() {
     return this.userService.getLoggedUser();
@@ -30,6 +31,15 @@ export class MyProfileComponent implements OnInit {
           console.log(err);
         }
        );
+
+       this.vacationService.getVacationsByUserIdWhereThatUserIsJoinedThere(this.user.entityId).subscribe(
+         res => {
+           this.joiningVacations = res;
+         },
+         err => {
+           console.log(err);
+         }
+       )
     }
   }
 }

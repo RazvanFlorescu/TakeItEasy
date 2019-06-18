@@ -19,8 +19,12 @@ export class UserService {
     return this.http.post<User>(this.baseUrl + '/login', user);
   }
 
-  setLoggedUser(user:User) {
+  setLoggedUser(user: User) {
     localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  getUserByEntityId(userId: string) {
+    return this.http.get<User>(this.baseUrl + '/' + userId);
   }
 
   getLoggedUser (): User {

@@ -16,6 +16,7 @@ namespace Persistence
         public DbSet<Location> Locations { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<VacationJoining> VacationJoinings { get; set; }
+        public DbSet<WishItem> WishItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,6 +26,7 @@ namespace Persistence
             modelBuilder.ApplyConfiguration(new LocationConfiguration());
             modelBuilder.ApplyConfiguration(new NotificationConfiguration());
             modelBuilder.ApplyConfiguration(new VacationJoiningsConfiguration());
+            modelBuilder.ApplyConfiguration(new WishItemConfiguration());
         }
     }
 }

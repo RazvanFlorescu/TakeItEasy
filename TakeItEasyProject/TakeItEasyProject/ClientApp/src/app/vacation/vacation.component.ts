@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { UserService } from '../shared/services/user.service';
 import { VacationService } from '../shared/services/vacation.service';
 import { Vacation, LocationType } from '../shared/models/Vacation';
+import { VacationFilterPipe } from '../shared/pipes/vacation-filter-pipe';
 
 @Component({
   selector: 'app-vacation',
@@ -10,7 +11,7 @@ import { Vacation, LocationType } from '../shared/models/Vacation';
 })
 export class VacationComponent implements OnInit {
 
-  constructor(private userService: UserService, private vacationService: VacationService) { }
+  constructor(private userService: UserService, private vacationService: VacationService, private vacationpipe: VacationFilterPipe) { }
 
   vacations: Vacation[];
   @ViewChild('divToScroll') divToScroll: ElementRef;
@@ -43,5 +44,9 @@ export class VacationComponent implements OnInit {
 
   goToVacations() {
    document.getElementById('scrollHere').scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  }
+
+  getVacationsFiltred() {
+    return this.vacationpipe.transform(this.vacations, this.searchString) 
   }
 }

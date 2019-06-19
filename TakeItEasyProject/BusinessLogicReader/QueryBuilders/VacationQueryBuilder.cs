@@ -26,7 +26,7 @@ namespace BusinessLogicReader.QueryBuilders
         public static string GetTopFiveMostWantedVacations()
         {
             return
-                " Select * from (SELECT Top 5 VacationId FROM ( SELECT EntityId, MAX(LastChangedDate) AS HIGHERDATE from VacationJoinings  group by EntityId) m JOIN VacationJoinings u on " +
+                " Select * from (SELECT Top 3 VacationId FROM ( SELECT EntityId, MAX(LastChangedDate) AS HIGHERDATE from VacationJoinings  group by EntityId) m JOIN VacationJoinings u on " +
             " m.HIGHERDATE = u.LastChangedDate and m.EntityId = u.EntityId where u.DeletedDate is null group by VacationId order by count(VacationId) desc)vj join Vacations v on vj.VacationId = v.EntityId";
         }
 

@@ -21,6 +21,7 @@ import { AgmCoreModule } from '@agm/core';
 import { TimeAgoPipe } from 'time-ago-pipe';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { NotificationPageComponent } from './notification-page/notification-page.component';
+import { VacationFilterPipe } from './pipes/vacation-filter-pipe';
 
 @NgModule({
   declarations: [MenuComponent, HeaderComponent, FooterComponent,
@@ -45,6 +46,6 @@ import { NotificationPageComponent } from './notification-page/notification-page
      SignInModalComponent, SignUpModalComponent, TripCardComponent,
      AddTripCardComponent, InfoComponent, UploadUserImageComponent,
      AutocompleteLocationComponent, TimeAgoPipe],
-  providers: [LocationService, ModalDirective]
+  providers: [LocationService, ModalDirective, VacationFilterPipe]
 })
 export class SharedModule { }

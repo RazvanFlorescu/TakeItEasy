@@ -5,6 +5,7 @@ using BusinessLogicReader.CqrsCore.Queries.Vacations;
 using BusinessLogicReader.CqrsCore.QueryHandlers.Vacations;
 using BusinessLogicWriter.CqrsCore;
 using BusinessLogicWriter.CqrsCore.Commands.Vacations;
+using BusinessLogicWriter.CqrsCore.Commands.WishList;
 using CommonTypes;
 using Microsoft.AspNetCore.Mvc;
 using Models;
@@ -126,6 +127,22 @@ namespace TakeItEasyProject.Controllers
                 vacation.VacationPoints,
                 vacation.AvailableMode
                 );
+
+            _dispatcher.Dispatch(command);
+
+            return Ok();
+        }
+
+        [HttpPost("addWishItem")]
+        public IActionResult AddWishItem([FromBody] WishItemDto wishItem)
+        {
+            Guid authorIdParsed;
+            if (!Guid.TryParse(wishItem.AuthorId, out authorIdParsed))
+            {
+                return BadRequest();
+            }
+
+            AddWishItemCommand command = new AddWishItemCommand(authorIdParsed, wishItem.Location);
 
             _dispatcher.Dispatch(command);
 

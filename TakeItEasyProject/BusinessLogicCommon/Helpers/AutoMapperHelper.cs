@@ -13,7 +13,6 @@ namespace BusinessLogicCommon.Helpers
                 {
                     cfg.CreateMap<User, UserDto>();
                     cfg.CreateMap<Image, ImageDto>();
-                    cfg.CreateMap<IList<User>, IList<UserDto>>();
                     cfg.CreateMap<Vacation, VacationDto>();
                     cfg.CreateMap<Location, LocationDto>();
                     cfg.CreateMap<Notification, NotificationDto>();

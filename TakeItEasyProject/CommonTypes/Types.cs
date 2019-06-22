@@ -6,7 +6,8 @@ namespace CommonTypes
     {
         Origin = 0,
         Destination = 1,
-        WayPoint = 2
+        WayPoint = 2,
+        WishPoint = 3
     }
 
     public enum AvailableMode
@@ -27,6 +28,7 @@ namespace CommonTypes
     {
         RequestVacation = 0,
         AcceptRequestVacation = 1,
-        RejectRequestVacation = 2
+        RejectRequestVacation = 2,
+        StartVacation = 3
     }
 }

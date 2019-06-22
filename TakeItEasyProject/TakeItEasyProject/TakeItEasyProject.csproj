@@ -13,6 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="HangFire" Version="1.7.3" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />
@@ -27,6 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogicReader\BusinessLogicReader.csproj" />
+    <ProjectReference Include="..\BusinessLogicSynchronize\BusinessLogicSynchronize.csproj" />
     <ProjectReference Include="..\BusinessLogicWriter\BusinessLogicWriter.csproj" />
   </ItemGroup>
 

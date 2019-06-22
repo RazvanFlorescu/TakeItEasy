@@ -1,0 +1,21 @@
+<div class="message">Add something in your wishlist</div>
+<div class="cover">
+    <div class="input-side">
+        <input mdbValidate mdbInput type="text" 
+        [(ngModel)]="autocompleteInput"
+        class="form-control search-input"
+        #address>
+        <button class="search-button"><i class="fa fa-search"></i></button>
+    </div>
+    <agm-map id="map" [latitude]="currentLocation.latitude" [longitude]="currentLocation.longitude">
+        <agm-marker *ngIf="currentLocation && currentLocation.latitude" 
+        [latitude]="currentLocation.latitude" 
+        [longitude]="currentLocation.longitude"
+
+></agm-marker>
+   </agm-map>
+   <section class="buttons-section">
+        <button type="button" class="btn btn-light-green cancel" (click)="cancel()">Cancel</button>  
+        <button type="button" class="btn btn-light-green" (click)="sendRequest()" [disabled]="isAddInWishlistDisabled()">Add in wishlist</button>
+   </section>
+</div>

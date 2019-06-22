@@ -1,16 +1,20 @@
 ﻿using BusinessLogicCommon.CqrsCore.CammandHandlers;
 using BusinessLogicCommon.Helpers;
 using BusinessLogicWriter.CqrsCore;
+using BusinessLogicWriter.CqrsCore.CammandHandlers.Email;
 using BusinessLogicWriter.CqrsCore.CammandHandlers.Image;
 using BusinessLogicWriter.CqrsCore.CammandHandlers.Locations;
 using BusinessLogicWriter.CqrsCore.CammandHandlers.Notifications;
 using BusinessLogicWriter.CqrsCore.CammandHandlers.Users;
 using BusinessLogicWriter.CqrsCore.CammandHandlers.Vacations;
+using BusinessLogicWriter.CqrsCore.CammandHandlers.WishList;
+using BusinessLogicWriter.CqrsCore.Commands.Email;
 using BusinessLogicWriter.CqrsCore.Commands.Image;
 using BusinessLogicWriter.CqrsCore.Commands.Locations;
 using BusinessLogicWriter.CqrsCore.Commands.Notifications;
 using BusinessLogicWriter.CqrsCore.Commands.Users;
 using BusinessLogicWriter.CqrsCore.Commands.Vacations;
+using BusinessLogicWriter.CqrsCore.Commands.WishList;
 using DataAccessWriter.Configurations;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -31,6 +35,8 @@ namespace BusinessLogicWriter.Configurations
             services.AddScoped<ICommandHandler<UpdateNotificationCommand>, UpdateNotificationCommandHandler>();
             services
                 .AddScoped<ICommandHandler<UpdateStatusJoinVacationCommand>, UpdateStatusJoinVacationCommandHandler>();
+            services.AddScoped<ICommandHandler<AddWishItemCommand>, AddWishItemCommandHandler>();
+            services.AddScoped<ICommandHandler<SendEmailCommand>, SendEmailCommandHandler>();
             services.AddScoped<Dispatcher>();
             AutoMapperHelper.IntializeMapper();
         }

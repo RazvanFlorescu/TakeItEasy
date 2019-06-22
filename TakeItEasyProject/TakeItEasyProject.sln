@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogicCommon", "Busi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{B9322B33-E0CF-4D94-82CD-CCF9FC2A09E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTypes", "CommonTypes\CommonTypes.csproj", "{1543C4EC-F2B1-4AA0-8EB5-6065D2D7C185}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonTypes", "CommonTypes\CommonTypes.csproj", "{1543C4EC-F2B1-4AA0-8EB5-6065D2D7C185}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicSynchronize", "BusinessLogicSynchronize\BusinessLogicSynchronize.csproj", "{BF704D2C-5BC9-45CA-BD4D-19C8A895DAE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,10 @@ Global
 		{1543C4EC-F2B1-4AA0-8EB5-6065D2D7C185}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1543C4EC-F2B1-4AA0-8EB5-6065D2D7C185}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1543C4EC-F2B1-4AA0-8EB5-6065D2D7C185}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF704D2C-5BC9-45CA-BD4D-19C8A895DAE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF704D2C-5BC9-45CA-BD4D-19C8A895DAE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF704D2C-5BC9-45CA-BD4D-19C8A895DAE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF704D2C-5BC9-45CA-BD4D-19C8A895DAE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +104,7 @@ Global
 		{CC5C37FF-57ED-48F1-A413-5393E20BD94D} = {BFFD7F5D-661F-46CF-B926-FD12EFDF346A}
 		{E1D6124B-5F93-4D3A-AF5E-55AE3235B75C} = {167C6B84-5FA9-4FF3-941F-2751A3BBF8A2}
 		{1543C4EC-F2B1-4AA0-8EB5-6065D2D7C185} = {B9322B33-E0CF-4D94-82CD-CCF9FC2A09E6}
+		{BF704D2C-5BC9-45CA-BD4D-19C8A895DAE0} = {167C6B84-5FA9-4FF3-941F-2751A3BBF8A2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F20594E3-9C34-486A-9BCC-B58AB36A9E9F}

@@ -1,5 +1,6 @@
 using BusinessLogicReader.Configurations;
 using BusinessLogicWriter.Configurations;
+using Hangfire;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
@@ -8,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using BusinessLogicSynchronize.HangfireDbSynchronizer;
 
 namespace TakeItEasyProject
 {
@@ -49,17 +52,21 @@ namespace TakeItEasyProject
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddBusinessLogicWriter(Configuration["ConnectionString"]);
             services.AddBusinessLogicReader(Configuration["ConnectionString"]);
-
+            services.AddHangfire(x =>
+                x.UseSqlServerStorage(
+                    Configuration["HangfireConnectionString"]));
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddScoped<IDbSynchronizer, DbSynchronizer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -75,6 +82,10 @@ namespace TakeItEasyProject
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+            app.UseHangfireServer();
+            app.UseHangfireDashboard("/hangfire");
+
+            RecurringJob.AddOrUpdate(() => serviceProvider.GetService<IDbSynchronizer>().Synchronize(), "0 3 * * *");
 
             app.UseMvc(routes =>
             {

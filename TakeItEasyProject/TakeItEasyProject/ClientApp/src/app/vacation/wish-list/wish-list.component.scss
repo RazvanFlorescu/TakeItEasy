@@ -1,0 +1,74 @@
+.cover{
+    background-color: transparent;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+    max-width: 900px;
+    margin: auto;
+}
+
+#map {
+    height: 350px;
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    border-radius: 6px 0px 0px 0px;
+}
+
+.input-side {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-button {
+  float: left;
+  width: 15%;
+  height: 39px;
+  background: #9ea525;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+  border-radius: 0px 6px 0px 0px;
+}
+
+.message {
+    font-family: "Calibri";
+    font-size: 23px;
+    color: white;
+    font-weight: 550;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 45px;
+}
+
+.btn-light-green {
+    color: white;
+    font-family: "Calibri" !important;
+    font-size: 15px !important;
+    float: right;
+    margin-top: 10px !important;
+    min-width: 67px !important;
+    background-color: #9ea525 !important;
+    min-width: 143px !important;
+  }
+
+  .cancel {
+        background-color: #788463 !important;
+  }
+
+  .buttons-section {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+  }

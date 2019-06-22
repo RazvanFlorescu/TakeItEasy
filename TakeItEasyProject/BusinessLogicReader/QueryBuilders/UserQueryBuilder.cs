@@ -28,5 +28,11 @@ namespace BusinessLogicReader.QueryBuilders
         {
             return GetAllQuery + $" and u.Email = '{email}' and u.Password = '{password}'";
         }
+
+        public static string GetAllUsersByVacationId(string vacationId)
+        {
+            return
+                $"select*from (select UserId from VacationJoinings where VacationId = '{vacationId}' and StatusJoining = 1)v join Users u on v.UserId = u.EntityId";
+        }
     }
 }

@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Ensure.That" Version="8.1.1" />
+    <PackageReference Include="SendGrid" Version="9.11.0" />
   </ItemGroup>
 
   <ItemGroup>

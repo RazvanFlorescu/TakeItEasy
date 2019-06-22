@@ -8,9 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { VacationDetailsComponent } from './vacation-details/vacation-details.component';
 import { AgmDirectionModule } from 'agm-direction';
 import { AgmCoreModule } from '@agm/core';
+import { WishListComponent } from './wish-list/wish-list.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [ VacationComponent, VacationFilterPipe, VacationDetailsComponent ],
+  declarations: [ VacationComponent, VacationFilterPipe, VacationDetailsComponent, WishListComponent ],
   imports: [
     CommonModule,
     ClickOutsideModule,
@@ -19,7 +21,8 @@ import { AgmCoreModule } from '@agm/core';
     AgmCoreModule.forRoot({
        apiKey: 'AIzaSyA9bGZv1g2dvSGhbs4sc045YfT4RbaVwkI'
      }),
-    AgmDirectionModule
+    AgmDirectionModule,
+    RouterModule,
   ],
   exports: [ VacationComponent, VacationFilterPipe, VacationDetailsComponent ]
 })

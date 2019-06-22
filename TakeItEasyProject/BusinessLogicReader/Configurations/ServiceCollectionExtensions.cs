@@ -44,6 +44,8 @@ namespace BusinessLogicReader.Configurations
             services
                 .AddScoped<IQueryHandler<GetVacationsByUserIdWhereThatUserIsJoinedThereQuery, IList<VacationDto>>,
                     GetVacationsByUserIdWhereThatUserIsJoinedThereQueryHandler>();
+            services.AddScoped <
+                IQueryHandler<GetAllUsersByVacationIdQuery, IList<UserDto>>, GetAllUsersByVacationIdQueryHandler>();
 
             services.AddScoped<Dispatcher>();
         }

@@ -7,6 +7,5 @@ namespace Entities
     public class WishItem : BaseEntity
     {
         public Guid AuthorId { get; set; }
-        public Location Location { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using BusinessLogicCommon.CqrsCore.CammandHandlers;
+using BusinessLogicWriter.CqrsCore.Commands.Email;
 using BusinessLogicWriter.CqrsCore.Commands.Notifications;
 using DataAccessWriter.Abstractions;
 using EnsureThat;
@@ -10,11 +11,14 @@ namespace BusinessLogicWriter.CqrsCore.CammandHandlers.Notifications
     public class PushNotificationCommandHandler : ICommandHandler<PushNotificationCommand>
     {
         private readonly IRepository _repository;
-        public PushNotificationCommandHandler(IRepository repository)
+        private readonly Dispatcher _dispatcher;
+        public PushNotificationCommandHandler(IRepository repository, Dispatcher dispatcher)
         {
             EnsureArg.IsNotNull(repository);
+            EnsureArg.IsNotNull(dispatcher);
 
             _repository = repository;
+            _dispatcher = dispatcher;
         }
 
         public void Handle(PushNotificationCommand command)
@@ -33,6 +37,10 @@ namespace BusinessLogicWriter.CqrsCore.CammandHandlers.Notifications
                 NotificationType = command.Type,
                 VacationId = command.VacationId
             };
+
+            var user = _repository.GetLastByFilter<User>(f => f.EntityId == command.ReceiverId);
+            SendEmailCommand sendEmailCommand = new SendEmailCommand("takeItEasy@gmail.com", user.Email, command.Text, user.FirstName, user.LastName);
+            _dispatcher.Dispatch(sendEmailCommand);
 
             _repository.Insert(notification);
             _repository.Save();

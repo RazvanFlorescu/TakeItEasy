@@ -58,4 +58,12 @@
         <div *ngIf="author" class="text-notification"><strong>{{author.firstName|titlecase}} {{author.lastName|titlecase}}</strong> rejected you as a participant for this trip</div>
         <i class="far fa-times-circle fa-6x"></i>
     </div>
+    <div class="mesage-part" *ngIf="isStartVacationNotification()">
+            <i class="fas fa-hand-peace fa-8x"></i>
+        <div class="text-notification bigger-text">It's a big daaay, today your vacation starts.</div>
+    </div>
+    <div class="mesage-part" *ngIf="isEndVacationNotification()">
+        <i class="fas fa-thumbs-down fa-8x"></i>
+        <div class="text-notification bigger-text">Today it's a sad day, your vacation it's over.</div>
+    </div>
 </div>

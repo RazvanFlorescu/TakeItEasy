@@ -19,7 +19,7 @@ export class VacationComponent implements OnInit {
   searchString = '';
 
   ngOnInit() {
-    this.vacationService.getAllVacations().subscribe(
+    this.vacationService.getAllPublicVacations().subscribe(
       res => {
         this.vacations = res;
       },

@@ -7,7 +7,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Models;
 using BusinessLogicCommon.Resources;
+using BusinessLogicReader.CqrsCore.Queries.Users;
 using BusinessLogicWriter.CqrsCore.Commands.Notifications;
+using BusinessLogicWriter.CqrsCore.Commands.Email;
 
 namespace TakeItEasyProject.Controllers
 {
@@ -53,6 +55,13 @@ namespace TakeItEasyProject.Controllers
             );
 
             _dispatcher.Dispatch(command);
+
+            GetUserByEntityIdQuery query = new GetUserByEntityIdQuery(receiverIdParsed);
+
+            var user = _dispatcher.Dispatch(query);
+
+            SendEmailCommand sendEmailCommand = new SendEmailCommand("takeItEasy@gmail.com", user.Email, command.Text, user.FirstName, user.LastName);
+            _dispatcher.Dispatch(sendEmailCommand);
 
             return Ok();
         }

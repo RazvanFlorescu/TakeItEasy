@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BusinessLogicCommon.Resources;
 using BusinessLogicReader.CqrsCore.Queries.Vacations;
+using BusinessLogicReader.CqrsCore.Queries.WishList;
 using BusinessLogicReader.CqrsCore.QueryHandlers.Vacations;
 using BusinessLogicWriter.CqrsCore;
 using BusinessLogicWriter.CqrsCore.Commands.Vacations;
@@ -27,6 +29,32 @@ namespace TakeItEasyProject.Controllers
         public IActionResult GetAllVacations()
         {
             GetAllVacationsQuery query = new GetAllVacationsQuery();
+            IList<VacationDto> vacations = _dispatcher.Dispatch(query);
+
+            if (vacations == null)
+            {
+                return BadRequest(ResponseMessage.VacationNotFound);
+            }
+
+            foreach (var vacation in vacations)
+            {
+                Guid vacationEntityIdParsed;
+                if (!Guid.TryParse(vacation.EntityId, out vacationEntityIdParsed))
+                {
+                    return BadRequest();
+                }
+
+                GetLocationsByVacationIdQuery locationQuery = new GetLocationsByVacationIdQuery(vacationEntityIdParsed);
+                vacation.VacationPoints = _dispatcher.Dispatch(locationQuery);
+            }
+
+            return Ok(vacations);
+        }
+
+        [HttpGet("public")]
+        public IActionResult GetAllPublicVacations()
+        {
+            GetAllPublicVacationsQuery query = new GetAllPublicVacationsQuery();
             IList<VacationDto> vacations = _dispatcher.Dispatch(query);
 
             if (vacations == null)
@@ -147,6 +175,61 @@ namespace TakeItEasyProject.Controllers
             _dispatcher.Dispatch(command);
 
             return Ok();
+        }
+
+        [HttpPost("removeWishItem")]
+        public IActionResult RemoveWishItem([FromBody] WishItemDto wishItem)
+        {
+            Guid authorIdParsed;
+            if (!Guid.TryParse(wishItem.AuthorId, out authorIdParsed))
+            {
+                return BadRequest();
+            }
+
+            Guid entityIdParsed;
+            if (!Guid.TryParse(wishItem.EntityId, out entityIdParsed))
+            {
+                return BadRequest();
+            }
+
+            RemoveWishItemCommand command = new RemoveWishItemCommand(entityIdParsed, authorIdParsed);
+
+            _dispatcher.Dispatch(command);
+
+            return Ok();
+        }
+
+        [HttpGet("{userId}/wishItems")]
+        public IActionResult GetWishListByUserId(string userId)
+        {
+            Guid entityIdParsed;
+            if (!Guid.TryParse(userId, out entityIdParsed))
+            {
+                return BadRequest();
+            }
+
+            GetWishListByUserIdQuery query = new GetWishListByUserIdQuery(entityIdParsed);
+            IList<WishItemDto> wishList = _dispatcher.Dispatch(query);
+
+            if (wishList == null)
+            {
+                return BadRequest(ResponseMessage.VacationNotFound);
+            }
+
+            foreach (var itemDto in wishList)
+            {
+                Guid wishItemIdParsed;
+                if (!Guid.TryParse(itemDto.EntityId, out wishItemIdParsed))
+                {
+                    return BadRequest();
+                }
+                GetLocationsByVacationIdQuery getLocationsByVacationIdQuery = new GetLocationsByVacationIdQuery(wishItemIdParsed);
+                var loc = _dispatcher.Dispatch(getLocationsByVacationIdQuery);
+
+                wishList.First(x=>x.EntityId == itemDto.EntityId).Location = loc.First(x => x.LocationType == LocationType.WishPoint);
+            }
+
+            return Ok(wishList);
         }
 
         [HttpPost("join")]

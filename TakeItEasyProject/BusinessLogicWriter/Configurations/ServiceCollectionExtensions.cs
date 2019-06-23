@@ -37,6 +37,7 @@ namespace BusinessLogicWriter.Configurations
                 .AddScoped<ICommandHandler<UpdateStatusJoinVacationCommand>, UpdateStatusJoinVacationCommandHandler>();
             services.AddScoped<ICommandHandler<AddWishItemCommand>, AddWishItemCommandHandler>();
             services.AddScoped<ICommandHandler<SendEmailCommand>, SendEmailCommandHandler>();
+            services.AddScoped<ICommandHandler<RemoveWishItemCommand>, RemoveWishItemCommandHandler>();
             services.AddScoped<Dispatcher>();
             AutoMapperHelper.IntializeMapper();
         }

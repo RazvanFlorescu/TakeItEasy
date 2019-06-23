@@ -17,6 +17,7 @@ namespace BusinessLogicCommon.Helpers
                     cfg.CreateMap<Location, LocationDto>();
                     cfg.CreateMap<Notification, NotificationDto>();
                     cfg.CreateMap<VacationJoining, VacationJoiningDto>();
+                    cfg.CreateMap<WishItem, WishItemDto>();
                 });
         }
     }

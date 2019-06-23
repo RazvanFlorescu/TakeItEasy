@@ -4,6 +4,9 @@
     <div class="comercial-logos">
       <img *ngIf="!user || !user.image" src="../../../assets/images/no-profile-image.png" class="logo" routerLink="my-profile">
       <img *ngIf="user" src="{{user.image}}" class="logo" routerLink="my-profile">      
+      <div class="wish-list" (click)="displayWishlist()" (clickOutside)=" hideWishlist()">
+          <i class="fas fa-hand-holding-heart fa-lg"></i>
+      </div>
       <div class="notification" (click)="displayNotifications()" (clickOutside)="hideNotifications()">
           <span class="notification-point" *ngIf="showRedPiontNotification()"></span>
           <i class="fas fa-bell fa-lg"></i>
@@ -37,7 +40,8 @@
         <img *ngIf="notification.userPicture" class="notification-image" src="{{notification.userPicture}}">
         <img *ngIf="!notification.userPicture" class="notification-image" src="./../../../assets/images/no-profile-image.png">
         <div class="right-side">
-            <div class="notification-text">{{notification.text}}</div>
+            <div *ngIf="isBiggerThan34(notification.text)" class="notification-text">{{notification.text| slice:0:40 }}...</div>
+            <div *ngIf="!isBiggerThan34(notification.text)" class="notification-text">{{notification.text }}</div>
             <div class="notification-info">
                 <i class="fas fa-info-circle fa-xs"></i> {{notification.lastChangedDate | timeAgo}}
             </div>
@@ -50,5 +54,25 @@
     </div>  
   </div>
 </div>
+
+<div class="triangle2" *ngIf="showWishList"></div>
+<div class="wishlist-content" *ngIf="showWishList">
+  <div class="wishlist-header">
+    Wish-list
+  </div>
+  <div *ngIf="wishList && wishList.length > 0" class="wishlist-body">
+      <div class="card-wishlist" *ngFor="let wishItem of wishList">
+        <i class="fas fa-heartbeat fa-lg"></i>
+        {{wishItem.location.address}}
+        <i class="fas fa-times-circle fa-sm" (click)="removeWishItem(wishItem)" ></i>
+      </div>
+  </div>
+  <div *ngIf="!wishList || wishList.length === 0" class="notification-body">
+    <div class="text-not-find">
+      Nothing in wish-list yet.
+    </div>  
+  </div>
+</div>
+
 
 

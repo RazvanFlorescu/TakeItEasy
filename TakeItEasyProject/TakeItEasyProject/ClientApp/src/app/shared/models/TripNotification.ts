@@ -14,5 +14,8 @@ export enum NotificationType
 {
     requestVacation = 0,
     acceptRequestVacation = 1,
-    rejectRequestVacation = 2
+    rejectRequestVacation = 2,
+    startVacation = 3,
+    endVacation = 4,
+    wishItem = 5
 }

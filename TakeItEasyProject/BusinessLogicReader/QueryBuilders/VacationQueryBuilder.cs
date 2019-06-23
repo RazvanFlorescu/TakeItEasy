@@ -13,9 +13,19 @@ namespace BusinessLogicReader.QueryBuilders
             return GetAllQuery;
         }
 
+        public static string GetAllPublic()
+        {
+            return GetAllQuery + $" and u.AvailableMode = '{0}'";
+        }
+
         public static string GetByEntityId(Guid id)
         {
             return GetAllQuery + $" and u.EntityId = '{id}'";
+        }
+
+        public static string GetPublicByUserId(Guid id)
+        {
+            return GetAllQuery + $" and u.EntityId = '{id}' and u.AvailableMode = '{0}'";
         }
 
         public static string GetByUserId(Guid id)

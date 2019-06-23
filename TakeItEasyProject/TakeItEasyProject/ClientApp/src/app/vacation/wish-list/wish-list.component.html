@@ -1,4 +1,4 @@
-<div class="message">Add something in your wishlist</div>
+<div class="message"><i class="fas fa-hand-holding-heart fa-sm"></i>Add something in your wishlist<i class="fas fa-hand-holding-heart fa-sm"></i></div>
 <div class="cover">
     <div class="input-side">
         <input mdbValidate mdbInput type="text" 
@@ -19,3 +19,11 @@
         <button type="button" class="btn btn-light-green" (click)="sendRequest()" [disabled]="isAddInWishlistDisabled()">Add in wishlist</button>
    </section>
 </div>
+<div class="black-cover" *ngIf="showToastr">
+    <div class="alert success">
+      You <strong>successfully</strong> added a new wishItem.
+      <div class="width-100">
+        <button type="button" class="btn btn-light-green go-back" (click)="close()">Go back to Vacations</button>
+      </div>
+    </div>
+  </div>

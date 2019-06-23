@@ -122,6 +122,14 @@ export class NotificationPageComponent implements OnInit {
     return this.currentNotification && this.currentNotification.notificationType === NotificationType.rejectRequestVacation
   }
 
+  isStartVacationNotification() {
+    return this.currentNotification && this.currentNotification.notificationType === NotificationType.startVacation
+  }
+
+  isEndVacationNotification() {
+    return this.currentNotification && this.currentNotification.notificationType === NotificationType.endVacation
+  }
+
   accept() {
     const vacationJoining: VacationJoining = {
       userId: this.author.entityId,

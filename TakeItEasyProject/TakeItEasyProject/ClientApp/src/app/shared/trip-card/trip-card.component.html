@@ -9,5 +9,6 @@
       <p class="card-text" *ngIf="isBiggerThan130(vacation.description)">{{vacation.description | slice:0:130 }}...</p>
       <p class="card-text" *ngIf="!isBiggerThan130(vacation.description)">{{vacation.description}}</p>
       <p class="card-text"><small class="text-muted">Last updated {{vacation.lastChangedDate | timeAgo}}</small></p>
+      
     </div>
 </div>

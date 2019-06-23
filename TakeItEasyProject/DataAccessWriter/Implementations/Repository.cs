@@ -50,7 +50,7 @@ namespace DataAccessWriter.Implementations
 
         public void Save()
         {
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

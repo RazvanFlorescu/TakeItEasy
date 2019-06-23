@@ -4,10 +4,12 @@ using BusinessLogicReader.CqrsCore.Queries.Images;
 using BusinessLogicReader.CqrsCore.Queries.Notifications;
 using BusinessLogicReader.CqrsCore.Queries.Users;
 using BusinessLogicReader.CqrsCore.Queries.Vacations;
+using BusinessLogicReader.CqrsCore.Queries.WishList;
 using BusinessLogicReader.CqrsCore.QueryHandlers.Images;
 using BusinessLogicReader.CqrsCore.QueryHandlers.Notifications;
 using BusinessLogicReader.CqrsCore.QueryHandlers.Users;
 using BusinessLogicReader.CqrsCore.QueryHandlers.Vacations;
+using BusinessLogicReader.CqrsCore.QueryHandlers.WishList;
 using BusinessLogicWriter.CqrsCore;
 using DataAccessReader.Configurations;
 using Microsoft.Extensions.DependencyInjection;
@@ -44,8 +46,16 @@ namespace BusinessLogicReader.Configurations
             services
                 .AddScoped<IQueryHandler<GetVacationsByUserIdWhereThatUserIsJoinedThereQuery, IList<VacationDto>>,
                     GetVacationsByUserIdWhereThatUserIsJoinedThereQueryHandler>();
-            services.AddScoped <
-                IQueryHandler<GetAllUsersByVacationIdQuery, IList<UserDto>>, GetAllUsersByVacationIdQueryHandler>();
+            services.AddScoped 
+                  <IQueryHandler<GetAllUsersByVacationIdQuery, IList<UserDto>>, GetAllUsersByVacationIdQueryHandler>();
+            services
+                .AddScoped<IQueryHandler<GetWishListByUserIdQuery, IList<WishItemDto>>, GetWishListByUserIdQueryHandler>();
+            services
+                .AddScoped<IQueryHandler<GetAllPublicVacationsQuery, IList<VacationDto>>,
+                    GetAllPublicVacationsQueryHandler>();
+            services
+                .AddScoped<IQueryHandler<GetPublicVacationsByUserIdQuery, IList<VacationDto>>,
+                    GetPublicVacationsByUserIdQueryHandler>();
 
             services.AddScoped<Dispatcher>();
         }

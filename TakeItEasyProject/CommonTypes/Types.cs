@@ -29,6 +29,8 @@ namespace CommonTypes
         RequestVacation = 0,
         AcceptRequestVacation = 1,
         RejectRequestVacation = 2,
-        StartVacation = 3
+        StartVacation = 3,
+        EndVacation = 4,
+        WishItem = 5
     }
 }

@@ -1,6 +1,10 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import {} from '@agm/core/services/google-maps-types';
-import { TripLocation } from 'src/app/shared/models/Vacation';
+import { TripLocation, LocationType } from 'src/app/shared/models/Vacation';
+import { VacationService } from 'src/app/shared/services/vacation.service';
+import { WishItem } from 'src/app/shared/models/WishItem';
+import { UserService } from 'src/app/shared/services/user.service';
+import { Router } from '@angular/router';
 
 declare const google: any;
 @Component({
@@ -12,9 +16,10 @@ export class WishListComponent implements OnInit, AfterViewInit {
 
   public autocompleteInput: string;
   public currentLocation: TripLocation;
+  public showToastr = false;
 
   @ViewChild('address') addresstext: any;
-  constructor() { }
+  constructor(private vacationService: VacationService, private userService: UserService,  private router: Router) { }
 
   ngOnInit() {
     this.currentLocation = new TripLocation();
@@ -45,13 +50,35 @@ private getPlaceAutocomplete() {
       this.currentLocation.latitude = $event.geometry.location.lat();
       this.currentLocation.longitude = $event.geometry.location.lng();
       this.currentLocation.placeId = $event.placeId;
-      this.currentLocation.address = $event.formatted_address;
+      this.currentLocation.address = $event.vicinity;
+      this.currentLocation.locationType = LocationType.wishPoint
 
       console.log(this.currentLocation);
   }
 
   cancel() {
     this.autocompleteInput = '';
+  }
+
+  sendRequest() {
+    const wishItem: WishItem = {
+      authorId: this.userService.getLoggedUser().entityId,
+      location: this.currentLocation
+    } 
+    this.vacationService.addWishItem(wishItem).subscribe(
+      res => {
+        this.showToastr = true;
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
+  close() {
+    this.showToastr = false;
+    this.router.navigate(["/vacation"]);
+
   }
 
   isAddInWishlistDisabled() {

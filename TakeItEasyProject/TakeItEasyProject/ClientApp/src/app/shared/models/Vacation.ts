@@ -29,7 +29,8 @@ export class Vacation {
 export enum LocationType {
     origin = 0,
     destination = 1,
-    wayPoint = 2
+    wayPoint = 2,
+    wishPoint = 3
   }
 
 export class VacationJoining {

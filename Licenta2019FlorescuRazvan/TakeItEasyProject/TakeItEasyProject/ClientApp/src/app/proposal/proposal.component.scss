@@ -1,0 +1,144 @@
+.proposal-container {
+    padding-left: 200px;
+    padding-right: 200px;
+    
+    .stepper .active .circle, .stepper .completed .circle{
+        background-color: #9ea525 !important;
+    }
+    
+    .stepper-horizontal li:not(:last-child):after {
+        background-color: rgba(255, 255, 255, 0.42);
+    }
+    
+    .stepper-horizontal li:not(:first-child):before {
+        background-color: rgba(255, 255, 255, 0.42);
+    }
+    
+    ul.stepper li.active a .label, ul.stepper li.completed a .label {
+        color: #fde9c8;
+    }
+
+    .stepper-tky {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px;
+        margin-bottom: 50px;
+        
+        .step {
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            background-color: #9ea525;
+            border: 0.5px solid #4f5618;
+            margin: 20px;
+            color: #fde9c8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover {
+                background-color: #b4be00;
+                cursor: pointer;
+            }
+        }
+        .line {
+            width: 25%;
+            height: 1.5px;
+            background-color: rgba(255, 255, 255, 0.42);
+        }
+    }
+    
+}
+
+.step-container {
+    margin-bottom: 50px;
+}
+
+.state-saved {
+    background-color: #393b17 !important;
+}
+
+@media screen and (min-width: 670px) and (max-width: 1230px)  {
+    .proposal-container {
+        padding: 0px;
+    }
+    .container {
+        padding: 0px;
+        max-width: 100%;
+    }
+  }
+  
+  @media screen and (min-width: 320px) and (max-width: 670px)  {
+    .step {
+        width: 35px !important;
+        height: 35px !important;
+    }  
+
+    .line {
+        width: 12% !important;
+    }
+
+    .proposal-container {
+        padding: 0px;
+    }
+
+    .container {
+        padding: 0px;
+        ::ng-deep .modal-content {
+            width: 100%
+        }
+    }
+  }
+
+  .alert {
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 17px;
+    padding-bottom: 10px;
+    color: white;
+    font-family: "Calibri";
+    font-size: 18px;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+    position: absolute;
+    top:100;
+    strong {
+        font-size: 20px;
+    }
+  }
+
+  .alert.success {background-color: #66764c;}
+  
+  .btn-light-green {
+    color: white;
+    font-family: "Calibri";
+    font-size: 13px;
+    margin: auto;
+    margin-top: 16px;
+    margin-bottom: 5px;
+    background-color: #9ea525 !important;
+  }
+
+  .width-100 {
+      width: 100%;
+      display: flex;
+  }
+
+  .black-cover {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.78);
+  }

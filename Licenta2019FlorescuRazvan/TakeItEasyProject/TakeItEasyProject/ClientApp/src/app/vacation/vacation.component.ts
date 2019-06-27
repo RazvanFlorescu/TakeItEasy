@@ -17,6 +17,8 @@ export class VacationComponent implements OnInit {
   @ViewChild('divToScroll') divToScroll: ElementRef;
   showDropDown = false;
   searchString = '';
+  showLoader = true;
+  imageLoadedCounter = 0;
 
   ngOnInit() {
     this.vacationService.getAllPublicVacations().subscribe(
@@ -48,5 +50,12 @@ export class VacationComponent implements OnInit {
 
   getVacationsFiltred() {
     return this.vacationpipe.transform(this.vacations, this.searchString) 
+  }
+
+  setImageLoad($event) {
+    this.imageLoadedCounter = this.imageLoadedCounter + 1;
+    if(this.imageLoadedCounter === this.vacations.length) {
+      this.showLoader = false;
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Vacation } from '../models/Vacation';
 import { ImageService } from '../services/image.service';
 import { UserService } from '../services/user.service';
@@ -13,6 +13,7 @@ import { Router, NavigationExtras } from "@angular/router";
 export class TripCardComponent implements OnInit {
 
   @Input() vacation: Vacation;
+  @Output() imageIsLoaded: EventEmitter<any> = new EventEmitter();;
   public currentUser: User;
 
   constructor(private imageService: ImageService, private userService: UserService, private router:Router) { }
@@ -32,6 +33,7 @@ export class TripCardComponent implements OnInit {
     this.imageService.getImageByEntityId(this.vacation.entityId).subscribe(
       res => {
         this.vacation.image = res!==null? res.content : undefined;
+        this.imageIsLoaded.emit(true);
       },
       err => {
         console.log(err);

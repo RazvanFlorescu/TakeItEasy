@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 
+import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-add-trip-card',
   templateUrl: './add-trip-card.component.html',

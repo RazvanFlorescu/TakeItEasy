@@ -16,6 +16,8 @@ export class MyProfileComponent implements OnInit {
   public signInClicked: boolean;
   public vacations: Vacation[];
   public joiningVacations: Vacation[];
+  public imageLoadedCounter = 0;
+  public showLoader = true;
 
   get user() {
     return this.userService.getLoggedUser();
@@ -40,6 +42,15 @@ export class MyProfileComponent implements OnInit {
            console.log(err);
          }
        )
+    }
+  }
+
+  setImageLoad($event) {
+    this.imageLoadedCounter = this.imageLoadedCounter + 1;
+    console.log(this.vacations.length );
+    console.log(this.joiningVacations.length);
+    if(this.imageLoadedCounter === this.vacations.length) {
+      this.showLoader = false;
     }
   }
 }

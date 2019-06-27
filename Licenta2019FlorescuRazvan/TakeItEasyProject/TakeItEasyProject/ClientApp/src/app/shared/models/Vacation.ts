@@ -8,8 +8,7 @@ export class TripLocation {
 
 export enum AvailableMode {
     Public = 0,
-    Private = 1 ,
-    OnlyFriends = 2
+    Private = 1 
 }
 
 export class Vacation {

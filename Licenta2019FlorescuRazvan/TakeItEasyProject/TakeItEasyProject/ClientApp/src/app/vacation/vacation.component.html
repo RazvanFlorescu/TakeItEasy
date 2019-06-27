@@ -28,8 +28,11 @@
   </div>
 
   <div class="row equal card-container" id="scrollHere" *ngIf="vacations">
-      <div class="col-sm-4 d-flex pb-3 vacation-card" *ngFor="let vacation of vacations | vacationFilterPipe: searchString">
-          <app-trip-card [vacation]="vacation"></app-trip-card>
+      <div class="black-cover" *ngIf="showLoader">
+          <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+      </div>
+    <div class="col-sm-4 d-flex pb-3 vacation-card" *ngFor="let vacation of vacations | vacationFilterPipe: searchString">
+          <app-trip-card [ngClass]="{'hide': showLoader}" [vacation]="vacation" (imageIsLoaded)="setImageLoad($event)"></app-trip-card>
       </div>
       <div class="wish-list-propose"*ngIf="getVacationsFiltred().length === 0">
           <i class="fas fa-heart-broken fa-5x"></i>
